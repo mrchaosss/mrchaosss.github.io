@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { BookCallLink } from '@/components/book-call-link';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { siteConfig } from '@/lib/site-config';
@@ -22,9 +23,9 @@ export default function ContactPage() {
         </div>
         <div className="contact-card">
           <p className="card-kicker">Scheduling</p>
-          <h2>Request a time by email.</h2>
-          <p>Tell us a couple of times that work for you and we’ll confirm one by email. Online scheduling will be added here when the calendar is ready.</p>
-          <a className="button button-primary" href={`mailto:${siteConfig.contactEmail}?subject=Book%20a%20Novren%20intro%20call`}>Email to schedule</a>
+          <h2>Choose a time that works.</h2>
+          <p>Open the calendar, choose an available time, and add a few details about your business so the conversation can start in the right place.</p>
+          <BookCallLink className="button button-primary">View available times</BookCallLink>
           <dl>
             <div><dt>Email</dt><dd><a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a></dd></div>
             <div><dt>Phone</dt><dd>{siteConfig.contactPhone}</dd></div>
