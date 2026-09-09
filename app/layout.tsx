@@ -8,20 +8,20 @@ export const metadata: Metadata = {
     template: '%s | Novren',
   },
   description:
-    'Novren helps established local businesses request honest reviews, manage responses, keep listings accurate, and stay active on Google.',
+    'Novren manages review requests, responses, listings, Google Business Profile activity, and monthly reporting for established local businesses.',
   openGraph: {
     type: 'website',
     url: 'https://novren.co',
     siteName: 'Novren',
     title: 'Novren | Managed reputation for local businesses',
     description:
-      'Honest review requests, thoughtful responses, accurate listings, and consistent Google profile management.',
+      'A managed monthly program for review requests, responses, listings, Google profile activity, and reporting.',
   },
   twitter: {
     card: 'summary',
     title: 'Novren | Managed reputation for local businesses',
     description:
-      'Honest review requests, thoughtful responses, accurate listings, and consistent Google profile management.',
+      'A managed monthly program for review requests, responses, listings, Google profile activity, and reporting.',
   },
 };
 
