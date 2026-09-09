@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { BookCallLink } from '@/components/book-call-link';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
@@ -34,14 +33,11 @@ const capabilities = [
   },
 ];
 
-const industries = [
-  'Home services',
-  'Dental and health',
-  'Automotive',
-  'Wellness',
-  'Property services',
-  'Professional services',
-  'Multi-location operators',
+const fitSignals = [
+  'Customers find or compare your business through local search.',
+  'Reviews influence whether someone calls, books, visits, or keeps looking.',
+  'You serve real customers every week, but reputation work has no consistent owner.',
+  'You want the work managed without giving your team another dashboard to run.',
 ];
 
 const reporting = [
@@ -88,7 +84,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <BookCallLink className="button button-primary" />
-            <Link className="text-link" href="/service">Explore the service <span aria-hidden="true">↗</span></Link>
+            <a className="text-link" href="/service">Explore the service <span aria-hidden="true">↗</span></a>
           </div>
         </div>
 
@@ -107,7 +103,7 @@ export default function Home() {
 
       <section className="offer-bar" aria-label="Offer summary">
         <p><span>Managed Reputation</span> One focused service</p>
-        <p><span>$699 per location</span> Billed monthly</p>
+        <p><span>Six recurring deliverables</span> Run as one monthly program</p>
         <p><span>Fully managed</span> Built for busy operators</p>
       </section>
 
@@ -119,11 +115,15 @@ export default function Home() {
             The strongest fit is an established business with regular customer activity, an active
             Google Business Profile, and no dependable system for asking, responding, updating, and reporting.
           </p>
-          <Link className="text-link" href="/about">See whether Novren fits your business <span aria-hidden="true">↗</span></Link>
+          <a className="text-link" href="/about">See whether Novren fits your business <span aria-hidden="true">↗</span></a>
         </div>
-        <ul className="industry-list" aria-label="Industries served">
-          {industries.map((industry) => <li key={industry}>{industry}</li>)}
-        </ul>
+        <div className="fit-panel">
+          <p className="card-kicker">What matters more than your industry</p>
+          <h3>If reviews shape the next customer decision, Novren may be a fit.</h3>
+          <ul aria-label="Signs Novren may be a good fit">
+            {fitSignals.map((signal) => <li key={signal}>{signal}</li>)}
+          </ul>
+        </div>
       </section>
 
       <section className="service-section" aria-labelledby="service-title">
@@ -140,7 +140,7 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <Link className="section-link" href="/service">See full service details <span aria-hidden="true">→</span></Link>
+        <a className="section-link" href="/service">See full service details <span aria-hidden="true">→</span></a>
       </section>
 
       <section className="trust-section" aria-labelledby="trust-title">
@@ -160,7 +160,7 @@ export default function Home() {
           <p className="eyebrow">How it works</p>
           <h2 id="process-title">A clear setup. Then a quiet monthly rhythm.</h2>
           <p>You stay involved where business context matters. Novren owns the recurring work.</p>
-          <Link className="button button-secondary" href="/process">View the full process</Link>
+          <a className="button button-secondary" href="/process">View the full process</a>
         </div>
         <ol className="step-list">
           <li><span>01</span><div><h3>Set the baseline</h3><p>Confirm profiles, current review activity, listings, and business details.</p></div></li>
@@ -179,6 +179,21 @@ export default function Home() {
         <ul>
           {reporting.map((item) => <li key={item}>{item}</li>)}
         </ul>
+      </section>
+
+      <section className="faq-section" aria-labelledby="faq-title">
+        <div>
+          <p className="eyebrow">Straight answers</p>
+          <h2 id="faq-title">Before we talk.</h2>
+        </div>
+        <dl>
+          {faqs.map((item) => (
+            <div key={item.question}>
+              <dt>{item.question}</dt>
+              <dd>{item.answer}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <section className="pricing-section" aria-labelledby="pricing-title">
@@ -200,21 +215,6 @@ export default function Home() {
           <BookCallLink className="button button-primary">Book a call about your location</BookCallLink>
           <p className="price-note">Pricing is per location. Multi-location businesses can request a tailored scope.</p>
         </div>
-      </section>
-
-      <section className="faq-section" aria-labelledby="faq-title">
-        <div>
-          <p className="eyebrow">Straight answers</p>
-          <h2 id="faq-title">Before we talk.</h2>
-        </div>
-        <dl>
-          {faqs.map((item) => (
-            <div key={item.question}>
-              <dt>{item.question}</dt>
-              <dd>{item.answer}</dd>
-            </div>
-          ))}
-        </dl>
       </section>
 
       <section className="final-cta">
