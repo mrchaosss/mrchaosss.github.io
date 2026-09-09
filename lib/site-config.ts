@@ -1,6 +1,5 @@
 export const siteConfig = {
-  // Replace this with the scheduling URL when the booking calendar is ready.
-  bookingHref: '/contact',
+  bookingHref: 'https://cal.com/gabe-glenn-9zwzc2/strategy-call',
   // Replace these contact details in one place when the final information is ready.
   contactEmail: 'hello@novren.co',
   contactPhone: 'Phone number coming soon',
