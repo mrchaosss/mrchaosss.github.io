@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
+import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Privacy',
-  alternates: { canonical: '/privacy/' },
+  alternates: { canonical: '/privacy' },
 };
 export const dynamic = 'force-static';
 
@@ -15,7 +16,7 @@ export default function PrivacyPage() {
       <article className="legal-page">
         <p className="eyebrow">Privacy</p>
         <h1>Privacy notice</h1>
-        <p className="legal-date">Effective September 4, 2026</p>
+        <p className="legal-date">Effective September 9, 2026</p>
 
         <h2>Information you send us</h2>
         <p>
@@ -41,7 +42,7 @@ export default function PrivacyPage() {
         <h2>Your choices</h2>
         <p>
           You may ask us to correct or delete information you sent us, subject to legal and
-          operational requirements. Contact <a href="mailto:hello@novren.co">hello@novren.co</a>.
+          operational requirements. Contact <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>.
         </p>
       </article>
       <SiteFooter />
