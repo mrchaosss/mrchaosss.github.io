@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
+import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
   title: 'Terms',
-  alternates: { canonical: '/terms/' },
+  alternates: { canonical: '/terms' },
 };
 export const dynamic = 'force-static';
 
@@ -15,7 +16,7 @@ export default function TermsPage() {
       <article className="legal-page">
         <p className="eyebrow">Terms</p>
         <h1>Website terms</h1>
-        <p className="legal-date">Effective September 4, 2026</p>
+        <p className="legal-date">Effective September 9, 2026</p>
 
         <h2>Informational website</h2>
         <p>
@@ -44,7 +45,7 @@ export default function TermsPage() {
         </p>
 
         <h2>Contact</h2>
-        <p>Questions about these terms may be sent to <a href="mailto:hello@novren.co">hello@novren.co</a>.</p>
+        <p>Questions about these terms may be sent to <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>.</p>
       </article>
       <SiteFooter />
     </main>
