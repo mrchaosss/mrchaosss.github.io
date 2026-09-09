@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
+import { BookCallLink } from '@/components/book-call-link';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 
 export const metadata: Metadata = {
   title: 'About',
-  description:
-    'Novren is a focused reputation-management partner for established local businesses.',
-  alternates: { canonical: '/about/' },
+  description: 'Novren is a focused reputation-management partner for established local businesses.',
+  alternates: { canonical: '/about' },
 };
 export const dynamic = 'force-static';
 
@@ -14,80 +14,77 @@ export default function AboutPage() {
   return (
     <main id="main-content">
       <SiteHeader />
-      <section className="page-intro">
+      <section className="subpage-hero about-hero">
         <p className="eyebrow">About Novren</p>
-        <h1>Focused by design.</h1>
+        <h1>A narrower kind of marketing partner.</h1>
         <p>
-          Novren is a reputation-management partner for established local businesses
-          whose next customer is likely to check reviews before making contact.
+          Novren exists to own one important operating system for local businesses: the work
+          that keeps reviews, responses, listings, and Google profile activity moving.
         </p>
+        <BookCallLink className="button button-primary" />
       </section>
 
-      <section className="manifesto-grid">
+      <section className="about-story" aria-labelledby="about-story-title">
         <div>
-          <p className="section-index">Why we exist</p>
-          <h2>Your public reputation deserves the same care as the work behind it.</h2>
+          <p className="eyebrow">Why we exist</p>
+          <h2 id="about-story-title">Good service deserves a reputation that stays current.</h2>
         </div>
-        <div className="manifesto-copy">
+        <div>
           <p>
-            Plenty of good businesses leave review requests, responses, listings, and
-            Google profile updates to chance. Not because those things do not matter,
-            but because the day-to-day work always comes first.
+            Most local businesses do not ignore reputation work because it is unimportant.
+            They ignore it because customers, crews, schedules, and day-to-day problems always arrive first.
           </p>
           <p>
-            Novren creates one accountable system for that work. The scope is narrow on
-            purpose: help real customers share honest experiences, answer feedback,
-            maintain accurate business information, and keep the profile current.
+            Novren turns that scattered work into one managed monthly program. The scope is
+            deliberately focused, the responsibilities are clear, and the reporting shows what actually happened.
           </p>
         </div>
       </section>
 
-      <section className="principles-section">
-        <p className="section-index">How we work</p>
-        <div className="principle-list">
+      <section className="principles-section" aria-labelledby="principles-title">
+        <div className="section-heading compact-heading">
+          <p className="eyebrow">How we work</p>
+          <h2 id="principles-title">Straightforward on purpose.</h2>
+        </div>
+        <div className="principle-grid">
           <article>
-            <span>01</span>
-            <h2>Earned, not manufactured.</h2>
-            <p>Review requests go to real customers. We do not buy, write, or invent customer reviews.</p>
+            <h3>One accountable scope</h3>
+            <p>We focus on reputation management instead of presenting ourselves as a full-service agency that does everything.</p>
           </article>
           <article>
-            <span>02</span>
-            <h2>Honest feedback stays honest.</h2>
-            <p>We do not screen for positive sentiment or promise to remove legitimate criticism.</p>
+            <h3>Real customer feedback</h3>
+            <p>Requests are for honest experiences. No purchased reviews, positive-only screening, or manufactured praise.</p>
           </article>
           <article>
-            <span>03</span>
-            <h2>Visible work, plain reporting.</h2>
-            <p>You should know what was managed, what changed, and what needs attention next.</p>
+            <h3>Human judgment where it matters</h3>
+            <p>Tools can assist the work, but responses and sensitive situations still require review, context, and care.</p>
           </article>
           <article>
-            <span>04</span>
-            <h2>One service, managed well.</h2>
-            <p>We are not a vague full-service agency. Our job is your online reputation.</p>
+            <h3>Evidence over promises</h3>
+            <p>Monthly reporting covers completed work and useful measures without guaranteeing a rating, ranking, lead count, or revenue result.</p>
           </article>
         </div>
       </section>
 
-      <section className="about-fit">
+      <section className="fit-detail" aria-labelledby="fit-detail-title">
         <div>
-          <p className="section-index">A good fit</p>
-          <h2>Built for businesses with real customers and no consistent review system.</h2>
+          <p className="eyebrow">A good fit</p>
+          <h2 id="fit-detail-title">Built for established, review-dependent local businesses.</h2>
         </div>
-        <ul className="fit-checks">
+        <ul>
           <li>You serve a defined local market.</li>
-          <li>You complete enough work to request feedback regularly.</li>
-          <li>You have an active Google Business Profile.</li>
-          <li>You want a managed process, not another dashboard to learn.</li>
+          <li>You have genuine customer activity every month.</li>
+          <li>You maintain at least one active Google Business Profile.</li>
+          <li>Your team can identify honest moments to request feedback.</li>
+          <li>You want the work managed, not another platform to learn.</li>
         </ul>
       </section>
 
       <section className="final-cta">
-        <p className="eyebrow">Start with the facts</p>
-        <h2>See what customers see when they compare you.</h2>
-        <p>Send your business name and city. We’ll return a short, no-obligation reputation snapshot.</p>
-        <a className="button button-light" href="mailto:hello@novren.co?subject=Free%20reputation%20snapshot">
-          Request your snapshot
-        </a>
+        <p className="eyebrow">Start with a conversation</p>
+        <h2>Tell us what keeps slipping through the cracks.</h2>
+        <p>We’ll help you decide whether a managed reputation program makes sense for the way your business operates.</p>
+        <BookCallLink className="button button-light" />
       </section>
       <SiteFooter />
     </main>
