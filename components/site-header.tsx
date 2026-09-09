@@ -1,4 +1,12 @@
 import Link from 'next/link';
+import { BookCallLink } from '@/components/book-call-link';
+
+const navigation = [
+  ['Service', '/service'],
+  ['Process', '/process'],
+  ['About', '/about'],
+  ['Contact', '/contact'],
+];
 
 export function SiteHeader() {
   return (
@@ -8,14 +16,12 @@ export function SiteHeader() {
         <Link className="wordmark" href="/" aria-label="Novren home">
           NOVREN<span>.</span>
         </Link>
-        <nav className="desktop-nav" aria-label="Primary navigation">
-          <Link href="/#service">Service</Link>
-          <Link href="/#process">Process</Link>
-          <Link href="/about">About</Link>
+        <nav className="primary-nav" aria-label="Primary navigation">
+          {navigation.map(([label, href]) => (
+            <Link key={href} href={href}>{label}</Link>
+          ))}
         </nav>
-        <a className="header-cta" href="mailto:hello@novren.co?subject=Reputation%20snapshot">
-          Request a snapshot
-        </a>
+        <BookCallLink className="header-cta" />
       </header>
     </>
   );
