@@ -1,22 +1,22 @@
-import Link from 'next/link';
+import { BookCallLink } from '@/components/book-call-link';
 import { siteConfig } from '@/lib/site-config';
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="footer-brand">
-        <Link className="wordmark footer-wordmark" href="/" aria-label="Novren home">
+        <a className="wordmark footer-wordmark" href="/" aria-label="Novren home">
           NOVREN<span>.</span>
-        </Link>
+        </a>
         <p>Managed online reputation for established local businesses.</p>
       </div>
 
       <nav aria-label="Service and company links">
         <p>Explore</p>
-        <Link href="/service">Service</Link>
-        <Link href="/process">Process</Link>
-        <Link href="/about">About</Link>
-        <Link href="/contact">Book a call</Link>
+        <a href="/service">Service</a>
+        <a href="/process">Process</a>
+        <a href="/about">About</a>
+        <BookCallLink />
       </nav>
 
       <div className="footer-contact">
@@ -29,8 +29,8 @@ export function SiteFooter() {
       <div className="footer-base">
         <p>© 2026 Novren. All rights reserved.</p>
         <nav aria-label="Legal links">
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
         </nav>
       </div>
     </footer>

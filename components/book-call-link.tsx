@@ -8,7 +8,7 @@ type BookCallLinkProps = {
 
 export function BookCallLink({ className, children = 'Book a call' }: BookCallLinkProps) {
   return (
-    <a className={className} href={siteConfig.bookingHref}>
+    <a className={className} href={siteConfig.bookingHref} target="_blank" rel="noreferrer">
       {children}
     </a>
   );

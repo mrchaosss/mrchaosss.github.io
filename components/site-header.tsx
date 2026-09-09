@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { BookCallLink } from '@/components/book-call-link';
 
 const navigation = [
@@ -13,12 +12,12 @@ export function SiteHeader() {
     <>
       <a className="skip-link" href="#main-content">Skip to content</a>
       <header className="site-header">
-        <Link className="wordmark" href="/" aria-label="Novren home">
+        <a className="wordmark" href="/" aria-label="Novren home">
           NOVREN<span>.</span>
-        </Link>
+        </a>
         <nav className="primary-nav" aria-label="Primary navigation">
           {navigation.map(([label, href]) => (
-            <Link key={href} href={href}>{label}</Link>
+            <a key={href} href={href}>{label}</a>
           ))}
         </nav>
         <BookCallLink className="header-cta" />
