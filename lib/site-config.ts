@@ -9,6 +9,7 @@ export const siteConfig = {
   siteLimit: 1,
   humanEditsPerMonth: 5,
   smallEditMinutes: 30,
+  fitCallMinutes: 20,
   backupHistoryDays: 90,
   bookingHref: 'https://cal.com/gabe-glenn-9zwzc2/strategy-call',
   contactEmail: 'hello@novren.co',

@@ -8,7 +8,7 @@ Local repository found at `C:/Users/jenlg/Documents/Codex/2026-09-04/contining-f
 
 Existing TypeScript/React/Vinext/Vite/pnpm stack retained. The Actions workflow deploys `dist/client` on pushes to main. Both CNAME files still contain novren.co. Authenticated read-only Pages settings inspection confirmed GitHub Actions as Source, novren.co as custom domain, and Enforce HTTPS checked. The UI displayed a DNS check in progress; no DNS or settings were changed.
 
-The production site was inspected. Its old offer, oversized hero, missing phone placeholder, and unrelated metadata were replaced throughout the new source and build. The old published site remains unchanged until this branch is approved and merged.
+The production site was inspected. Its old offer, oversized hero, missing phone placeholder, and unrelated metadata were replaced throughout the new source and build. The replacement was merged through PR #1 and deployed successfully by the existing workflow on 2026-09-17 (run 35277220677). Subsequent owner-directed refinements are recorded below.
 
 ## Current GoWP Business evidence
 
@@ -26,7 +26,7 @@ The current vendor pricing page distinguishes five human edits from its separate
 
 [Cal.com UTM documentation](https://cal.com/help/bookings/utm-tracking) was opened and checked live. It explicitly supports automatic capture of the five standard UTM fields in booking links. The implementation forwards only those allowlisted fields, applies conservative slug/length validation, strips unrelated query data during internal handoff, and stores nothing in cookies or browser storage. It preserves campaign labels through on-site links. No Cal.com embed or analytics package is used.
 
-The exact [booking event](https://cal.com/gabe-glenn-9zwzc2/strategy-call) opens and offers available dates/times. Its title and description initially concerned the previous service. After explicit owner approval, the existing event was updated to “Website-care fit call” and the approved WordPress-care description. The public result was verified; URL, duration, and availability were preserved. No booking was submitted. The earlier automatic-approval block was resolved by that explicit authorization.
+The exact [booking event](https://cal.com/gabe-glenn-9zwzc2/strategy-call) opens and offers available dates/times. Its title and description initially concerned the previous service. After explicit owner approval, the existing event was updated to “Website-care fit call” and the approved WordPress-care description. The public result was verified; URL and availability were preserved. The owner later requested a shorter call; 20 minutes was selected and publicly verified. No booking was submitted. The earlier automatic-approval block was resolved by that explicit authorization.
 
 [Cal.com Privacy Policy](https://cal.com/privacy) was checked for the third-party disclosure. [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) states that visitor IP addresses are logged for security. The [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) supplies the linked host disclosure. No unknown email provider is named.
 
@@ -45,10 +45,10 @@ Competitors provide category patterns only, never substantiation of Novren capab
 ## Design rationale (hypotheses, not conversion facts)
 
 - [NN/g homepage guidance](https://www.nngroup.com/articles/113-design-guidelines-homepage-usability/) (2001) and [tagline guidance](https://www.nngroup.com/articles/tagline-blues-whats-the-site-about/) support stating purpose and audience early. These are foundational guidelines, not a fresh Novren experiment.
-- [NN/g B2B pricing](https://www.nngroup.com/articles/show-prices-for-common-scenarios/) (2006) supports accessible price information for shortlisting. The actual one-plan monthly and onboarding prices appear before the first CTA.
+- [NN/g B2B pricing](https://www.nngroup.com/articles/show-prices-for-common-scenarios/) (2006) supports accessible price information for shortlisting. The monthly and onboarding prices are visible in a dedicated pricing section, reachable from the header. The owner’s later request moves them below the first viewport; this preference supersedes the initial price-in-hero direction.
 - [NN/g trustworthiness](https://www.nngroup.com/articles/trustworthy-design/) (2016) and [Stanford credibility guidance](https://credibility.stanford.edu/guidelines/) support clear contact, professional presentation, and verifiable information. They do not justify fabricated proof.
 - [NN/g web writing](https://www.nngroup.com/articles/concise-scannable-and-objective-how-to-write-for-the-web/) supports concise, scannable, objective copy. No study effect size is attributed to Novren.
-- The supplied homepage order is retained: hero, fit, inclusions, exclusions, process, pricing, transparency, FAQ, closing action, legal footer. Native disclosures contain secondary FAQ answers only. Price and scope stay visible.
+- The supplied homepage order is retained: hero, fit, inclusions, exclusions, process, pricing, transparency, FAQ, closing action, legal footer. Native disclosures contain secondary FAQ answers only. Price and scope stay visible outside disclosures.
 - Navy/royal-blue/sky palette and wordmark retained; system fonts, lightweight inline SVGs, no stock-photo hero, fake metrics, carousel, or dashboard. The service checklist describes the plan rather than showing invented customer activity.
 - Qualified-call wording is a hypothesis for screening visitors, not proof of a higher conversion rate. Future evaluation should consider qualified calls and fit, not clicks alone.
 
@@ -77,3 +77,7 @@ The owner adopted the prepared public policies, USD currency, and onboarding sco
 ## Immediate prepublication recheck
 
 On 2026-09-17 around 21:24 UTC, the official pricing, backups, and updates pages were revisited. Business still includes five human edits per month, approximately 30 minutes or less; daily backups with 90 days of history; the Pro maintenance/support/report features; and inherited uptime/SSL monitoring. Off-site files/database storage and a restore point before every update run remain stated. No vendor scope change was found.
+
+## Owner-directed refinement after preview
+
+The owner requested lower price placement and removal of public copy announcing absent case studies. The implementation removes that wording from Home and About, keeps truthful scope/process/contact details, and introduces no replacement proof claims. The homepage and Service introduction no longer show prices; the price is published farther down each page. The 20-minute fit call is a product decision intended to allow discussion of the website, care needs, scope, and next steps; it is not a promise of an audit or a proven conversion tactic. Duration is centralized in site-config.ts and matched in Cal.com. See P11 in novren-policies.md.

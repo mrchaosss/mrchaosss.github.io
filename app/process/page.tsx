@@ -25,7 +25,7 @@ export default function Process() {
             <div>
               <h2>Check the fit.</h2>
               <p>
-                Book a website-care fit call. Bring your website URL, an outline
+                Book a {c.fitCallMinutes}-minute website-care fit call. Bring your website URL, an outline
                 of your current setup, and the maintenance or content changes
                 you need help with. We discuss platform, site condition,
                 eligibility, and exclusions.
