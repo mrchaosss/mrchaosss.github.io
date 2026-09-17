@@ -82,7 +82,7 @@ export function FinalCTA() {
         </div>
         <div>
           <BookCallLink className="button button-light" />
-          <p className="small">WordPress sites only. Fit confirmed first.</p>
+          <p className="small">{c.fitCallMinutes}-minute call. WordPress sites only.</p>
         </div>
       </div>
     </section>
