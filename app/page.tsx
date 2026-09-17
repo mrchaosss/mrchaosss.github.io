@@ -1,230 +1,377 @@
-import type { Metadata } from 'next';
 import { BookCallLink } from '@/components/book-call-link';
-import { SiteFooter } from '@/components/site-footer';
-import { SiteHeader } from '@/components/site-header';
-
-export const metadata: Metadata = { alternates: { canonical: '/' } };
+import { FinalCTA, Icon, PriceCard, ServiceGrid } from '@/components/site-ui';
+import { siteConfig as c, money, offerLine } from '@/lib/site-config';
+import { faqs } from '@/lib/content';
+import { pageMetadata } from '@/lib/metadata';
+export const metadata = pageMetadata(
+  'WordPress Maintenance for Small Businesses | Novren',
+  `Managed WordPress care for local service businesses. Updates, daily backups, monitoring, support, and small edits. ${offerLine}.`,
+  '/',
+);
 export const dynamic = 'force-static';
-
-const capabilities = [
-  {
-    title: 'Review request toolkit',
-    copy: 'A permanent review link, print-ready QR code, and practical email and text templates make the ask easier to repeat.',
-  },
-  {
-    title: 'Daily review monitoring',
-    copy: 'New reviews across Google, Facebook, Yelp, and more than 70 directories are watched from one place.',
-  },
-  {
-    title: 'Personalized responses',
-    copy: 'Up to 200 review responses per month are prepared, reviewed, and personalized before they are published.',
-  },
-  {
-    title: 'Accurate listings',
-    copy: 'Names, addresses, hours, services, and other core details stay synchronized across more than 70 directories.',
-  },
-  {
-    title: 'Weekly Google activity',
-    copy: 'Fresh posts and photos keep your Google Business Profile useful, current, and visibly active.',
-  },
-  {
-    title: 'Policy issue monitoring',
-    copy: 'Suspected spam, harassment, and other policy violations are identified and moved through the reporting process.',
-  },
-];
-
-const fitSignals = [
-  'Customers find or compare your business through local search.',
-  'Reviews influence whether someone calls, books, visits, or keeps looking.',
-  'You serve real customers every week, but reputation work has no consistent owner.',
-  'You want the work managed without giving your team another dashboard to run.',
-];
-
-const reporting = [
-  'Review velocity',
-  'Rating and response coverage',
-  'Google profile activity',
-  'Local rank grid',
-  'Listing accuracy',
-  'Posting and flagging log',
-];
-
-const faqs = [
-  {
-    question: 'Do you guarantee a certain rating or ranking?',
-    answer: 'No. Ratings, rankings, and customer behavior cannot be guaranteed. Novren builds and manages the work that supports a healthier, more current local presence.',
-  },
-  {
-    question: 'Are responses fully automated?',
-    answer: 'Drafting tools may assist, but responses are reviewed and personalized before publication. Sensitive or unusual feedback can be held for your input.',
-  },
-  {
-    question: 'Can you remove a negative review?',
-    answer: 'Only the platform can remove a review. We can report content that appears to violate platform rules, but legitimate criticism is handled with a prompt, professional response.',
-  },
-  {
-    question: 'What will you need from us?',
-    answer: 'Accurate business information, access to the relevant profiles, brand materials, and one dependable point of contact for approvals and context.',
-  },
-];
-
 export default function Home() {
+  const structured = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': c.siteUrl + '/#organization',
+        name: c.name,
+        url: c.siteUrl,
+        email: c.contactEmail,
+        logo: c.siteUrl + '/logo.svg',
+      },
+      {
+        '@type': 'Service',
+        '@id': c.siteUrl + '/#service',
+        name: c.planName,
+        serviceType: 'WordPress website maintenance',
+        provider: { '@id': c.siteUrl + '/#organization' },
+        url: c.siteUrl + '/service',
+        description:
+          'Managed WordPress maintenance and small website support for one qualifying website.',
+        offers: {
+          '@type': 'Offer',
+          price: c.monthlyPrice,
+          priceCurrency: c.currency,
+          url: c.siteUrl + '/#pricing',
+          description: offerLine + ' for one qualifying WordPress website.',
+        },
+      },
+    ],
+  };
   return (
-    <main id="main-content">
-      <SiteHeader />
-
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-copy">
-          <p className="eyebrow">Online reputation management for local businesses</p>
-          <h1 id="hero-title">A steady reputation system, handled for you.</h1>
-          <p className="hero-lede">
-            Novren manages review requests, monitoring, personalized responses, directory accuracy,
-            weekly Google activity, and monthly reporting—so your online presence keeps pace with the
-            work your business already does well.
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structured).replace(/</g, '\\u003c'),
+        }}
+      />
+      <section className="home-hero">
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow">
+              Managed WordPress care for local service businesses
+            </p>
+            <h1>
+              Your WordPress site,
+              <br className="desktop-break" /> updated, backed up
+              <br className="desktop-break" /> <span>&amp; supported.</span>
+            </h1>
+            <p className="hero-lede">
+              Routine maintenance and small website changes, with one place to
+              go when your site needs attention.
+            </p>
+            <p className="hero-price">
+              <strong>{money(c.monthlyPrice)}/month</strong> +{' '}
+              {money(c.onboardingFee)} one-time onboarding
+            </p>
+            <div className="hero-actions">
+              <BookCallLink />
+              <a className="text-link" href="#included">
+                See what’s included <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+            <p className="hero-qualifier">
+              One qualifying WordPress site. We confirm fit before onboarding.
+            </p>
+          </div>
+          <aside className="care-panel" aria-label="Website care plan summary">
+            <div className="care-panel-heading">
+              <span className="small-wordmark">
+                NOVREN<span>.</span>
+              </span>
+              <span className="care-label">WEBSITE CARE</span>
+            </div>
+            <h2>
+              A clear plan.
+              <br />
+              The recurring work, covered.
+            </h2>
+            <ul>
+              <li>
+                <Icon name="updates" />
+                <div>
+                  <strong>Updates &amp; visual checks</strong>
+                  <span>Restore point before updates</span>
+                </div>
+              </li>
+              <li>
+                <Icon name="backups" />
+                <div>
+                  <strong>Daily off-site backups</strong>
+                  <span>{c.backupHistoryDays} days of backup history</span>
+                </div>
+              </li>
+              <li>
+                <Icon name="security" />
+                <div>
+                  <strong>Security &amp; monitoring</strong>
+                  <span>Daily scans · uptime · SSL</span>
+                </div>
+              </li>
+              <li>
+                <Icon name="edits" />
+                <div>
+                  <strong>Small edits &amp; real support</strong>
+                  <span>
+                    Up to {c.humanEditsPerMonth} human edits each month
+                  </span>
+                </div>
+              </li>
+            </ul>
+            <div className="care-panel-foot">
+              Maintenance. Small changes. One point of contact.
+            </div>
+          </aside>
+        </div>
+      </section>
+      <div className="service-strip">
+        <div className="container">
+          <span>Built for the website you already have.</span>
+          <span>WordPress only</span>
+          <span>Clear scope</span>
+          <span>Monthly care report</span>
+        </div>
+      </div>
+      <section
+        className="section container"
+        id="fit"
+        aria-labelledby="fit-title"
+      >
+        <div className="section-heading">
+          <p className="eyebrow">Start with the fit</p>
+          <h2 id="fit-title">Is this right for your website?</h2>
+          <p>
+            Ongoing care works best when your site is already doing its job and
+            needs someone to handle the upkeep.
           </p>
-          <div className="hero-actions">
-            <BookCallLink className="button button-primary" />
-            <a className="text-link" href="/service">Explore the service <span aria-hidden="true">↗</span></a>
+        </div>
+        <div className="fit-grid">
+          <article className="fit-card">
+            <span className="section-index">01 / A GOOD FIT</span>
+            <h3>An existing site. Everyday upkeep.</h3>
+            <ul className="check-list">
+              {c.goodFit.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+          </article>
+          <article className="fit-card fit-caution">
+            <span className="section-index">02 / LET’S CHECK FIRST</span>
+            <h3>More complex sites need approval.</h3>
+            <ul className="plain-list">
+              {c.manualApproval.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
+            <p className="small">
+              Sites on other platforms are outside this WordPress-only plan.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section
+        className="section pale-section"
+        id="included"
+        aria-labelledby="included-title"
+      >
+        <div className="container">
+          <div className="section-heading">
+            <p className="eyebrow">What’s included</p>
+            <h2 id="included-title">
+              The maintenance. The small changes.
+              <br />
+              The person to ask.
+            </h2>
+            <p>Your care plan brings these recurring services together.</p>
+          </div>
+          <ServiceGrid />
+          <a className="text-link section-link" href="/service">
+            Read the full scope and edit examples{' '}
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+      <section className="section container" aria-labelledby="scope-title">
+        <div className="section-heading">
+          <p className="eyebrow">Clear boundaries</p>
+          <h2 id="scope-title">Know what your plan covers.</h2>
+          <p>
+            Small maintenance and content requests belong here. Larger projects
+            need a different scope.
+          </p>
+        </div>
+        <div className="scope-grid">
+          <div className="scope-in">
+            <h3>Included in your care plan</h3>
+            <ul className="check-list">
+              <li>Recurring WordPress maintenance</li>
+              <li>Backups, security scans, and monitoring</li>
+              <li>
+                Up to {c.humanEditsPerMonth} qualifying human edits each month
+              </li>
+              <li>
+                Edits typically about {c.smallEditMinutes} minutes or less
+              </li>
+              <li>Website-care support and monthly reporting</li>
+            </ul>
+          </div>
+          <div className="scope-out">
+            <h3>Outside the monthly plan</h3>
+            <ul className="plain-list">
+              {c.exclusions.map((x) => (
+                <li key={x}>{x}</li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        <aside className="managed-card" aria-label="What Novren manages each month">
-          <p className="card-kicker">Managed each month</p>
-          <h2>The recurring work that is easy to postpone.</h2>
-          <ul>
-            <li><span>Daily</span> Review monitoring</li>
-            <li><span>Weekly</span> Google posts and photos</li>
-            <li><span>Ongoing</span> Responses and listing accuracy</li>
-            <li><span>Monthly</span> Clear performance reporting</li>
-          </ul>
-          <p className="managed-note">One accountable program. No extra dashboard for your team to run.</p>
-        </aside>
+        <p className="scope-note">
+          Separate work is only considered when Novren has an approved way to
+          fulfill it. Availability is not guaranteed.
+        </p>
       </section>
-
-      <section className="offer-bar" aria-label="Offer summary">
-        <p><span>Managed Reputation</span> One focused service</p>
-        <p><span>Six recurring deliverables</span> Run as one monthly program</p>
-        <p><span>Fully managed</span> Built for busy operators</p>
+      <section
+        className="section process-section"
+        id="how-it-works"
+        aria-labelledby="process-title"
+      >
+        <div className="container">
+          <div className="section-heading">
+            <p className="eyebrow">How it works</p>
+            <h2 id="process-title">
+              A fit check first.
+              <br />A clear path from there.
+            </h2>
+          </div>
+          <ol className="process-grid">
+            <li>
+              <span className="step-number">01</span>
+              <h3>Talk through your website.</h3>
+              <p>
+                Bring your URL and the work you need help with. We confirm the
+                platform, condition, and scope.
+              </p>
+            </li>
+            <li>
+              <span className="step-number">02</span>
+              <h3>Agree, then connect.</h3>
+              <p>
+                Confirm your service agreement before payment or access. Then
+                arrange a secure connection and baseline review.
+              </p>
+            </li>
+            <li>
+              <span className="step-number">03</span>
+              <h3>Settle into ongoing care.</h3>
+              <p>
+                Maintenance and monitoring run, you send small-edit requests,
+                and a monthly report records the care activity.
+              </p>
+            </li>
+          </ol>
+          <a className="text-link section-link" href="/process">
+            See the onboarding and monthly workflow{' '}
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
       </section>
-
-      <section className="audience-section" aria-labelledby="audience-title">
-        <div className="audience-copy">
-          <p className="eyebrow">Who it’s for</p>
-          <h2 id="audience-title">Local businesses where reputation shapes the next call.</h2>
-          <p>
-            The strongest fit is an established business with regular customer activity, an active
-            Google Business Profile, and no dependable system for asking, responding, updating, and reporting.
+      <section
+        className="section container pricing-grid"
+        id="pricing"
+        aria-labelledby="pricing-title"
+      >
+        <div className="pricing-copy">
+          <p className="eyebrow">Straightforward pricing</p>
+          <h2 id="pricing-title">
+            One website.
+            <br />
+            One care plan.
+          </h2>
+          <p>Know the recurring cost and the onboarding fee before you book.</p>
+          <div className="pricing-detail">
+            <h3>What onboarding covers</h3>
+            <p>
+              Access coordination, care setup, and a baseline review of your
+              existing site. Pre-existing issues may need attention outside the
+              plan.
+            </p>
+          </div>
+          <p className="small">
+            Hosting and third-party licenses remain your responsibility. The fit
+            call comes before enrollment.
           </p>
-          <a className="text-link" href="/about">See whether Novren fits your business <span aria-hidden="true">↗</span></a>
         </div>
-        <div className="fit-panel">
-          <p className="card-kicker">What matters more than your industry</p>
-          <h3>If reviews shape the next customer decision, Novren may be a fit.</h3>
-          <ul aria-label="Signs Novren may be a good fit">
-            {fitSignals.map((signal) => <li key={signal}>{signal}</li>)}
-          </ul>
+        <PriceCard />
+      </section>
+      <section
+        className="section transparency-section"
+        aria-labelledby="trust-title"
+      >
+        <div className="container transparency-grid">
+          <div>
+            <p className="eyebrow">Trust through clarity</p>
+            <h2 id="trust-title">
+              You should know
+              <br />
+              what you’re signing up for.
+            </h2>
+          </div>
+          <div>
+            <p className="large-copy">
+              Novren does not yet have customer case studies to share. For now,
+              evaluate the offer by its scope, its process, and the answers you
+              get before enrolling.
+            </p>
+            <div className="trust-points">
+              <div>
+                <h3>Clear responsibility</h3>
+                <p>
+                  Novren remains your point of contact for care questions and
+                  requests.
+                </p>
+              </div>
+              <div>
+                <h3>Honest limits</h3>
+                <p>
+                  No guaranteed uptime, security, rankings, or business results.
+                </p>
+              </div>
+            </div>
+            <a className="text-link" href="/about">
+              More about Novren <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </section>
-
-      <section className="service-section" aria-labelledby="service-title">
-        <div className="section-heading">
-          <p className="eyebrow">The service</p>
-          <h2 id="service-title">Six parts, run as one monthly program.</h2>
-          <p>Each part supports the same goal: a credible, current presence wherever customers look before they contact you.</p>
-        </div>
-        <div className="capability-grid">
-          {capabilities.map((item) => (
-            <article key={item.title}>
-              <h3>{item.title}</h3>
-              <p>{item.copy}</p>
-            </article>
-          ))}
-        </div>
-        <a className="section-link" href="/service">See full service details <span aria-hidden="true">→</span></a>
-      </section>
-
-      <section className="trust-section" aria-labelledby="trust-title">
-        <p className="eyebrow">Honest by design</p>
-        <div>
-          <h2 id="trust-title">Real feedback, requested the right way.</h2>
-          <p>
-            Review requests go to real customers without incentives or pressure. We do not buy reviews,
-            write reviews for customers, selectively ask only for positive feedback, or promise to erase
-            legitimate criticism.
-          </p>
-        </div>
-      </section>
-
-      <section className="process-preview" aria-labelledby="process-title">
-        <div className="process-heading">
-          <p className="eyebrow">How it works</p>
-          <h2 id="process-title">A clear setup. Then a quiet monthly rhythm.</h2>
-          <p>You stay involved where business context matters. Novren owns the recurring work.</p>
-          <a className="button button-secondary" href="/process">View the full process</a>
-        </div>
-        <ol className="step-list">
-          <li><span>01</span><div><h3>Set the baseline</h3><p>Confirm profiles, current review activity, listings, and business details.</p></div></li>
-          <li><span>02</span><div><h3>Build the system</h3><p>Create the review link, QR assets, templates, and team touchpoints.</p></div></li>
-          <li><span>03</span><div><h3>Run the program</h3><p>Monitor, respond, publish, synchronize, and flag issues throughout the month.</p></div></li>
-          <li><span>04</span><div><h3>Report what changed</h3><p>Review the activity, coverage, accuracy, and local visibility that matter.</p></div></li>
-        </ol>
-      </section>
-
-      <section className="reporting-section" aria-labelledby="reporting-title">
-        <div>
-          <p className="eyebrow">Monthly reporting</p>
-          <h2 id="reporting-title">You should be able to see the work.</h2>
-          <p>A plain monthly report shows what moved, what was completed, and what needs attention next.</p>
-        </div>
-        <ul>
-          {reporting.map((item) => <li key={item}>{item}</li>)}
-        </ul>
-      </section>
-
-      <section className="faq-section" aria-labelledby="faq-title">
+      <section
+        className="section container faq-layout"
+        id="faq"
+        aria-labelledby="faq-title"
+      >
         <div>
           <p className="eyebrow">Straight answers</p>
-          <h2 id="faq-title">Before we talk.</h2>
+          <h2 id="faq-title">Before you book.</h2>
+          <p>
+            Still unsure about your website?
+            <br />
+            <a href={`mailto:${c.contactEmail}`}>Email {c.contactEmail}</a>
+          </p>
         </div>
-        <dl>
-          {faqs.map((item) => (
-            <div key={item.question}>
-              <dt>{item.question}</dt>
-              <dd>{item.answer}</dd>
-            </div>
+        <div className="faqs">
+          {faqs.map((f) => (
+            <details key={f.q}>
+              <summary>
+                {f.q}
+                <span aria-hidden="true">+</span>
+              </summary>
+              <p>{f.a}</p>
+            </details>
           ))}
-        </dl>
-      </section>
-
-      <section className="pricing-section" aria-labelledby="pricing-title">
-        <div className="pricing-intro">
-          <p className="eyebrow">The offer</p>
-          <h2 id="pricing-title">Managed Reputation</h2>
-          <p>One complete monthly program for one business location.</p>
-        </div>
-        <div className="price-card">
-          <p className="price"><sup>$</sup>699 <span>/ month</span></p>
-          <ul>
-            <li>Review link, QR code, and request templates</li>
-            <li>Daily monitoring and personalized responses</li>
-            <li>Listings managed across 70+ directories</li>
-            <li>Weekly Google posts and photos</li>
-            <li>Policy-violation monitoring and reporting</li>
-            <li>Monthly performance report</li>
-          </ul>
-          <BookCallLink className="button button-primary">Book a call about your location</BookCallLink>
-          <p className="price-note">Pricing is per location. Multi-location businesses can request a tailored scope.</p>
         </div>
       </section>
-
-      <section className="final-cta">
-        <p className="eyebrow">A short first conversation</p>
-        <h2>Let’s see whether the service fits your business.</h2>
-        <p>We’ll talk through your locations, current review process, and the reputation work that keeps getting pushed aside.</p>
-        <BookCallLink className="button button-light" />
-      </section>
-
-      <SiteFooter />
-    </main>
+      <FinalCTA />
+    </>
   );
 }
