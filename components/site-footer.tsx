@@ -1,36 +1,47 @@
-import { BookCallLink } from '@/components/book-call-link';
-import { siteConfig } from '@/lib/site-config';
-
+import { siteConfig as c } from '@/lib/site-config';
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="footer-brand">
-        <a className="wordmark footer-wordmark" href="/" aria-label="Novren home">
-          NOVREN<span>.</span>
-        </a>
-        <p>Managed online reputation for established local businesses.</p>
+      <div className="container footer-top">
+        <div className="footer-brand">
+          <a className="wordmark" href="/" aria-label="Novren home">
+            NOVREN<span>.</span>
+          </a>
+          <p>
+            Managed WordPress care.
+            <br />
+            For local service businesses.
+          </p>
+        </div>
+        <nav aria-label="Website care">
+          <h2>Website care</h2>
+          <a href="/service">What’s included</a>
+          <a href="/process">How it works</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/#faq">FAQ</a>
+        </nav>
+        <nav aria-label="Company">
+          <h2>Novren</h2>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          {c.portal.visible && <a href={c.portal.href}>Client login</a>}
+        </nav>
+        <div className="footer-contact">
+          <h2>Let’s talk about your website.</h2>
+          <a href={`mailto:${c.contactEmail}`}>{c.contactEmail}</a>
+          <p>
+            WordPress sites only.
+            <br />
+            Fit confirmed before onboarding.
+          </p>
+        </div>
       </div>
-
-      <nav aria-label="Service and company links">
-        <p>Explore</p>
-        <a href="/service">Service</a>
-        <a href="/process">Process</a>
-        <a href="/about">About</a>
-        <BookCallLink />
-      </nav>
-
-      <div className="footer-contact">
-        <p>Contact</p>
-        <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>
-        <span>{siteConfig.contactPhone}</span>
-        <span>{siteConfig.serviceArea}</span>
-      </div>
-
-      <div className="footer-base">
-        <p>© 2026 Novren. All rights reserved.</p>
-        <nav aria-label="Legal links">
+      <div className="container footer-bottom">
+        <p>© {new Date(c.updatedDate).getUTCFullYear()} Novren</p>
+        <nav aria-label="Legal">
           <a href="/privacy">Privacy</a>
-          <a href="/terms">Terms</a>
+          <a href="/terms">Website terms</a>
+          <a href="/accessibility">Accessibility</a>
         </nav>
       </div>
     </footer>
