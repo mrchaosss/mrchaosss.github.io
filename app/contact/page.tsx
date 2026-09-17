@@ -4,7 +4,7 @@ import { siteConfig as c, offerLine } from '@/lib/site-config';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
   'Book a WordPress Website-Care Fit Call | Novren',
-  'Book a website-care fit call with Novren or email hello@novren.co. Bring your website URL and the work you need help with. WordPress sites only.',
+  `Book a ${c.fitCallMinutes}-minute website-care fit call with Novren or email ${c.contactEmail}. Discuss your WordPress site, care needs, scope, and next steps.`,
   '/contact',
 );
 export const dynamic = 'force-static';
@@ -16,8 +16,8 @@ export default function Contact() {
         title="First, let’s check the fit."
       >
         <p>
-          Tell us about your WordPress website and the work you need help with.
-          We discuss whether the care plan matches your setup and expectations.
+          A {c.fitCallMinutes}-minute conversation about your WordPress website,
+          the care you need, and whether the plan fits your setup and expectations.
         </p>
       </PageIntro>
       <div className="container page-content contact-grid">
@@ -41,7 +41,7 @@ export default function Contact() {
         </div>
         <div className="contact-box">
           <p className="card-label">{c.planName}</p>
-          <h2>Choose a time to talk.</h2>
+          <h2>Book your {c.fitCallMinutes}-minute fit call.</h2>
           <p>{offerLine} for one qualifying WordPress website.</p>
           <BookCallLink />
           <p className="small">
