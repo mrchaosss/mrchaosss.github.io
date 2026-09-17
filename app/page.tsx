@@ -1,6 +1,6 @@
 import { BookCallLink } from '@/components/book-call-link';
 import { FinalCTA, Icon, PriceCard, ServiceGrid } from '@/components/site-ui';
-import { siteConfig as c, money, offerLine } from '@/lib/site-config';
+import { siteConfig as c, offerLine } from '@/lib/site-config';
 import { faqs } from '@/lib/content';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
@@ -63,10 +63,6 @@ export default function Home() {
               Routine maintenance and small website changes, with one place to
               go when your site needs attention.
             </p>
-            <p className="hero-price">
-              <strong>{money(c.monthlyPrice)}/month</strong> +{' '}
-              {money(c.onboardingFee)} one-time onboarding
-            </p>
             <div className="hero-actions">
               <BookCallLink />
               <a className="text-link" href="#included">
@@ -74,7 +70,8 @@ export default function Home() {
               </a>
             </div>
             <p className="hero-qualifier">
-              One qualifying WordPress site. We confirm fit before onboarding.
+              {c.fitCallMinutes}-minute fit call. One qualifying WordPress site.
+              We confirm fit before onboarding.
             </p>
           </div>
           <aside className="care-panel" aria-label="Website care plan summary">
@@ -319,11 +316,6 @@ export default function Home() {
             </h2>
           </div>
           <div>
-            <p className="large-copy">
-              Novren does not yet have customer case studies to share. For now,
-              evaluate the offer by its scope, its process, and the answers you
-              get before enrolling.
-            </p>
             <div className="trust-points">
               <div>
                 <h3>Clear responsibility</h3>
