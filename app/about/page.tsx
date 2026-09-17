@@ -31,10 +31,9 @@ export default function About() {
             involve service partners; the plan does not imply every person
             working on your website is a Novren employee.
           </p>
-          <h2>What you can evaluate today.</h2>
+          <h2>A clear starting point.</h2>
           <p>
-            Novren does not yet have customer case studies to share. You can
-            evaluate the <a href="/service">complete scope and exclusions</a>,
+            Read the <a href="/service">complete scope and exclusions</a>,
             the <a href="/#pricing">published price</a>, and the{' '}
             <a href="/process">onboarding process</a> before deciding whether to
             continue.
