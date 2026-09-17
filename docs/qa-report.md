@@ -4,7 +4,7 @@ Assessment date: September 17, 2026. Branch: `feat/novren-website-care`, based o
 
 ## Result and release status
 
-The replacement passes clean dependency installation, lint, TypeScript, production build, static route/link checks, campaign-parameter tests, responsive checks, and the requested Lighthouse thresholds. **Initial production deployment succeeded** at commit `957fe96c3fb7ba69bc32b454a40ce5205485979d` via [workflow run 35277220677](https://github.com/mrchaosss/mrchaosss.github.io/actions/runs/35277220677). The owner approved the launch policies, USD currency, and onboarding scope; the Cal.com event was corrected and verified. The owner-requested refinements have passed the checks below and will use the same workflow. Remaining pre-client requirements are in [legal open items](legal-open-items.md).
+The replacement passes clean dependency installation, lint, TypeScript, production build, static route/link checks, campaign-parameter tests, responsive checks, and the requested Lighthouse thresholds. **Initial production deployment succeeded** at commit `957fe96c3fb7ba69bc32b454a40ce5205485979d` via [workflow run 35277220677](https://github.com/mrchaosss/mrchaosss.github.io/actions/runs/35277220677). The owner approved the launch policies, USD currency, and onboarding scope; the Cal.com event was corrected and verified. The owner-requested refinements were merged through PR #2 and deployed successfully through the same workflow; full production checks passed. Remaining pre-client requirements are in [legal open items](legal-open-items.md).
 
 ## Commands actually run
 
@@ -38,7 +38,7 @@ Lighthouse 13.4.1; headless Chrome 153.0.0.0 on Windows. URL: `http://127.0.0.1:
 
 Raw metric precision above is copied from the reports. INP was not measured: it requires interaction/field data; TBT is not a substitute for a published INP claim. No field Core Web Vitals or conversion data is available.
 
-Both runs reported no run warnings or runtime error. Non-scoring diagnostics still identify the local server's lack of compression, the small stylesheet's render-blocking request, and the normal HTML → stylesheet/script dependency chain. Mobile estimates 10ms render-blocking savings. No material threshold failure remained. GitHub Pages delivery/compression must be checked after deployment rather than inferred from localhost.
+Both runs reported no run warnings or runtime error. Non-scoring diagnostics still identify the local server's lack of compression, the small stylesheet's render-blocking request, and the normal HTML → stylesheet/script dependency chain. Mobile estimates 10ms render-blocking savings. No material threshold failure remained. Production delivery was checked separately below; GitHub Pages serves the HTML with gzip compression.
 
 Artifacts: [mobile raw report](qa/lighthouse-mobile.report.json), [desktop raw report](qa/lighthouse-desktop.report.json), [static verification](qa/static-verification.json).
 
@@ -110,4 +110,35 @@ The initial deployment completed successfully in 38 seconds: build 22 seconds, d
 
 On 2026-09-17 the owner requested prices below the first viewport, removal of public absent-case-study wording, and a shorter call. All were implemented, with a 20-minute duration saved and verified on Cal.com. Lint, TypeScript, build, static verification, and both Lighthouse runs above were repeated after these changes. All five changed routes were rechecked at all five required widths (25 checks), with no overflow, duplicate H1, hero price, or removed case-study text. Pricing navigation reached the visible card. No browser errors/warnings were observed. [Revision measurements](qa/revision-browser-qa.json). The small-edit limit remains about 30 minutes; it is separate from call duration.
 
-Post-deployment checks for this refinement will be appended after its successful workflow run. Keep the signed agreement and secure credential process gate in place before accepting payment or access.
+Keep the signed agreement and secure credential process gate in place before accepting payment or access.
+
+## Production verification — 2026-09-17T21:56:45.498Z
+
+[PR #2](https://github.com/mrchaosss/mrchaosss.github.io/pull/2) merged to main at befaab2f712a87f179b53c2daec32f4926ddd4cf. [GitHub Pages run 35279160880](https://github.com/mrchaosss/mrchaosss.github.io/actions/runs/35279160880) completed successfully (build 17 seconds, deploy 9 seconds). The preserved workflow still emits the previously documented upstream configure-pages action warning; it did not prevent deployment.
+
+- HTTPS apex returns 200 with normal certificate verification. HTTPS www, HTTP apex, and HTTP www each redirect with 301 to HTTPS apex. No DNS or security setting changed.
+- All eight public routes and explicit /404.html return 200. An unknown route returns the new branded HTTP 404 with noindex. All 271 internal links/asset references and page anchors checked successfully; live metadata, canonical URLs, JSON-LD, sitemap, robots, favicon, Apple icon, and 1200×630 social image are correct.
+- Deployed HTML matches the tested export after normalization of the independently verified script hash. The script is 1,796 bytes on Linux production versus 1,797 bytes in the Windows preview; their entire contents match after CRLF/LF normalization. This line-ending difference explains the distinct content hash. No other HTML difference remained.
+- Live desktop and mobile inspection confirms price is below the hero, the removed case-study text is absent, and the 20-minute duration is shown. No console errors/warnings were observed on the live marketing page. Client login remains hidden.
+- An actual Home → Service → Cal.com navigation retained the allowed utm_source/utm_medium values and discarded an unrelated parameter. The exact event opened with the 20-minute fit call. No appointment, email, payment, or credential submission was made. Mailto links use hello@novren.co; inbox receipt remains an owner operational check.
+- Known-pattern scans and built-output tests found no obsolete service promises or introduced credentials. The commercial agreement, fulfillment activation, secure access, and mailbox workflow remain pre-client operational requirements.
+
+[Production HTTP/metadata/link evidence](qa/production-qa.json), [production desktop view](qa/production-home-laptop.png), and [production mobile view](qa/production-home-mobile.png).
+
+### Production Lighthouse (actual lab runs)
+
+Lighthouse 13.4.1, URL https://novren.co/, standard mobile simulation and official desktop preset. Both completed successfully without runtime errors. These are individual lab runs, not field Core Web Vitals or conversion evidence.
+
+| Category / metric | Mobile, 2026-09-17T21:54:52.426Z | Desktop, 2026-09-17T21:56:47.043Z |
+|---|---:|---:|
+| Performance | 100 | 100 |
+| Accessibility | 100 | 100 |
+| Best Practices | 100 | 100 |
+| SEO | 100 | 100 |
+| Largest Contentful Paint, milliseconds | 918.6995 | 264 |
+| Cumulative Layout Shift | 0 | 0 |
+| Total Blocking Time, milliseconds | 0 | 0 |
+| First Contentful Paint, milliseconds | 918.6995 | 264 |
+| Speed Index, milliseconds | 918.6995 | 264 |
+
+[Mobile raw report](qa/lighthouse-production-mobile.report.json), [desktop raw report](qa/lighthouse-production-desktop.report.json). Only the same-origin document, stylesheet, enhancement script, and favicon were requested. The accessibility assessment limitations earlier in this report still apply.
