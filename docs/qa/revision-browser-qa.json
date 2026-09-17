@@ -1,0 +1,230 @@
+{
+  "date": "2026-09-17T21:40:55.358Z",
+  "checks": [
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": false,
+      "route": "/",
+      "scrollWidth": 305,
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/service",
+      "scrollWidth": 305,
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/process",
+      "scrollWidth": 305,
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/about",
+      "scrollWidth": 305,
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/contact",
+      "scrollWidth": 305,
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": false,
+      "route": "/",
+      "scrollWidth": 360,
+      "viewport": 375,
+      "width": 375
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/service",
+      "scrollWidth": 360,
+      "viewport": 375,
+      "width": 375
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/process",
+      "scrollWidth": 360,
+      "viewport": 375,
+      "width": 375
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/about",
+      "scrollWidth": 360,
+      "viewport": 375,
+      "width": 375
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/contact",
+      "scrollWidth": 360,
+      "viewport": 375,
+      "width": 375
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": false,
+      "route": "/",
+      "scrollWidth": 753,
+      "viewport": 768,
+      "width": 768
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/service",
+      "scrollWidth": 753,
+      "viewport": 768,
+      "width": 768
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/process",
+      "scrollWidth": 753,
+      "viewport": 768,
+      "width": 768
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/about",
+      "scrollWidth": 753,
+      "viewport": 768,
+      "width": 768
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/contact",
+      "scrollWidth": 753,
+      "viewport": 768,
+      "width": 768
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": false,
+      "route": "/",
+      "scrollWidth": 1009,
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/service",
+      "scrollWidth": 1009,
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/process",
+      "scrollWidth": 1009,
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/about",
+      "scrollWidth": 1009,
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/contact",
+      "scrollWidth": 1009,
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": false,
+      "route": "/",
+      "scrollWidth": 1425,
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/service",
+      "scrollWidth": 1425,
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/process",
+      "scrollWidth": 1425,
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/about",
+      "scrollWidth": 1425,
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "caseStudyText": false,
+      "h1": 1,
+      "heroPrice": null,
+      "route": "/contact",
+      "scrollWidth": 1425,
+      "viewport": 1440,
+      "width": 1440
+    }
+  ]
+}
