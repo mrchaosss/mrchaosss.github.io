@@ -1,10 +1,10 @@
 # Quality-assurance report
 
-Assessment date: September 17, 2026. Branch: `feat/novren-website-care`, based on production `68a980b9beb65cb4a7a92f784e9a329bfdfc1320`. This is the replacement build assessment, not a claim that production has been deployed.
+Assessment date: September 17, 2026. Branch: `feat/novren-website-care`, based on production `68a980b9beb65cb4a7a92f784e9a329bfdfc1320`. The initial replacement was merged through PR #1 and deployed successfully; this report also includes the owner’s subsequent presentation/call refinement.
 
 ## Result and release status
 
-The replacement passes clean dependency installation, lint, TypeScript, production build, static route/link checks, campaign-parameter tests, responsive checks, and the requested Lighthouse thresholds. **Production is not deployed.** The owner approved the launch policies, USD currency, and onboarding scope; the Cal.com event was corrected and verified. The release is ready to merge through the existing workflow. Remaining pre-client requirements are in [legal open items](legal-open-items.md).
+The replacement passes clean dependency installation, lint, TypeScript, production build, static route/link checks, campaign-parameter tests, responsive checks, and the requested Lighthouse thresholds. **Initial production deployment succeeded** at commit `957fe96c3fb7ba69bc32b454a40ce5205485979d` via [workflow run 35277220677](https://github.com/mrchaosss/mrchaosss.github.io/actions/runs/35277220677). The owner approved the launch policies, USD currency, and onboarding scope; the Cal.com event was corrected and verified. The owner-requested refinements have passed the checks below and will use the same workflow. Remaining pre-client requirements are in [legal open items](legal-open-items.md).
 
 ## Commands actually run
 
@@ -24,17 +24,17 @@ Node 24.19.0, pnpm 11.19.0, TypeScript 5.9.3, React 19.2.6, Vinext 1.0.0-beta.5,
 
 Lighthouse 13.4.1; headless Chrome 153.0.0.0 on Windows. URL: `http://127.0.0.1:4173/`, built HTML served by the local production-preview server. Mobile uses Lighthouse default simulated mobile throttling; desktop uses its official desktop preset. One final run for each mode, no averaged or rounded-up scores. Both audits and isolated Chrome cleanup exited successfully (0).
 
-| Category / metric | Mobile, 20:56:33.795 UTC | Desktop, 20:58:59.042 UTC |
+| Category / metric | Mobile, 21:40:46.442 UTC | Desktop, 21:42:15.009 UTC |
 |---|---:|---:|
 | Performance | 100 | 100 |
 | Accessibility | 100 | 100 |
 | Best Practices | 100 | 100 |
 | SEO | 100 | 100 |
-| Largest Contentful Paint, milliseconds | 1201.8337 | 281.946 |
+| Largest Contentful Paint, milliseconds | 1202.9437 | 281.7414 |
 | Cumulative Layout Shift | 0 | 0 |
 | Total Blocking Time, milliseconds | 0 | 0 |
-| First Contentful Paint, milliseconds | 901.8336999999999 | 241.94600000000003 |
-| Speed Index, milliseconds | 901.8336999999999 | 241.94600000000003 |
+| First Contentful Paint, milliseconds | 902.9437 | 241.7414 |
+| Speed Index, milliseconds | 902.9437 | 241.7414 |
 
 Raw metric precision above is copied from the reports. INP was not measured: it requires interaction/field data; TBT is not a substitute for a published INP claim. No field Core Web Vitals or conversion data is available.
 
@@ -54,7 +54,7 @@ All of `/`, `/service`, `/process`, `/about`, `/contact`, `/privacy`, `/terms`, 
 - Organization and Service JSON-LD parse successfully and match the configured offer. No ratings, reviews, address, founding date, or unsupported service area.
 - Sitemap contains the eight indexable routes; 404 is excluded and has `noindex, follow`. Robots points to the production sitemap.
 - Working SVG/PNG favicon and Apple touch icon; original branded social image is exactly 1200×630.
-- The exact Cal.com destination opens and exposes available slots. No appointment was made. Its description initially referenced the former service; the owner-approved Website-care fit call title and description have now been saved and publicly verified. URL, 30-minute duration, and availability were preserved.
+- The exact Cal.com destination opens and exposes available slots. No appointment was made. Its description initially referenced the former service; the owner-approved Website-care fit call title and description have now been saved and publicly verified. URL and calendar availability were preserved. Following the owner’s later request to shorten the call, a 20-minute duration and matching description were saved and publicly verified.
 - All email links target `mailto:hello@novren.co`. No email was sent; successful mailbox receipt/routing is an operational owner check.
 - No contact form, embedded scheduler, card collection, credential collection, analytics, advertising, replay, chat, or client-login link.
 
@@ -62,7 +62,7 @@ All of `/`, `/service`, `/process`, `/about`, `/contact`, `/privacy`, `/terms`, 
 
 Browser checks covered all nine routes at 320, 375, 768, 1024, and 1440 CSS pixels: **45 route/width combinations**, each with no horizontal page overflow and one H1. See [browser measurements](qa/browser-qa.json).
 
-At 1366×768, the full homepage hero ends at approximately 748px; the primary hero CTA ends at approximately 613px and the price at approximately 543px. Audience, service, price, CTA, and WordPress qualification are visible without scrolling.
+After the owner-requested revision, at 1366×768 the homepage hero ends at approximately 748px and its CTA ends at approximately 587px. Audience, service, CTA, 20-minute duration, and WordPress qualification are visible without scrolling. Price is deliberately lower: its section starts at approximately 3909px and is directly accessible from the Pricing navigation link. The service introduction likewise puts the price after its scope.
 
 Manual keyboard checks on the actual browser:
 
@@ -100,10 +100,14 @@ These protected files match their baseline SHA-256 hashes:
 
 GitHub settings were inspected read-only: deployment source GitHub Actions, custom domain novren.co, Enforce HTTPS checked. The UI displayed a DNS check in progress; no change was made.
 
-Current production was checked before release: HTTPS apex returned 200; HTTPS www and both HTTP variants resolved to HTTPS apex. Existing Service, Process, About, Contact, Privacy, and Terms returned 200. Accessibility currently returned 404 because this replacement has not been deployed; the new export supplies it. The old explicit `/404.html` returned 200, while unknown paths use 404 semantics.
+Historical pre-release baseline: HTTPS apex returned 200; HTTPS www and both HTTP variants resolved to HTTPS apex. Existing Service, Process, About, Contact, Privacy, and Terms returned 200. Accessibility returned 404 in that old baseline; the new export supplies it. The old explicit `/404.html` returned 200, while unknown paths use 404 semantics.
 
 Old offer promises are absent from the new public source, metadata, configuration, README, legal pages, structured data, sitemap, and exported pages. Historical removal records in the research/claim ledger and the test's prohibited-pattern list intentionally name what was removed; these are not served as marketing pages. Known secret-pattern scans found no credentials in tracked files or the export. Such a scan cannot prove the absence of every possible secret; no credentials were added.
 
-## Checks after a future merge/deployment
+## Deployment and owner revision
 
-Not run for the replacement because production has not been deployed. The public policy/event gates are resolved. Merge through the unchanged GitHub Pages workflow, wait for its successful deployment, then verify HTTPS apex/www/HTTP redirects, all eight public routes, an unknown URL returning the branded 404, booking/email actions, canonical and social metadata, sitemap/robots/assets, and the hidden portal. Recheck current GoWP numerical promises immediately before publishing. Keep the signed agreement and secure credential process gate in place before accepting payment or access.
+The initial deployment completed successfully in 38 seconds: build 22 seconds, deploy 9 seconds. The existing workflow emitted one upstream action warning about configure-pages@v5 targeting deprecated Node 20 while GitHub forces Node 24; the workflow succeeded and was preserved as required.
+
+On 2026-09-17 the owner requested prices below the first viewport, removal of public absent-case-study wording, and a shorter call. All were implemented, with a 20-minute duration saved and verified on Cal.com. Lint, TypeScript, build, static verification, and both Lighthouse runs above were repeated after these changes. All five changed routes were rechecked at all five required widths (25 checks), with no overflow, duplicate H1, hero price, or removed case-study text. Pricing navigation reached the visible card. No browser errors/warnings were observed. [Revision measurements](qa/revision-browser-qa.json). The small-edit limit remains about 30 minutes; it is separate from call duration.
+
+Post-deployment checks for this refinement will be appended after its successful workflow run. Keep the signed agreement and secure credential process gate in place before accepting payment or access.

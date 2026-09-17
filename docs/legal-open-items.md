@@ -5,16 +5,16 @@ Date: 2026-09-17. This checklist and the public policies are not legal advice. H
 ## Public launch decisions resolved on 2026-09-17
 
 1. **Owner adoption recorded.** The owner approved the prepared website/privacy policies, confirmed USD, and confirmed access coordination, care setup, and baseline review as onboarding scope. See the approval record in novren-policies.md. Attorney review is still recommended; the client agreement is still required before payment or access.
-2. **Cal.com corrected and verified.** The owner explicitly authorized the account edit after the earlier automatic-approval rejection. The title and description below are now saved and visible publicly. The URL, 30-minute duration, and calendar availability were preserved. Booking questions were checked; phone remains hidden, and no credentials are requested. No test booking was submitted.
+2. **Cal.com corrected and verified.** The owner explicitly authorized the account edit after the earlier automatic-approval rejection. The title and description below are now saved and visible publicly. The URL and calendar availability were preserved. The owner subsequently requested a shorter call; its duration is now 20 minutes, saved and publicly verified. Booking questions were checked; phone remains hidden, and no credentials are requested. No test booking was submitted.
 3. **GoWP rechecked before release.** Pricing, backups, and update pages were checked again around 21:24 UTC. The published quantities and capabilities remain supported.
 4. **Repository About updated.** Its public description now says “Official marketing website for Novren Website Care — managed WordPress maintenance and small website support for local service businesses.” No deployment setting changed.
 
 ### Applied Cal.com wording
 
 - Keep the URL: https://cal.com/gabe-glenn-9zwzc2/strategy-call
-- Keep existing 30-minute duration and calendar availability.
+- Duration: **20 minutes**, as requested in the owner’s follow-up; existing calendar availability preserved.
 - Title: **Website-care fit call**
-- Description: **Discuss your WordPress website, the routine maintenance and small changes you need, and whether Novren Website Care is a fit. Bring your website URL and questions about the scope. The plan is $299/month plus $199 one-time onboarding for one qualifying WordPress website. Please do not include passwords or sensitive customer information in booking notes.**
+- Description: **A 20-minute conversation about your WordPress website, the maintenance and small changes you need, and whether Novren Website Care is a fit. Bring your website URL and questions about scope, pricing, and next steps. The plan is $299/month plus $199 one-time onboarding for one qualifying WordPress website. Please do not include passwords or sensitive customer information in booking notes.**
 - Booking questions checked; no old offer wording or required phone field was present. No additional field or credential request was added.
 - Public available dates/times verified; no booking submitted.
 
