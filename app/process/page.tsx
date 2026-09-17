@@ -1,98 +1,117 @@
-import type { Metadata } from 'next';
-import { BookCallLink } from '@/components/book-call-link';
-import { SiteFooter } from '@/components/site-footer';
-import { SiteHeader } from '@/components/site-header';
-
-export const metadata: Metadata = {
-  title: 'Process',
-  description: 'See how Novren sets up and manages review requests, responses, listings, Google profile activity, and reporting.',
-  alternates: { canonical: '/process' },
-};
+import { PageIntro, FinalCTA } from '@/components/site-ui';
+import { siteConfig as c } from '@/lib/site-config';
+import { pageMetadata } from '@/lib/metadata';
+export const metadata = pageMetadata(
+  'Website Care Onboarding & Monthly Process | Novren',
+  'See how Novren checks fit, arranges access, reviews your WordPress site, and handles ongoing maintenance, small edits, and reports.',
+  '/process',
+);
 export const dynamic = 'force-static';
-
-const onboarding = [
-  ['Week 1', 'Confirm the foundation', 'We verify your Google Business Profile locations, confirm core business details, provision the permanent review link, create the QR code, and hold a focused kickoff.'],
-  ['Week 2', 'Put the system in place', 'Listing synchronization begins, the first Google post and photo cadence starts, and the initial QR-bearing customer touchpoints are prepared.'],
-  ['Week 3', 'Brief the people who ask', 'The employees closest to completed jobs get a short, practical review-request playbook. Response drafts begin moving through the agreed approval flow.'],
-  ['Week 4', 'Review the baseline', 'We review the first activity snapshot, response coverage, listing accuracy, profile actions, and the starting local rank grid, then set the next 60-day priorities.'],
-];
-
-export default function ProcessPage() {
+export default function Process() {
   return (
-    <main id="main-content">
-      <SiteHeader />
-      <section className="subpage-hero process-hero">
-        <p className="eyebrow">How it works</p>
-        <h1>Clear at the start. Consistent after that.</h1>
-        <p>The first month establishes the system. After setup, Novren runs the recurring work and brings your team in only when context or approval is needed.</p>
-        <BookCallLink className="button button-primary" />
-      </section>
-
-      <section className="onboarding-section" aria-labelledby="onboarding-title">
-        <div className="onboarding-intro">
-          <p className="eyebrow">The first 30 days</p>
-          <h2 id="onboarding-title">A practical four-week setup.</h2>
-          <p>Timing can shift with profile access and approvals, but the sequence stays straightforward.</p>
-        </div>
-        <ol>
-          {onboarding.map(([week, title, copy]) => (
-            <li key={week}>
-              <p>{week}</p>
-              <h3>{title}</h3>
-              <span>{copy}</span>
-            </li>
-          ))}
+    <>
+      <PageIntro
+        eyebrow="How it works"
+        title="A clear start. An ongoing care routine."
+      >
+        <p>
+          We check your website and your needs before enrollment. Access and
+          care setup come after a separately signed service agreement.
+        </p>
+      </PageIntro>
+      <div className="container page-content">
+        <ol className="workflow-list">
+          <li>
+            <div>
+              <h2>Check the fit.</h2>
+              <p>
+                Book a website-care fit call. Bring your website URL, an outline
+                of your current setup, and the maintenance or content changes
+                you need help with. We discuss platform, site condition,
+                eligibility, and exclusions.
+              </p>
+              <p>
+                Booking is a conversation, not enrollment. More complex or
+                high-risk sites need manual approval.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h2>Agree on the service, then connect.</h2>
+              <p>
+                Confirm the scope, fees, billing, cancellation terms, access
+                authorization, and responsibilities in a signed service
+                agreement before payment or website credentials are accepted.
+              </p>
+              <p>
+                After that, we arrange a secure connection and the access needed
+                for care. Do not submit passwords on this website or in ordinary
+                email.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h2>Review the starting point.</h2>
+              <p>
+                Onboarding includes access coordination, care setup, and a
+                baseline review. We check the existing site, required licenses,
+                and any issues affecting the setup, then confirm the maintenance
+                schedule.
+              </p>
+              <p>
+                Pre-existing damage or substantial repairs may fall outside the
+                monthly plan. We explain those boundaries before proceeding.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h2>Run the recurring care.</h2>
+              <p>
+                Your plan includes automatic updates with visual checks, daily
+                off-site backups, daily security scans and malware cleanup,
+                uptime and SSL monitoring, and real-person website-care support.
+                A monthly report records care activity.
+              </p>
+              <p>
+                Monitoring and scans are not guarantees against downtime or
+                security incidents.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h2>Send small-edit requests.</h2>
+              <p>
+                Email <a href={`mailto:${c.contactEmail}`}>{c.contactEmail}</a>{' '}
+                with the page URL, requested change, and final text or images.
+                The allowance is up to {c.humanEditsPerMonth} human edits per
+                month, each typically about {c.smallEditMinutes} minutes or
+                less.
+              </p>
+              <p>
+                Novren checks the scope and coordinates the request. Never
+                include passwords, payment details, or sensitive customer
+                information.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h2>Add context and approvals when needed.</h2>
+              <p>
+                We may need your input on wording, licensed software, business
+                details, or a change with a wider effect. Work may need to wait
+                for that input. The scope and dependencies determine the next
+                steps; no fixed response or completion time is promised.
+              </p>
+            </div>
+          </li>
         </ol>
-      </section>
-
-      <section className="responsibility-section" aria-labelledby="responsibility-title">
-        <div>
-          <p className="eyebrow">A clean handoff</p>
-          <h2 id="responsibility-title">Who handles what.</h2>
-        </div>
-        <div className="responsibility-grid">
-          <article>
-            <p className="card-kicker">Novren handles</p>
-            <ul>
-              <li>Review link, QR code, and templates</li>
-              <li>Monitoring and response preparation</li>
-              <li>Directory checks and synchronization</li>
-              <li>Weekly Google posts and photos</li>
-              <li>Policy issue reporting</li>
-              <li>Monthly reporting</li>
-            </ul>
-          </article>
-          <article>
-            <p className="card-kicker">Your team provides</p>
-            <ul>
-              <li>Accurate location and service details</li>
-              <li>Access to the relevant business profiles</li>
-              <li>Brand materials and usable photos</li>
-              <li>A real-customer review-request moment</li>
-              <li>Context for sensitive feedback</li>
-              <li>One dependable point of contact</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section className="monthly-rhythm" aria-labelledby="rhythm-title">
-        <div><p className="eyebrow">After setup</p><h2 id="rhythm-title">The monthly rhythm.</h2></div>
-        <div className="rhythm-grid">
-          <article><span>Daily</span><h3>Watch and respond</h3><p>Monitor new reviews, prepare responses, and identify possible policy issues.</p></article>
-          <article><span>Weekly</span><h3>Keep Google current</h3><p>Publish useful Google Business Profile posts and approved photos.</p></article>
-          <article><span>Ongoing</span><h3>Maintain accuracy</h3><p>Keep core business information synchronized across the directory network.</p></article>
-          <article><span>Monthly</span><h3>Review the evidence</h3><p>Share a concise report and identify the next actions that matter.</p></article>
-        </div>
-      </section>
-
-      <section className="final-cta">
-        <p className="eyebrow">Ready to talk it through?</p>
-        <h2>Bring your current process—or the lack of one.</h2>
-        <p>We’ll map what is happening now, where the work breaks down, and whether the managed program is the right fit.</p>
-        <BookCallLink className="button button-light" />
-      </section>
-      <SiteFooter />
-    </main>
+      </div>
+      <FinalCTA />
+    </>
   );
 }
