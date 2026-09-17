@@ -32,7 +32,7 @@ The old unused chart, carousel, component-library, and alternate-host preview de
 
 ## Offer configuration
 
-Edit `lib/site-config.ts` for prices, onboarding fee, booking link, email, portal visibility, small-edit limits, backup history, eligibility, and exclusions. Current offer: $299/month plus $199 onboarding, one qualifying WordPress site, up to five human edits, typically about 30 minutes or less.
+Edit `lib/site-config.ts` for prices, onboarding fee, booking link, fit-call duration, email, portal visibility, small-edit limits, backup history, eligibility, and exclusions. Current offer: $299/month plus $199 onboarding, one qualifying WordPress site, up to five human edits, typically about 30 minutes or less.
 
 Changes to numerical service capabilities require a fresh official vendor check and an updated claim ledger. Coverage remains one website; increasing `siteLimit` requires a full copy and agreement review. The internal possible future $399 new-client price after three clients is not advertised and is not an automatic pricing rule.
 
@@ -46,6 +46,6 @@ Keep the portal hidden until its destination is live and independently verified.
 - [Legal and operational open items](docs/legal-open-items.md)
 - [Actual QA results](docs/qa-report.md)
 
-The site is prepared on a feature branch. Resolve the public-policy review and booking-description issue before merging. The signed client agreement and fulfillment setup are mandatory before accepting money or website credentials. Public Website Terms do not replace that agreement.
+The replacement and owner-requested refinements are deployed at https://novren.co through merged PRs #1 and #2. The owner approved the public policies, USD prices, and onboarding details; the Cal.com event now matches the site and lasts 20 minutes. See the QA report for actual live checks. The signed client agreement and fulfillment setup are mandatory before accepting money or website credentials. Public Website Terms do not replace that agreement.
 
 Do not modify DNS, the root `CNAME`, `public/CNAME`, the existing Pages workflow, or HTTPS settings as part of this release.
