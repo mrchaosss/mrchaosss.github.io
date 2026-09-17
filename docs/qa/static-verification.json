@@ -1,0 +1,75 @@
+{
+  "date": "2026-09-17T21:06:21.934Z",
+  "checks": [
+    {
+      "route": "/",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
+      "route": "/service",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
+      "route": "/process",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
+      "route": "/about",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
+      "route": "/contact",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
+      "route": "/privacy",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
+      "route": "/terms",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
+      "route": "/accessibility",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
+      "route": "/404.html",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    }
+  ],
+  "utmCases": "valid five parameters; internal navigation; booking; email and external exclusion; duplicate, email-like, markup, oversized rejection",
+  "sourceAndOutputScan": "pass",
+  "socialImage": [
+    1200,
+    630
+  ],
+  "javascriptBytes": 1797
+}

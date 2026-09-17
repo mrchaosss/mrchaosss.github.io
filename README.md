@@ -1,27 +1,51 @@
-# Novren
+# Novren Website Care
 
-Marketing website for Novren, a managed online reputation service for established local businesses.
+Marketing website for managed WordPress maintenance and small website support for local service businesses. Production repository: https://github.com/mrchaosss/mrchaosss.github.io. Production domain: https://novren.co.
 
-## Local development
+## Work on this replacement
 
-```bash
-pnpm install
+Feature branch: `feat/novren-website-care`, based on production commit `68a980b9beb65cb4a7a92f784e9a329bfdfc1320`. The pre-existing local `main` history was preserved. No DNS, Pages settings, CNAME files, or production workflow were changed.
+
+## Develop and verify
+
+Node 24 and pnpm 11.19.0 match the existing deployment setup.
+
+```sh
+pnpm install --frozen-lockfile
 pnpm dev
-```
-
-## Production build
-
-```bash
+pnpm lint
+pnpm exec tsc --noEmit
 pnpm build
+node scripts/verify-static.mjs
+pnpm preview
 ```
 
-The static site is generated in `dist/client` and deployed by GitHub Actions.
+The production preview runs at http://127.0.0.1:4173. It serves extensionless routes as GitHub Pages does and returns the branded 404 for missing paths.
 
-## Before public launch
+## Architecture
 
-- Update `lib/site-config.ts` when the final booking URL, email address, and phone number are ready. Every call-to-action and contact surface reads from that one file.
-- Confirm the final service agreement and cancellation terms before accepting clients.
-- In GitHub repository settings, set Pages to **GitHub Actions** and add `novren.co` as the custom domain.
-- Point the domain’s DNS records to GitHub Pages, then enable HTTPS after DNS verification completes.
+TypeScript, React, Vinext, and Vite remain the authoring/build stack. Vinext exports the pages to HTML. A guarded finalization step removes unnecessary hydration, RSC payloads, and unused generated assets. Plain HTML links and native disclosures work without JavaScript. One small hashed script carries an allowlisted set of campaign labels between pages and to Cal.com, and adds Escape handling to the mobile menu.
 
-No analytics, customer logos, testimonials, or unverified performance claims are included.
+Do not add client components, React event handlers, server actions, or forms without revisiting the finalizer. The build deliberately fails if those features appear. This is a static marketing site, not a customer portal.
+
+The old unused chart, carousel, component-library, and alternate-host preview dependencies were removed. The existing `.github/workflows/deploy.yml` still builds with `pnpm build` and publishes `dist/client` on a push to main.
+
+## Offer configuration
+
+Edit `lib/site-config.ts` for prices, onboarding fee, booking link, email, portal visibility, small-edit limits, backup history, eligibility, and exclusions. Current offer: $299/month plus $199 onboarding, one qualifying WordPress site, up to five human edits, typically about 30 minutes or less.
+
+Changes to numerical service capabilities require a fresh official vendor check and an updated claim ledger. Coverage remains one website; increasing `siteLimit` requires a full copy and agreement review. The internal possible future $399 new-client price after three clients is not advertised and is not an automatic pricing rule.
+
+Keep the portal hidden until its destination is live and independently verified. Do not collect credentials, payment details, or form submissions through this site.
+
+## Evidence and release gate
+
+- [Research and design decisions](docs/site-research.md)
+- [Public claim ledger](docs/site-claims.md)
+- [Written policy basis](docs/novren-policies.md)
+- [Legal and operational open items](docs/legal-open-items.md)
+- [Actual QA results](docs/qa-report.md)
+
+The site is prepared on a feature branch. Resolve the public-policy review and booking-description issue before merging. The signed client agreement and fulfillment setup are mandatory before accepting money or website credentials. Public Website Terms do not replace that agreement.
+
+Do not modify DNS, the root `CNAME`, `public/CNAME`, the existing Pages workflow, or HTTPS settings as part of this release.

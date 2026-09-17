@@ -1,15 +1,21 @@
 import type { ReactNode } from 'react';
 import { siteConfig } from '@/lib/site-config';
-
-type BookCallLinkProps = {
+export function BookCallLink({
+  className = 'button button-primary',
+  children = 'Book a website-care fit call',
+}: {
   className?: string;
   children?: ReactNode;
-};
-
-export function BookCallLink({ className, children = 'Book a call' }: BookCallLinkProps) {
+}) {
   return (
-    <a className={className} href={siteConfig.bookingHref} target="_blank" rel="noreferrer">
+    <a
+      className={className}
+      href={siteConfig.bookingHref}
+      data-booking-link=""
+      rel="noreferrer"
+    >
       {children}
+      <span aria-hidden="true">↗</span>
     </a>
   );
 }

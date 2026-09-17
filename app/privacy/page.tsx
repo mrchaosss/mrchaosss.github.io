@@ -1,51 +1,119 @@
-import type { Metadata } from 'next';
-import { SiteFooter } from '@/components/site-footer';
-import { SiteHeader } from '@/components/site-header';
-import { siteConfig } from '@/lib/site-config';
-
-export const metadata: Metadata = {
-  title: 'Privacy',
-  alternates: { canonical: '/privacy' },
-};
+import { PageIntro } from '@/components/site-ui';
+import { siteConfig as c } from '@/lib/site-config';
+import { pageMetadata } from '@/lib/metadata';
+export const metadata = pageMetadata(
+  'Privacy Policy | Novren',
+  'How the Novren marketing website handles email, scheduling, technical hosting information, and campaign parameters. Contact hello@novren.co with privacy requests.',
+  '/privacy',
+);
 export const dynamic = 'force-static';
-
-export default function PrivacyPage() {
+export default function Privacy() {
   return (
-    <main id="main-content">
-      <SiteHeader />
-      <article className="legal-page">
-        <p className="eyebrow">Privacy</p>
-        <h1>Privacy notice</h1>
-        <p className="legal-date">Effective September 9, 2026</p>
-
-        <h2>Information you send us</h2>
+    <>
+      <PageIntro eyebrow="Privacy" title="Privacy Policy">
+        <p>Effective and last updated: {c.updatedLabel}</p>
         <p>
-          If you email Novren, we receive the information you include, such as your name,
-          business details, email address, and message. We use it to answer your request,
-          assess whether our service is a fit, and communicate about services you ask about.
+          This policy describes the informational website at novren.co and
+          inquiries made by email or through its scheduling link.
         </p>
-
-        <h2>Website data</h2>
-        <p>
-          This website does not intentionally use advertising trackers or analytics cookies.
-          Our hosting and email providers may process basic technical information needed to
-          deliver the site, prevent abuse, and transmit messages.
-        </p>
-
-        <h2>Sharing and retention</h2>
-        <p>
-          We do not sell personal information. We may share information with service providers
-          that help us operate the business, or when required by law. We keep information only
-          as long as reasonably needed for those purposes.
-        </p>
-
-        <h2>Your choices</h2>
-        <p>
-          You may ask us to correct or delete information you sent us, subject to legal and
-          operational requirements. Contact <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>.
-        </p>
-      </article>
-      <SiteFooter />
-    </main>
+      </PageIntro>
+      <div className="container page-content">
+        <div className="prose">
+          <h2>Information we receive.</h2>
+          <p>
+            If you email Novren, we receive your email address and the
+            information you choose to send, such as your name, business name,
+            website URL, and message. If you book a call through Cal.com, we
+            receive the scheduling details you provide, such as your name, email
+            address, selected time, and answers to booking questions.
+          </p>
+          <p>
+            We use these details to respond to your inquiry, assess fit, arrange
+            calls, and communicate about the service. Please do not send
+            passwords, payment details, or sensitive customer information
+            through the website, email, or booking notes.
+          </p>
+          <h2>Hosting and technical information.</h2>
+          <p>
+            This marketing website is hosted on GitHub Pages. GitHub states that
+            it logs and stores visitors’ IP addresses for security purposes.
+            GitHub may process other technical request information under its own
+            privacy practices. See{' '}
+            <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">
+              GitHub’s Pages documentation
+            </a>{' '}
+            and{' '}
+            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">
+              GitHub’s Privacy Statement
+            </a>
+            .
+          </p>
+          <h2>Scheduling and campaign links.</h2>
+          <p>
+            Cal.com is an external destination. It is not embedded, and the
+            marketing site does not load Cal.com scripts. When you follow a
+            booking link, Cal.com handles information under its{' '}
+            <a href="https://cal.com/privacy">Privacy Policy</a>.
+          </p>
+          <p>
+            When campaign parameters are present in the current page URL, a
+            small script may pass only these five parameters to the booking
+            link: utm_source, utm_medium, utm_campaign, utm_term, and
+            utm_content. Accepted values are limited to short campaign labels.
+            They are also carried in links between this site’s pages, so they
+            can reach the booking link after navigation.
+          </p>
+          <p>
+            This uses the URL only, without cookies or local storage. Cal.com
+            can store these parameters with a booking. Campaign labels must not
+            contain personal or sensitive information. Other query parameters
+            are not forwarded. If JavaScript is disabled, the ordinary booking
+            link still works, without this handoff.
+          </p>
+          <h2>Tracking and browser signals.</h2>
+          <p>
+            The marketing site does not intentionally use advertising trackers,
+            analytics cookies, session replay, heatmaps, or chat widgets. It
+            does not change its behavior in response to a browser’s Do Not Track
+            signal. Third-party destinations have their own practices.
+          </p>
+          <h2>Service providers and disclosures.</h2>
+          <p>
+            Information may be processed by providers used for website hosting,
+            email, scheduling, and business administration. We share information
+            as needed to handle your inquiry, arrange a call, comply with legal
+            obligations, or protect against misuse. Website-care fulfillment and
+            access are addressed separately before enrollment.
+          </p>
+          <p>
+            Novren does not sell inquiry information or share it for
+            cross-context behavioral advertising.
+          </p>
+          <h2>Retention.</h2>
+          <p>
+            Inquiry and scheduling records are retained as needed to respond,
+            maintain relevant business records, and meet legal obligations or
+            resolve disputes. Information that is no longer needed should be
+            deleted. Provider copies and backups may follow their own retention
+            schedules; this website does not set those schedules.
+          </p>
+          <h2>Your requests.</h2>
+          <p>
+            For access, correction, or deletion requests, email{' '}
+            <a href={`mailto:${c.contactEmail}`}>{c.contactEmail}</a>. Identify
+            the information or interaction involved without sending sensitive
+            identity documents. We may need to verify that a request relates to
+            you. Applicable legal obligations may limit deletion.
+          </p>
+          <h2>Policy changes and contact.</h2>
+          <p>
+            Changes to these practices will be reflected on this page with an
+            updated date. Contact{' '}
+            <a href={`mailto:${c.contactEmail}`}>{c.contactEmail}</a> with
+            privacy questions.
+          </p>
+        </div>
+      </div>
+    </>
   );
 }
