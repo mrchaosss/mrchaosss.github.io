@@ -20,9 +20,6 @@ export default function Service() {
           {c.planName} covers routine maintenance and small content changes for
           one qualifying WordPress website.
         </p>
-        <p className="hero-price">
-          <strong>{offerLine}.</strong>
-        </p>
       </PageIntro>
       <div className="container page-content">
         <div className="service-details">
@@ -113,6 +110,13 @@ export default function Service() {
             plan before proceeding. Separate work is only considered when there
             is an approved way to fulfill it. Availability is not guaranteed.
           </p>
+        </section>
+        <section className="subsection">
+          <h2>One plan, with clear pricing.</h2>
+          <p>
+            {offerLine} for one qualifying WordPress website. Prices in {c.currency}.
+          </p>
+          <a className="text-link" href="/#pricing">See pricing and onboarding details →</a>
         </section>
         <section className="subsection">
           <h2>We confirm eligibility before enrollment.</h2>
