@@ -1,10 +1,10 @@
 # Novren policy basis
 
-Checked 2026-09-17. This is a reviewable implementation of the owner's launch brief, not a signed client agreement or legal advice. Entries distinguish supplied decisions from draft operational wording. Inference in the claim ledger does not mean independently verified business practice.
+Checked 2026-09-17. This is a reviewable implementation of the owner's launch brief, not a signed client agreement or legal advice. The owner approved the prepared launch policies, USD currency, and onboarding scope on 2026-09-17. This is adoption of the published commitments, not an independent audit of historical practice. See the approval record below.
 
 ## P01 — Offer (owner-supplied)
 
-Novren Website Care costs $299 per month plus $199 one-time onboarding for one qualifying WordPress website. No discounted comparison, scarcity, future price guarantee, cancellation promise, refund rule, or guarantee is advertised. USD is the implementation's interpretation of the quoted dollar amounts and should be confirmed in the client agreement.
+Novren Website Care costs $299 per month plus $199 one-time onboarding for one qualifying WordPress website. No discounted comparison, scarcity, future price guarantee, cancellation promise, refund rule, or guarantee is advertised. The owner explicitly confirmed USD on 2026-09-17.
 
 ## P02 — Eligibility (owner-supplied)
 
@@ -18,7 +18,7 @@ Exclude redesigns, entire new pages, new builds, custom development, original co
 
 ## P04 — Enrollment and onboarding (owner-supplied process; implementation wording)
 
-Fit is checked before onboarding. Booking is not enrollment or access authorization. A signed client agreement precedes payment and credentials. The onboarding fee covers access coordination, care setup, and a baseline review, as a concrete interpretation of the requested process. No pre-existing damage repair is included by implication. Finalize the checklist and access method before accepting a client.
+Fit is checked before onboarding. Booking is not enrollment or access authorization. A signed client agreement precedes payment and credentials. The onboarding fee covers access coordination, care setup, and a baseline review, as explicitly approved by the owner on 2026-09-17. No pre-existing damage repair is included by implication. Finalize the checklist and access method before accepting a client.
 
 ## P05 — Requests and contact (owner-supplied; workflow requires operational adoption)
 
@@ -28,11 +28,11 @@ The published contact is hello@novren.co and the booking URL is https://cal.com/
 
 Use only Novren as the brand, with no legal suffix, address, founder biography, experience history, service-area claim, testimonial, rating, award, or client count. No customer case studies exist yet. Do not transfer vendor social proof to Novren.
 
-## P07 — Website privacy (implemented behavior + draft policy requiring owner adoption)
+## P07 — Website privacy (implemented behavior + owner-adopted policy)
 
 The marketing site has no contact form, embedded scheduler, analytics, advertising tags, session replay, heatmap, or chat widget. It does not intentionally set cookies or browser storage. It does not implement a different response to Do Not Track.
 
-Draft operational commitments for owner/attorney review: use email and booking data to respond, assess fit, schedule, and maintain relevant business records; disclose only for those purposes, legal obligations, and misuse prevention; do not sell inquiry information or share it for cross-context behavioral advertising; retain only as needed for those purposes and delete unneeded information; accept access/correction/deletion requests at hello@novren.co with proportionate verification. Providers may have independent retention schedules. Confirm these practices against the actual email/calendar/business providers before publishing the policies.
+Owner-adopted operational commitments, still recommended for attorney review: use email and booking data to respond, assess fit, schedule, and maintain relevant business records; disclose only for those purposes, legal obligations, and misuse prevention; do not sell inquiry information or share it for cross-context behavioral advertising; retain only as needed for those purposes and delete unneeded information; accept access/correction/deletion requests at hello@novren.co with proportionate verification. Providers may have independent retention schedules. Put the necessary record-handling and provider procedures into practice; do not treat publication as proof of an operational audit.
 
 ## P08 — Campaign parameters (implemented)
 
@@ -42,7 +42,14 @@ Forward only utm_source, utm_medium, utm_campaign, utm_term, and utm_content fro
 
 Target WCAG 2.2 AA. Assess with Lighthouse plus manual browser and keyboard checks. Publish limitations honestly; no certification or complete legal-compliance claim. Email is the alternative route if scheduling is inaccessible.
 
-## P10 — Public website terms (draft for attorney review)
+## P10 — Public website terms (owner-adopted; attorney review recommended)
 
 The public Terms apply to informational website use, original content/branding, acceptable use, external destinations, availability disclaimers, and contact. Service terms are controlled by the separately signed agreement. No jurisdiction, arbitration, refund, cancellation, legal entity, address, or liability cap is invented.
 
+
+
+## Owner approval record — 2026-09-17
+
+The owner answered “Approve these launch policies and details” to the prepared website/privacy policies, USD prices, and onboarding covering access coordination, care setup, and baseline review. The same question explained the inquiry/scheduling purposes, prohibition on sale or behavioral-ad sharing, and deletion when information is no longer needed.
+
+The owner separately answered “Approve these Cal.com edits” to opening the existing event settings and changing its title and description while preserving URL, duration, and availability. The approved title/description were saved and verified on the public event. No scheduling or payment setting was changed. These approvals resolve the earlier publication hold; the signed client agreement and fulfillment/access procedures remain mandatory before payment or credentials.

@@ -26,7 +26,7 @@ The current vendor pricing page distinguishes five human edits from its separate
 
 [Cal.com UTM documentation](https://cal.com/help/bookings/utm-tracking) was opened and checked live. It explicitly supports automatic capture of the five standard UTM fields in booking links. The implementation forwards only those allowlisted fields, applies conservative slug/length validation, strips unrelated query data during internal handoff, and stores nothing in cookies or browser storage. It preserves campaign labels through on-site links. No Cal.com embed or analytics package is used.
 
-The exact [booking event](https://cal.com/gabe-glenn-9zwzc2/strategy-call) opens and offers available dates/times. Its existing title is “30-Minute Strategy Call” and its description still concerns the previous service. No booking was submitted. Changing the account settings was blocked by automatic approval review as outside the explicit public-link verification authorization. Replacement copy is in legal-open-items.md for approval.
+The exact [booking event](https://cal.com/gabe-glenn-9zwzc2/strategy-call) opens and offers available dates/times. Its title and description initially concerned the previous service. After explicit owner approval, the existing event was updated to “Website-care fit call” and the approved WordPress-care description. The public result was verified; URL, duration, and availability were preserved. No booking was submitted. The earlier automatic-approval block was resolved by that explicit authorization.
 
 [Cal.com Privacy Policy](https://cal.com/privacy) was checked for the third-party disclosure. [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) states that visitor IP addresses are logged for security. The [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement) supplies the linked host disclosure. No unknown email provider is named.
 
@@ -71,5 +71,9 @@ Baseline generated client chunks totaled 387,555 uncompressed bytes across six J
 - [FTC testimonials rule Q&A](https://www.ftc.gov/business-guidance/resources/consumer-reviews-testimonials-rule-questions-answers): do not create false consumer proof or transfer another vendor’s testimonials.
 - [FTC CAN-SPAM guidance](https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business): commercial B2B email is covered; use a valid postal address and working opt-out mechanism. Do not publish a home address merely to fill a field.
 
-Public policies describe this implementation but require owner adoption and attorney review. No governing jurisdiction, legal entity, address, cancellation/refund term, service SLA, or liability cap has been invented.
+The owner adopted the prepared public policies, USD currency, and onboarding scope on 2026-09-17. Attorney review is recommended. No governing jurisdiction, legal entity, address, cancellation/refund term, service SLA, or liability cap has been invented.
 
+
+## Immediate prepublication recheck
+
+On 2026-09-17 around 21:24 UTC, the official pricing, backups, and updates pages were revisited. Business still includes five human edits per month, approximately 30 minutes or less; daily backups with 90 days of history; the Pro maintenance/support/report features; and inherited uptime/SSL monitoring. Off-site files/database storage and a restore point before every update run remain stated. No vendor scope change was found.

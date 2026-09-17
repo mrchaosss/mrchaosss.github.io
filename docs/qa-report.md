@@ -4,7 +4,7 @@ Assessment date: September 17, 2026. Branch: `feat/novren-website-care`, based o
 
 ## Result and release status
 
-The replacement passes clean dependency installation, lint, TypeScript, production build, static route/link checks, campaign-parameter tests, responsive checks, and the requested Lighthouse thresholds. **Production is not deployed.** Public policy adoption and the existing Cal.com event description remain launch gates; see [legal open items](legal-open-items.md). The live website continues to serve the previous version.
+The replacement passes clean dependency installation, lint, TypeScript, production build, static route/link checks, campaign-parameter tests, responsive checks, and the requested Lighthouse thresholds. **Production is not deployed.** The owner approved the launch policies, USD currency, and onboarding scope; the Cal.com event was corrected and verified. The release is ready to merge through the existing workflow. Remaining pre-client requirements are in [legal open items](legal-open-items.md).
 
 ## Commands actually run
 
@@ -54,7 +54,7 @@ All of `/`, `/service`, `/process`, `/about`, `/contact`, `/privacy`, `/terms`, 
 - Organization and Service JSON-LD parse successfully and match the configured offer. No ratings, reviews, address, founding date, or unsupported service area.
 - Sitemap contains the eight indexable routes; 404 is excluded and has `noindex, follow`. Robots points to the production sitemap.
 - Working SVG/PNG favicon and Apple touch icon; original branded social image is exactly 1200×630.
-- The exact Cal.com destination opens and exposes available slots. No appointment was made. Its existing description still references the former service and must be updated before launch.
+- The exact Cal.com destination opens and exposes available slots. No appointment was made. Its description initially referenced the former service; the owner-approved Website-care fit call title and description have now been saved and publicly verified. URL, 30-minute duration, and availability were preserved.
 - All email links target `mailto:hello@novren.co`. No email was sent; successful mailbox receipt/routing is an operational owner check.
 - No contact form, embedded scheduler, card collection, credential collection, analytics, advertising, replay, chat, or client-login link.
 
@@ -106,4 +106,4 @@ Old offer promises are absent from the new public source, metadata, configuratio
 
 ## Checks after a future merge/deployment
 
-Not run for the replacement because production has not been deployed. After the public policy/event gates are resolved, merge through the unchanged GitHub Pages workflow, wait for its successful deployment, then verify HTTPS apex/www/HTTP redirects, all eight public routes, an unknown URL returning the branded 404, booking/email actions, canonical and social metadata, sitemap/robots/assets, and the hidden portal. Recheck current GoWP numerical promises immediately before publishing. Keep the signed agreement and secure credential process gate in place before accepting payment or access.
+Not run for the replacement because production has not been deployed. The public policy/event gates are resolved. Merge through the unchanged GitHub Pages workflow, wait for its successful deployment, then verify HTTPS apex/www/HTTP redirects, all eight public routes, an unknown URL returning the branded 404, booking/email actions, canonical and social metadata, sitemap/robots/assets, and the hidden portal. Recheck current GoWP numerical promises immediately before publishing. Keep the signed agreement and secure credential process gate in place before accepting payment or access.

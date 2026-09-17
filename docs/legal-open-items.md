@@ -1,22 +1,22 @@
 # Legal and operational open items
 
-Date: 2026-09-17. This checklist and the draft public policies are not legal advice. Have an attorney review the final policies and client agreement.
+Date: 2026-09-17. This checklist and the public policies are not legal advice. Have an attorney review the final policies and client agreement.
 
-## Before merging this public replacement
+## Public launch decisions resolved on 2026-09-17
 
-1. **Adopt the draft privacy and website policies.** Confirm the actual inquiry-handling, retention/deletion approach, no-sale/no-ad-sharing practice, privacy-request route, and applicable jurisdictions. See P07/P10 in novren-policies.md. The implementation does not independently establish how Novren has historically handled records.
-2. **Correct the existing Cal.com event description.** The verified public URL loads and has availability, but its title/description still frame the previous service. Opening authenticated account settings was rejected by automatic approval review because authorization only explicitly covered the public booking link. No settings were changed. Approval is needed to edit this event; the same URL and duration should remain.
-3. **Review final public commitments and QA.** The $299 + $199 offer, one-site fit criteria, exact exclusions, onboarding scope, and no-SLA wording should match what Novren will actually honor. GoWP facts must be rechecked immediately before publication. No automatic price increase is implemented.
-4. **Repository About description.** The GitHub repository’s public About description still describes the previous offer. Update it to “Official marketing website for Novren Website Care — managed WordPress maintenance and small website support for local service businesses.” This does not alter deployment.
+1. **Owner adoption recorded.** The owner approved the prepared website/privacy policies, confirmed USD, and confirmed access coordination, care setup, and baseline review as onboarding scope. See the approval record in novren-policies.md. Attorney review is still recommended; the client agreement is still required before payment or access.
+2. **Cal.com corrected and verified.** The owner explicitly authorized the account edit after the earlier automatic-approval rejection. The title and description below are now saved and visible publicly. The URL, 30-minute duration, and calendar availability were preserved. Booking questions were checked; phone remains hidden, and no credentials are requested. No test booking was submitted.
+3. **GoWP rechecked before release.** Pricing, backups, and update pages were checked again around 21:24 UTC. The published quantities and capabilities remain supported.
+4. **Repository About updated.** Its public description now says “Official marketing website for Novren Website Care — managed WordPress maintenance and small website support for local service businesses.” No deployment setting changed.
 
-### Concrete Cal.com edit for approval
+### Applied Cal.com wording
 
 - Keep the URL: https://cal.com/gabe-glenn-9zwzc2/strategy-call
 - Keep existing 30-minute duration and calendar availability.
 - Title: **Website-care fit call**
 - Description: **Discuss your WordPress website, the routine maintenance and small changes you need, and whether Novren Website Care is a fit. Bring your website URL and questions about the scope. The plan is $299/month plus $199 one-time onboarding for one qualifying WordPress website. Please do not include passwords or sensitive customer information in booking notes.**
-- Check booking questions and confirmation copy for outdated wording. Do not add a required phone field or request credentials.
-- Test available dates/times without submitting a fake booking.
+- Booking questions checked; no old offer wording or required phone field was present. No additional field or credential request was added.
+- Public available dates/times verified; no booking submitted.
 
 ## Mandatory before accepting the first payment or website credentials
 
@@ -36,4 +36,3 @@ Use a valid postal address and a working, compliant unsubscribe process. The [FT
 ## Deferred deliberately
 
 Client login remains hidden. Do not enable it until app.novren.co is live and independently verified. No form processor, payment collection, portal, tracking platform, cookie banner, or unapproved refund/cancellation promise is included.
-
