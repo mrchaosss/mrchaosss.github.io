@@ -46,6 +46,6 @@ Keep the portal hidden until its destination is live and independently verified.
 - [Legal and operational open items](docs/legal-open-items.md)
 - [Actual QA results](docs/qa-report.md)
 
-The replacement and owner-requested refinements are deployed at https://novren.co through merged PRs #1 and #2. The owner approved the public policies, USD prices, and onboarding details; the Cal.com event now matches the site and lasts 20 minutes. See the QA report for actual live checks. The signed client agreement and fulfillment setup are mandatory before accepting money or website credentials. Public Website Terms do not replace that agreement.
+The replacement and owner-requested refinements are deployed at https://novren.co through merged PRs #1 and #2. The owner approved the public policies, USD prices, and onboarding details; the Cal.com event now matches the site and lasts 15 minutes. See the QA report for actual live checks. The signed client agreement and fulfillment setup are mandatory before accepting money or website credentials. Public Website Terms do not replace that agreement.
 
 Do not modify DNS, the root `CNAME`, `public/CNAME`, the existing Pages workflow, or HTTPS settings as part of this release.

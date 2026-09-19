@@ -142,3 +142,9 @@ Lighthouse 13.4.1, URL https://novren.co/, standard mobile simulation and offici
 | Speed Index, milliseconds | 918.6995 | 264 |
 
 [Mobile raw report](qa/lighthouse-production-mobile.report.json), [desktop raw report](qa/lighthouse-production-desktop.report.json). Only the same-origin document, stylesheet, enhancement script, and favicon were requested. The accessibility assessment limitations earlier in this report still apply.
+
+## Call-duration update — September 19, 2026
+
+The owner changed Cal.com to 15 minutes and requested matching website copy. The public event duration and description both showed 15 minutes when checked. Updated the shared fitCallMinutes setting, current claim ledger, README, and operational references. Historical September 17 QA evidence remains dated and unchanged.
+
+Lint, TypeScript (pnpm exec tsc --noEmit), production build, and the existing static verification script all passed on 2026-09-19. All nine generated HTML files were scanned: no 20-minute call reference remains. The shared 15-minute text appears on Home, Service, Process, About, and Contact, including Contact metadata. Booking URL, prices, approximately 30-minute small-edit scope, workflow, CNAME files, and dependencies are unchanged. Lighthouse was not rerun for this single-number copy change; the scores above belong to the dated launch audit.
