@@ -21,21 +21,29 @@ for (const dir of ['app', 'components'])
   for (const file of await walk(dir)) {
     if (!/\.[jt]sx?$/.test(file)) continue;
     const source = await readFile(file, 'utf8');
-    if (/['"]use (client|server)['"]|\bon[A-Z]\w*=|<form\b/.test(source))
+    if (/['"]use (client|server)['"]|\bon[A-Z]\w*=/.test(source))
       throw new Error('Static enhancement contract violated: ' + file);
   }
-const settings = { bookingHref: c.bookingHref, utmParameters: c.utmParameters };
-const script = (await readFile('scripts/site-behavior.js', 'utf8')).replace(
-  '__NOVREN_SETTINGS__',
-  JSON.stringify(settings),
+const settings = {
+  bookingHref: c.bookingHref,
+  checkoutHref: c.checkoutHref,
+  contactEmail: c.contactEmail,
+  utmParameters: c.utmParameters,
+};
+const flowLogic = (await readFile('scripts/flow-logic.js', 'utf8')).replace(
+  /^export /gm,
+  '',
 );
+const script = (await readFile('scripts/site-behavior.js', 'utf8'))
+  .replace('/* __NOVREN_FLOW_LOGIC__ */', flowLogic)
+  .replace('__NOVREN_SETTINGS__', JSON.stringify(settings));
 const hash = createHash('sha256').update(script).digest('hex').slice(0, 12);
 const scriptPath = '/_static/care-' + hash + '.js';
 await mkdir(path.join(root, '_static'), { recursive: true });
 await writeFile(path.join(root, scriptPath), script);
 const htmlFiles = (await walk(root)).filter((f) => f.endsWith('.html'));
-if (htmlFiles.length !== 9)
-  throw new Error('Expected 8 pages plus the 404; found ' + htmlFiles.length);
+if (htmlFiles.length !== 11)
+  throw new Error('Expected 10 pages plus the 404; found ' + htmlFiles.length);
 const cssFiles = new Set();
 for (const file of htmlFiles) {
   let html = await readFile(file, 'utf8');
@@ -104,6 +112,7 @@ const routes = [
   '/privacy',
   '/terms',
   '/accessibility',
+  '/get-started',
 ];
 await writeFile(
   path.join(root, 'sitemap.xml'),

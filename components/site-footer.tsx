@@ -1,4 +1,5 @@
 import { siteConfig as c } from '@/lib/site-config';
+import { BookCallLink } from './book-call-link';
 export function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -10,7 +11,7 @@ export function SiteFooter() {
           <p>
             Managed WordPress care.
             <br />
-            For local service businesses.
+            For small and local businesses.
           </p>
         </div>
         <nav aria-label="Website care">
@@ -19,28 +20,30 @@ export function SiteFooter() {
           <a href="/process">How it works</a>
           <a href="/#pricing">Pricing</a>
           <a href="/#faq">FAQ</a>
+          <a href="/get-started">Get Started</a>
         </nav>
         <nav aria-label="Company">
           <h2>Novren</h2>
           <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-          {c.portal.visible && <a href={c.portal.href}>Client login</a>}
+          <a href="/contact">Contact &amp; support</a>
+          <BookCallLink className="footer-call" />
+          <a href="/onboarding">Onboarding</a>
         </nav>
         <div className="footer-contact">
-          <h2>Let’s talk about your website.</h2>
-          <a href={`mailto:${c.contactEmail}`}>{c.contactEmail}</a>
+          <h2>One place to ask for help.</h2>
+          <a href={'mailto:' + c.contactEmail}>{c.contactEmail}</a>
           <p>
-            WordPress sites only.
+            $399/month per website.
             <br />
-            Fit confirmed before onboarding.
+            No setup fee. No required sales call.
           </p>
         </div>
       </div>
       <div className="container footer-bottom">
-        <p>© {new Date(c.updatedDate).getUTCFullYear()} Novren</p>
+        <p>© 2026 Novren</p>
         <nav aria-label="Legal">
+          <a href="/terms">Service terms</a>
           <a href="/privacy">Privacy</a>
-          <a href="/terms">Website terms</a>
           <a href="/accessibility">Accessibility</a>
         </nav>
       </div>

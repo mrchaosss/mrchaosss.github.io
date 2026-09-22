@@ -1,65 +1,29 @@
-# Novren policy basis
+# Current Novren policy basis
 
-Checked 2026-09-17. This is a reviewable implementation of the owner's launch brief, not a signed client agreement or legal advice. The owner approved the prepared launch policies, USD currency, and onboarding scope on 2026-09-17. This is adoption of the published commitments, not an independent audit of historical practice. See the approval record below.
+Effective September 22, 2026. The owner authorized this release and its final business decisions.
 
-## P01 — Offer (owner-supplied)
+## Commercial terms
 
-Novren Website Care costs $299 per month plus $199 one-time onboarding for one qualifying WordPress website. No discounted comparison, scarcity, future price guarantee, cancellation promise, refund rule, or guarantee is advertised. The owner explicitly confirmed USD on 2026-09-17.
+Novren WordPress Care: $399 USD/month for one eligible existing WordPress website. No setup fee or minimum term. Normal onboarding included. Checkout acceptance of /terms supplies the standard service agreement and payment authorization. Email hello@novren.co before renewal to prevent that renewal; a timely request applies even if confirmation follows later.
 
-## P02 — Eligibility (owner-supplied)
+Started periods are not prorated or routinely refunded. Billing errors and legally required rights remain protected. If Novren cannot accept the site during initial onboarding before activation, cancel and refund the initial payment. Larger projects require separate scope/pricing.
 
-The initial fit is an existing, reasonably functional WordPress website for a local service business that needs ongoing maintenance and small content changes. Clients must provide required access, valid licenses, final content, and timely approvals. WooCommerce, memberships, multisite, heavily custom applications, fragile legacy sites, and regulated/high-risk systems require manual approval. Other platforms do not qualify.
+## Service
 
-## P03 — Scope and boundaries (owner-supplied; vendor capabilities separately verified)
+Balanced updates; daily backups with 90-day rolling history; daily security scanning; uptime/SSL monitoring; monthly reviewed reporting; maintenance support; five bounded human edits. Customer maintains hosting, domains, email, licenses, content rights, access authority, and approvals. Complex sites need review before purchase.
 
-Only the current GoWP Business capabilities verified in site-research.md support delivery claims. Novren selects a monthly report. Up to five small human edits per month, each typically about 30 minutes or less. No promise of rollover, pooled project hours, response time, round-the-clock support, or guaranteed outcomes.
+## Signup and onboarding
 
-Exclude redesigns, entire new pages, new builds, custom development, original content/copywriting, hosting, domains, business email, premium licenses, large migrations, major performance reconstruction, and oversized tasks. Separate work requires an approved fulfillment method and is not guaranteed available.
+Static eligibility → Stripe → /onboarding?checkout=complete. Onboarding prepares a non-sensitive email that the customer explicitly sends. Novren independently verifies the payment, arranges connector/secure access, validates the baseline, and confirms activation. Opening that page or its query string does not prove payment.
 
-## P04 — Enrollment and onboarding (owner-supplied process; implementation wording)
+Never collect passwords in public forms, Stripe, booking notes, or ordinary email. Request additional host/DNS/SSH access only for a concrete exception.
 
-Fit is checked before onboarding. Booking is not enrollment or access authorization. A signed client agreement precedes payment and credentials. The onboarding fee covers access coordination, care setup, and a baseline review, as explicitly approved by the owner on 2026-09-17. No pre-existing damage repair is included by implication. Finalize the checklist and access method before accepting a client.
+## Locked workspace settings
 
-## P05 — Requests and contact (owner-supplied; workflow requires operational adoption)
+Flagged cleanup OFF; flagged emails ON. Downtime ticket ON after three failures; SSL ticket ON. Raw customer monitoring/update/backup/security notifications OFF; agency notifications remain enabled. AI Editor and Marketing hidden. Balanced plugin/theme Security+Minor and core safety delay, after nightly scans. Backup 09:00 UTC. Reports monthly with agency review. Preserve working Google Workspace → Postmark → helpdesk routing.
 
-The published contact is hello@novren.co and the booking URL is https://cal.com/gabe-glenn-9zwzc2/strategy-call. Novren remains the point of contact, with service partners permitted and no invented in-house team. Customers send page URLs, requested changes, supplied content, and approvals. Credentials must not be sent through public pages or ordinary email. No response deadline is promised. Verify mailbox receipt and request routing before onboarding.
+## Privacy and identity
 
-## P06 — Company identity and proof (owner-supplied)
+Disclose actual GitHub Pages, Stripe, Cal.com, GoWP, Google Workspace, and Postmark roles in privacy. No invented entity suffix/address/team/client count/certification/guarantee. No new analytics or tracking storage. Campaign values are allowlisted URL labels only.
 
-Use only Novren as the brand, with no legal suffix, address, founder biography, experience history, service-area claim, testimonial, rating, award, or client count. No customer case studies exist yet. Do not transfer vendor social proof to Novren.
-
-## P07 — Website privacy (implemented behavior + owner-adopted policy)
-
-The marketing site has no contact form, embedded scheduler, analytics, advertising tags, session replay, heatmap, or chat widget. It does not intentionally set cookies or browser storage. It does not implement a different response to Do Not Track.
-
-Owner-adopted operational commitments, still recommended for attorney review: use email and booking data to respond, assess fit, schedule, and maintain relevant business records; disclose only for those purposes, legal obligations, and misuse prevention; do not sell inquiry information or share it for cross-context behavioral advertising; retain only as needed for those purposes and delete unneeded information; accept access/correction/deletion requests at hello@novren.co with proportionate verification. Providers may have independent retention schedules. Put the necessary record-handling and provider procedures into practice; do not treat publication as proof of an operational audit.
-
-## P08 — Campaign parameters (implemented)
-
-Forward only utm_source, utm_medium, utm_campaign, utm_term, and utm_content from the current URL. Accept one value per key with 1–80 ASCII letters, digits, underscores, or hyphens, beginning with a letter or digit. Reject duplicate keys, email-like punctuation, markup, and long values. Apply to on-site links and the exact configured Cal.com event only; never to email or unrelated external destinations. Use URL state, without cookies, local storage, session storage, or remote requests. No persistence across a visit without the parameters. Campaign labels must not identify people.
-
-## P09 — Accessibility (implementation target)
-
-Target WCAG 2.2 AA. Assess with Lighthouse plus manual browser and keyboard checks. Publish limitations honestly; no certification or complete legal-compliance claim. Email is the alternative route if scheduling is inaccessible.
-
-## P10 — Public website terms (owner-adopted; attorney review recommended)
-
-The public Terms apply to informational website use, original content/branding, acceptable use, external destinations, availability disclaimers, and contact. Service terms are controlled by the separately signed agreement. No jurisdiction, arbitration, refund, cancellation, legal entity, address, or liability cap is invented.
-
-
-
-## Owner approval record — 2026-09-17
-
-The owner answered “Approve these launch policies and details” to the prepared website/privacy policies, USD prices, and onboarding covering access coordination, care setup, and baseline review. The same question explained the inquiry/scheduling purposes, prohibition on sale or behavioral-ad sharing, and deletion when information is no longer needed.
-
-The owner separately answered “Approve these Cal.com edits” to opening the existing event settings and changing its title and description while preserving URL, duration, and availability. The approved title/description were saved and verified on the public event. No scheduling or payment setting was changed. These approvals resolve the earlier publication hold; the signed client agreement and fulfillment/access procedures remain mandatory before payment or credentials.
-
-## P11 — Owner-directed presentation and call revision, 2026-09-17
-
-After reviewing the completed site, the owner requested moving price information below the first viewport, removing the public statement about absent case studies, and shortening the call using implementation judgment. The selected duration is 20 minutes, verified on the public Cal.com event. This is a practical fit-discussion length, not a researched claim that 20 minutes maximizes bookings. The first viewport retains the service, audience, qualification, and booking action. Price remains visible in the pricing section and linked navigation; Service also presents it below the scope. No testimonials or proof claims were added. Existing authorization to preserve a 30-minute event was superseded by this explicit request to shorten it. The event URL, calendar availability, title, location, and booking questions remain unchanged.
-
-Applied Cal.com description: A 20-minute conversation about your WordPress website, the maintenance and small changes you need, and whether Novren Website Care is a fit. Bring your website URL and questions about scope, pricing, and next steps. The plan is $299/month plus $199 one-time onboarding for one qualifying WordPress website. Please do not include passwords or sensitive customer information in booking notes.
-
-## P12 — Owner-set call duration, 2026-09-19
-
-The owner changed the existing Cal.com event to 15 minutes and requested matching website language. The public event duration and its 15-minute description were independently checked on 2026-09-19. The website’s shared fitCallMinutes setting is now 15, including page copy and Contact metadata. This supersedes the 20-minute call decision in P11; P11 remains a dated historical record. No Cal.com account setting was changed by this update. Booking URL, offer prices, and the approximately 30-minute small-edit definition are unchanged.
+These policies implement authorized business choices, not legal advice. Review topics: docs/legal-open-items.md.

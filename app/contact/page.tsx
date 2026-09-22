@@ -1,60 +1,57 @@
 import { PageIntro } from '@/components/site-ui';
 import { BookCallLink } from '@/components/book-call-link';
-import { siteConfig as c, offerLine } from '@/lib/site-config';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
-  'Book a WordPress Website-Care Fit Call | Novren',
-  `Book a ${c.fitCallMinutes}-minute website-care fit call with Novren or email ${c.contactEmail}. Discuss your WordPress site, care needs, scope, and next steps.`,
+  'Contact & WordPress Care Support | Novren',
+  'Email hello@novren.co for care questions, support, or an optional 15-minute call. Sign up directly for $399/month with no setup fee.',
   '/contact',
 );
 export const dynamic = 'force-static';
 export default function Contact() {
   return (
     <>
-      <PageIntro
-        eyebrow="Let’s talk about your site"
-        title="First, let’s check the fit."
-      >
+      <PageIntro eyebrow="Contact Novren" title="One place to ask for help.">
         <p>
-          A {c.fitCallMinutes}-minute conversation about your WordPress website,
-          the care you need, and whether the plan fits your setup and expectations.
+          Questions before signup, a care request, or a site that needs a closer
+          look—email Novren.
         </p>
       </PageIntro>
       <div className="container page-content contact-grid">
         <div>
-          <p className="eyebrow">A useful first conversation</p>
+          <p className="eyebrow">Contact &amp; maintenance support</p>
           <h2>
-            Bring your website URL.
-            <br />
-            And your questions.
+            <a href="mailto:hello@novren.co">hello@novren.co</a>
           </h2>
-          <ul className="check-list">
-            <li>What your business does and how you use your website.</li>
-            <li>Your current WordPress setup and any known issues.</li>
-            <li>The maintenance or small changes you want handled.</li>
-            <li>Questions about scope, price, and onboarding.</li>
-          </ul>
+          <p>
+            Include your website URL, a brief description of the issue or
+            requested change, and any final content for a small edit. Existing
+            customers should use their account email.
+          </p>
           <p className="notice">
-            WordPress sites only. Fit is confirmed before onboarding. The call
-            does not enroll you, take payment, or authorize access to your site.
+            Do not send passwords, payment details, or sensitive customer data.
+            Novren will arrange a secure access step when required.
+          </p>
+          <p className="small">
+            Maintenance support is included. Response and completion timing
+            depend on the issue and any access or approvals needed; the plan
+            does not promise 24/7 human emergency coverage.
           </p>
         </div>
         <div className="contact-box">
-          <p className="card-label">{c.planName}</p>
-          <h2>Book your {c.fitCallMinutes}-minute fit call.</h2>
-          <p>{offerLine} for one qualifying WordPress website.</p>
-          <BookCallLink />
-          <p className="small">
-            The booking link opens Cal.com, where you can see availability and
-            enter your scheduling details.
+          <p className="card-label">Talk first, if you prefer</p>
+          <h2>Have questions? Book a call.</h2>
+          <p>
+            An optional 15-minute conversation about your site, scope, or
+            onboarding. Standard care is $399/month per website, with no setup
+            fee.
           </p>
+          <BookCallLink />
           <div className="email-contact">
-            <h3>Prefer to start by email?</h3>
-            <a href={`mailto:${c.contactEmail}`}>{c.contactEmail}</a>
-            <p className="small">
-              Send your website URL and a brief description of what you need.
-              Please do not send passwords or sensitive information.
-            </p>
+            <h3>Ready to get started?</h3>
+            <p>No meeting required for a normal qualifying site.</p>
+            <a className="button button-primary" href="/get-started">
+              Get Started →
+            </a>
           </div>
         </div>
       </div>

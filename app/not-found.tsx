@@ -6,7 +6,7 @@ export default function NotFound() {
       <h1>Let’s get you back on track.</h1>
       <p>
         This address does not match a page on the Novren website. You can head
-        home, read the care plan, or book a fit call.
+        home, read the care plan, or get started online.
       </p>
       <div className="error-actions">
         <a className="button button-primary" href="/">

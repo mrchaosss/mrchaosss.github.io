@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-17T21:43:45.418Z",
+  "date": "2026-09-22T22:20:35.764Z",
   "checks": [
     {
       "route": "/",
@@ -58,6 +58,20 @@
       "scripts": 1
     },
     {
+      "route": "/get-started",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
+      "route": "/onboarding",
+      "h1": 1,
+      "links": true,
+      "metadata": true,
+      "scripts": 1
+    },
+    {
       "route": "/404.html",
       "h1": 1,
       "links": true,
@@ -71,5 +85,5 @@
     1200,
     630
   ],
-  "javascriptBytes": 1797
+  "javascriptBytes": 8606
 }

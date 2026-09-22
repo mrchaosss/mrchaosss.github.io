@@ -1,10 +1,10 @@
-// Owner-supplied offer; consult docs/site-claims.md before changing scope.
+// Owner-approved offer and account policy, September 22, 2026.
 export const siteConfig = {
   name: 'Novren',
   siteUrl: 'https://novren.co',
-  planName: 'Novren Website Care',
-  monthlyPrice: 299,
-  onboardingFee: 199,
+  planName: 'Novren WordPress Care',
+  monthlyPrice: 399,
+  onboardingFee: 0,
   currency: 'USD',
   siteLimit: 1,
   humanEditsPerMonth: 5,
@@ -12,10 +12,11 @@ export const siteConfig = {
   fitCallMinutes: 15,
   backupHistoryDays: 90,
   bookingHref: 'https://cal.com/gabe-glenn-9zwzc2/strategy-call',
+  checkoutHref: 'https://buy.stripe.com/14A14ncmL9QK7KQ2G17Vm02',
   contactEmail: 'hello@novren.co',
   portal: { visible: false, href: 'https://app.novren.co' },
-  updatedDate: '2026-09-17',
-  updatedLabel: 'September 17, 2026',
+  updatedDate: '2026-09-22',
+  updatedLabel: 'September 22, 2026',
   utmParameters: [
     'utm_source',
     'utm_medium',
@@ -24,24 +25,27 @@ export const siteConfig = {
     'utm_content',
   ],
   goodFit: [
-    'One existing WordPress website for a local service business.',
-    'A reasonably functional site needing routine care and small content updates.',
-    'You can provide access, licensed plugins, content, and timely approvals.',
+    'One existing WordPress website for a small or local business.',
+    'A reasonably functional site that needs routine care and small content changes.',
+    'You can authorize access, maintain licenses, and provide content and approvals.',
   ],
   manualApproval: [
-    'WooCommerce or membership websites',
+    'WooCommerce, ecommerce, or membership websites',
     'WordPress multisite networks',
-    'Heavily custom applications or fragile legacy sites',
-    'Regulated or high-risk systems',
+    'Custom applications or unusually complex infrastructure',
+    'Regulated or sensitive-data workflows',
+    'Severe existing problems that need substantial repair',
   ],
   exclusions: [
-    'Redesigns, entire new pages, or new website builds',
-    'Custom software or plugin development',
-    'Copywriting or original content production',
-    'Hosting, domains, business email, or premium-plugin licenses',
-    'Large migrations or major performance reconstruction',
-    'Requests beyond the small-edit definition',
+    'New websites, full redesigns, and major page builds',
+    'Custom plugins, applications, and major integrations',
+    'Major WooCommerce or membership-system work',
+    'Complex custom-code troubleshooting',
+    'Large SEO projects, copywriting, and content production',
+    'Branding projects and migrations unless separately agreed',
+    'Hosting, domain registration, and email hosting',
+    'Premium plugin and theme license costs unless separately agreed',
   ],
 } as const;
 export const money = (value: number) => '$' + value;
-export const offerLine = `${money(siteConfig.monthlyPrice)}/month + ${money(siteConfig.onboardingFee)} one-time onboarding`;
+export const offerLine = '$399/month per website. No setup fee';

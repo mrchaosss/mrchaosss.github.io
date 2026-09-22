@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import { siteConfig } from '@/lib/site-config';
 export function BookCallLink({
-  className = 'button button-primary',
-  children = 'Book a website-care fit call',
+  className = 'button button-secondary',
+  children = 'Book a Call',
 }: {
   className?: string;
   children?: ReactNode;

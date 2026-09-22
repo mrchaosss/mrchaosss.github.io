@@ -1,11 +1,9 @@
 import { BookCallLink } from './book-call-link';
-import { siteConfig } from '@/lib/site-config';
 const navigation = [
   ['What’s included', '/service'],
   ['How it works', '/process'],
   ['Pricing', '/#pricing'],
   ['FAQ', '/#faq'],
-  ['About', '/about'],
 ];
 export function SiteHeader() {
   return (
@@ -24,13 +22,11 @@ export function SiteHeader() {
                 {label}
               </a>
             ))}
+            <BookCallLink className="nav-call" />
           </nav>
-          <BookCallLink className="button button-primary header-book">
-            <span className="desktop-book-label">
-              Book a website-care fit call
-            </span>
-            <span className="mobile-book-label">Book a fit call</span>
-          </BookCallLink>
+          <a className="button button-primary header-book" href="/get-started">
+            Get Started <span aria-hidden="true">→</span>
+          </a>
           <details className="mobile-menu" id="mobile-menu">
             <summary aria-label="Navigation menu">
               <span className="menu-lines" aria-hidden="true">
@@ -44,10 +40,9 @@ export function SiteHeader() {
                   {label}
                 </a>
               ))}
+              <a href="/about">About</a>
               <a href="/contact">Contact</a>
-              {siteConfig.portal.visible && (
-                <a href={siteConfig.portal.href}>Client login</a>
-              )}
+              <BookCallLink className="text-link" />
             </nav>
           </details>
         </div>

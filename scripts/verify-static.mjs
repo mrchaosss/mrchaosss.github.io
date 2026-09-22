@@ -13,6 +13,8 @@ const routes = [
   '/privacy',
   '/terms',
   '/accessibility',
+  '/get-started',
+  '/onboarding',
   '/404.html',
 ];
 const fileFor = (route) =>
@@ -44,26 +46,48 @@ for (const [route, html] of pages) {
   assert.match(html, /<title>[^<]+<\/title>/);
   assert.match(html, /<meta name="description" content="[^"]+"/);
   assert.ok(
-    html.includes('rel="canonical" href="' + c.siteUrl + (route === '/' ? '' : route) + '"'),
+    html.includes(
+      'rel="canonical" href="' + c.siteUrl + (route === '/' ? '' : route) + '"',
+    ),
     route + ' canonical',
   );
   assert.ok(
-    html.includes('property="og:url" content="' + c.siteUrl + (route === '/' ? '' : route) + '"'),
+    html.includes(
+      'property="og:url" content="' +
+        c.siteUrl +
+        (route === '/' ? '' : route) +
+        '"',
+    ),
     route + ' OG URL',
   );
   assert.match(html, /name="twitter:card" content="summary_large_image"/);
   assert.ok(html.includes(c.siteUrl + '/social-card.png'));
   assert.match(html, /rel="icon"[^>]*href="\/favicon.svg"/);
   assert.ok(!html.includes(c.portal.href), 'Portal hidden');
+  assert.ok(!/vinext.navigationRuntime|modulepreload|<iframe\b/.test(html));
+  const forms = [...html.matchAll(/<form\b([^>]*)>/g)];
+  const formKind =
+    route === '/get-started'
+      ? 'eligibility'
+      : route === '/onboarding'
+        ? 'onboarding'
+        : null;
+  assert.equal(forms.length, formKind ? 1 : 0, route + ' allowed static form');
+  if (formKind) {
+    assert.ok(forms[0][1].includes('data-static-form="' + formKind + '"'));
+    assert.ok(forms[0][1].includes('action="' + route + '"'));
+    assert.match(html, /<fieldset\b[^>]*disabled/);
+  }
   assert.ok(
-    !/vinext.navigationRuntime|modulepreload|<iframe\b|<form\b/.test(html),
+    !/<input\b[^>]*type="password"/.test(html),
+    'No password collection',
   );
   const executable = [...html.matchAll(/<script\b([^>]*)>/g)].filter(
     (m) => !m[1].includes('application/ld+json'),
   );
   assert.equal(executable.length, 1);
   assert.match(executable[0][1], /src="\/_static\/care-[a-f0-9]{12}\.js"/);
-  if (route === '/404.html')
+  if (route === '/404.html' || route === '/onboarding')
     assert.match(html, /name="robots" content="noindex, follow"/);
   else assert.ok(!html.includes('content="noindex'));
   for (const m of html.matchAll(
@@ -98,7 +122,7 @@ for (const [route, html] of pages) {
 assert.equal(
   new Set([...pages.values()].map((h) => h.match(/<title>(.*?)<\/title>/)[1]))
     .size,
-  9,
+  routes.length,
 );
 const graph = JSON.parse(
   pages
@@ -108,16 +132,17 @@ const graph = JSON.parse(
 assert.equal(graph[0].name, c.name);
 assert.equal(graph[0].email, c.contactEmail);
 assert.equal(graph[1].offers.price, c.monthlyPrice);
-assert.ok(graph[1].offers.description.includes(String(c.onboardingFee)));
+assert.ok(graph[1].offers.description.includes('No setup fee'));
 assert.ok(
   !JSON.stringify(graph).match(
     /aggregateRating|review|address|foundingDate|areaServed/,
   ),
 );
 const sitemap = await readFile(path.join(root, 'sitemap.xml'), 'utf8');
-for (const route of routes.slice(0, -1))
+for (const route of routes.slice(0, -1).filter((r) => r !== '/onboarding'))
   assert.ok(sitemap.includes('<loc>' + c.siteUrl + route + '</loc>'));
 assert.ok(!sitemap.includes('404'));
+assert.ok(!sitemap.includes('/onboarding'));
 assert.ok(
   (await readFile(path.join(root, 'robots.txt'), 'utf8')).includes(
     c.siteUrl + '/sitemap.xml',
@@ -195,7 +220,7 @@ const walk = async (dir) =>
     )
   ).flat();
 const old =
-  /managed reputation|online reputation|\$699|review requests|review monitoring|200 review responses|Google Business Profile|70\+ directories|listings synchronization|review velocity|local rank grids?|policy-violation reporting|per.location pricing|phone number coming soon|HOTH/i;
+  /\$299|\$199|\$498|mandatory fit call|separately signed|50 AI|managed reputation|online reputation|\$699|review requests|review monitoring|200 review responses|Google Business Profile|70\+ directories|listings synchronization|review velocity|local rank grids?|policy-violation reporting|per.location pricing|phone number coming soon|HOTH/i;
 const secrets =
   /(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|sk_live_[A-Za-z0-9]{16,}|AKIA[A-Z0-9]{16}|-----BEGIN (?:RSA |EC )?PRIVATE KEY-----)/;
 for (const dir of ['app', 'components', 'lib', 'public', 'dist/client'])

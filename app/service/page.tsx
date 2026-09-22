@@ -1,11 +1,11 @@
 import { PageIntro, FinalCTA, Icon } from '@/components/site-ui';
 import { BookCallLink } from '@/components/book-call-link';
-import { siteConfig as c, offerLine } from '@/lib/site-config';
+import { siteConfig as c } from '@/lib/site-config';
 import { services } from '@/lib/content';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
-  'WordPress Website Care: Scope & Small Edits | Novren',
-  'See the updates, backups, scans, monitoring, support, edit limits, and exclusions in Novren Website Care. One qualifying WordPress website.',
+  'WordPress Care: Included Services & Small Edits | Novren',
+  'Managed updates, daily backups, security scans, monitoring, support, monthly reporting and five small human edits. $399/month, no setup fee.',
   '/service',
 );
 export const dynamic = 'force-static';
@@ -17,8 +17,9 @@ export default function Service() {
         title="Know exactly what’s included."
       >
         <p>
-          {c.planName} covers routine maintenance and small content changes for
-          one qualifying WordPress website.
+          Routine care and small content changes for one eligible existing
+          WordPress website. $399/month, with normal onboarding included and no
+          setup fee.
         </p>
       </PageIntro>
       <div className="container page-content">
@@ -38,107 +39,102 @@ export default function Service() {
           ))}
         </div>
         <section className="subsection" id="small-edits">
-          <h2>Small edits, with a clear limit.</h2>
+          <h2>Five small edits, clearly defined.</h2>
           <p>
-            Up to {c.humanEditsPerMonth} human edits per month. A qualifying
-            edit is typically about {c.smallEditMinutes} minutes or less, using
-            content you supply. These examples still need to fit your site and
-            the task limit.
+            Each monthly billing period includes up to five individual human
+            edits, typically about 30 minutes or less each, using content you
+            supply. We check whether a request fits before work begins.
           </p>
           <div className="edit-examples">
             <article>
-              <h3>Update your hours</h3>
+              <h3>Update business details</h3>
               <p>
-                Change the opening hours on an existing page using the schedule
-                you provide.
+                Change hours, contact information, or a team member on an
+                existing page.
               </p>
             </article>
             <article>
-              <h3>Replace a banner</h3>
+              <h3>Replace an image</h3>
               <p>
-                Swap an existing promotional banner for a suitable image you
-                supply.
+                Swap a banner or photo for a suitable, licensed image you
+                provide.
               </p>
             </article>
             <article>
-              <h3>Add a team member</h3>
+              <h3>Publish supplied content</h3>
               <p>
-                Add supplied text and a photo to an existing About page layout.
+                Add a finished article or similarly bounded content change
+                within the existing site structure.
               </p>
             </article>
           </div>
           <p className="notice">
-            Describe each request clearly. Novren checks the scope before work
-            begins and asks for missing content or approvals. There is no
-            published turnaround promise or promise that unused edits roll over.
+            Unused edits do not roll over or combine into project hours. Extra
+            requests can be evaluated for a separate quote, or handled using a
+            later month’s allowance. Timing depends on the request, content,
+            access, and approvals.
           </p>
         </section>
-        <section className="subsection">
-          <h2>What you provide.</h2>
-          <ul className="check-list">
-            <li>
-              Authorization and the access needed to connect and care for the
-              site.
-            </li>
-            <li>
-              Active hosting, domain, business email, and valid premium-plugin
-              or theme licenses.
-            </li>
-            <li>
-              Final text, appropriately licensed images, and clear instructions
-              for edits.
-            </li>
-            <li>
-              One contact for decisions, site context, and timely approvals.
-            </li>
-          </ul>
-          <p className="notice">
-            Do not send WordPress passwords through this website or ordinary
-            email. Access is arranged through a secure method after the service
-            agreement is signed.
-          </p>
-        </section>
-        <section className="subsection">
-          <h2>What the plan does not include.</h2>
+        <section className="subsection" id="exclusions">
+          <h2>Larger work has a separate scope.</h2>
           <ul className="plain-list">
             {c.exclusions.map((x) => (
               <li key={x}>{x}</li>
             ))}
           </ul>
           <p>
-            If a request is larger, Novren explains why it falls outside the
-            plan before proceeding. Separate work is only considered when there
-            is an approved way to fulfill it. Availability is not guaranteed.
+            Novren explains scope and any separate pricing before additional
+            work begins. A request outside the plan is not automatically
+            accepted or charged.
           </p>
         </section>
         <section className="subsection">
-          <h2>One plan, with clear pricing.</h2>
-          <p>
-            {offerLine} for one qualifying WordPress website. Prices in {c.currency}.
-          </p>
-          <a className="text-link" href="/#pricing">See pricing and onboarding details →</a>
-        </section>
-        <section className="subsection">
-          <h2>We confirm eligibility before enrollment.</h2>
+          <h2>What you provide.</h2>
           <ul className="check-list">
-            {c.goodFit.map((x) => (
-              <li key={x}>{x}</li>
-            ))}
+            <li>
+              Authorization and the access needed to connect and maintain the
+              site.
+            </li>
+            <li>
+              Active hosting, domain, email, and required premium software
+              licenses.
+            </li>
+            <li>
+              Final copy, licensed images, clear requests, and timely approvals.
+            </li>
+            <li>
+              A primary contact and information about critical site functions or
+              known problems.
+            </li>
           </ul>
-          <p>These sites require manual approval:</p>
+          <p className="notice">
+            The onboarding page collects site details only. Privileged access is
+            arranged through the connector or another appropriate secure method.
+            Never send passwords through public forms, checkout, booking notes,
+            or ordinary email.
+          </p>
+        </section>
+        <section className="subsection">
+          <h2>Check your site before subscribing.</h2>
+          <p>
+            Standard care is designed for ordinary existing WordPress business
+            websites. These need review first:
+          </p>
           <ul className="plain-list">
             {c.manualApproval.map((x) => (
               <li key={x}>{x}</li>
             ))}
           </ul>
-          <p>
-            Websites built on other platforms are outside this plan. A site that
-            needs substantial repairs may need those issues addressed before
-            care can begin.
-          </p>
-          <div className="section-link">
+          <div className="hero-actions">
+            <a className="button button-primary" href="/get-started">
+              Get Started →
+            </a>
             <BookCallLink />
           </div>
+          <p className="small section-link">
+            No call is required for a normal qualifying site.{' '}
+            <a href="/terms">Read the service terms.</a>
+          </p>
         </section>
       </div>
       <FinalCTA />

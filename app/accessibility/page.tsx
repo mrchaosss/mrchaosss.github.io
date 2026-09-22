@@ -27,19 +27,18 @@ export default function Accessibility() {
           </p>
           <h2>How we assess the site.</h2>
           <p>
-            Our assessment combines automated Lighthouse checks with manual
-            browser testing of keyboard navigation, visible focus, mobile
-            layouts, zoom, and content reflow. We use semantic headings and
-            landmarks, a skip link, and native keyboard-operable navigation and
-            FAQ controls.
+            Our assessment combines automated checks with manual browser testing
+            of keyboard navigation, visible focus, mobile layouts, zoom, and
+            content reflow. We use semantic headings and landmarks, a skip link,
+            and native keyboard-operable navigation and FAQ controls.
           </p>
           <h2>Known limitations.</h2>
           <p>
             Automated checks and a manual browser review cannot identify every
             accessibility barrier. The site has not received an independent
             accessibility audit or comprehensive testing with every
-            assistive-technology combination. Cal.com is an external scheduling
-            service with its own interface.
+            assistive-technology combination. Stripe checkout and Cal.com
+            scheduling are external services with their own interfaces.
           </p>
           <h2>Tell us about a barrier.</h2>
           <p>

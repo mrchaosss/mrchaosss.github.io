@@ -1508,3 +1508,258 @@ svg {
     border: 1px solid CanvasText;
   }
 }
+
+/* Signup and onboarding share the existing static design system. */
+[hidden] {
+  display: none !important;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+.button {
+  border: 1px solid transparent;
+}
+.button-secondary {
+  background: #fff;
+  border-color: var(--line);
+  color: var(--navy);
+}
+.button-secondary:hover {
+  background: var(--pale);
+  border-color: var(--blue);
+}
+.button-outline-light {
+  color: #fff;
+  border-color: #ffffffaa;
+  background: transparent;
+}
+.button-outline-light:hover {
+  background: #ffffff18;
+}
+.nav-call {
+  color: var(--blue) !important;
+}
+.final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+  max-width: 350px;
+}
+.final-actions .small {
+  width: 100%;
+}
+.hero-price {
+  font-size: 16px;
+}
+.hero-price strong {
+  font-size: 20px;
+}
+.price-divider {
+  margin-inline: 7px;
+  color: var(--muted);
+}
+.signup-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 70px;
+  align-items: start;
+}
+.form-card {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 32px;
+}
+.form-card h2,
+.signup-aside h2 {
+  font-size: 29px;
+}
+.form-help {
+  margin-top: 16px;
+  font-size: 14px;
+}
+.form-card fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.form-card label {
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 24px 0 8px;
+}
+.form-card input,
+.form-card select,
+.form-card textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  background: #fff;
+  color: var(--ink);
+  padding: 12px;
+  border: 1px solid #8fa3b5;
+  border-radius: 5px;
+  min-height: 48px;
+  font-size: 16px;
+}
+.form-card select {
+  padding-right: 30px;
+}
+.form-card textarea {
+  resize: vertical;
+}
+.form-card input:focus-visible,
+.form-card select:focus-visible,
+.form-card textarea:focus-visible {
+  outline: 3px solid #d18400;
+  outline-offset: 3px;
+}
+.form-card input::placeholder,
+.form-card textarea::placeholder {
+  color: #617285;
+  opacity: 1;
+}
+.form-card .button {
+  margin-top: 24px;
+}
+.form-card .optional {
+  font-weight: 400;
+  color: var(--muted);
+}
+.field-hint {
+  font-size: 12px;
+  line-height: 1.65;
+  margin-top: 8px;
+}
+.form-scope-list {
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 9px 0 14px;
+}
+.form-scope-list li {
+  margin: 5px 0;
+}
+.form-result {
+  margin-top: 28px;
+  padding: 25px;
+  background: var(--pale);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 5px;
+}
+.form-result h3 {
+  font-size: 21px;
+}
+.form-result p {
+  margin-top: 13px;
+  font-size: 14px;
+}
+.form-result strong {
+  overflow-wrap: anywhere;
+}
+.form-result:focus {
+  outline: 3px solid #d18400;
+  outline-offset: 4px;
+}
+.form-error {
+  margin-top: 20px;
+  color: #8d241f;
+  background: #fff5f4;
+  border: 1px solid #deaaa7;
+  padding: 16px;
+  font-size: 14px;
+}
+.signup-aside > p:not(.eyebrow) {
+  margin-top: 20px;
+  font-size: 14px;
+}
+.signup-aside .check-list {
+  margin-block: 24px;
+}
+.optional-call {
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
+  margin-top: 25px;
+}
+.optional-call h3 {
+  font-size: 19px;
+}
+.optional-call p {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.onboarding-steps {
+  list-style: decimal;
+  padding-left: 24px;
+}
+.onboarding-steps li {
+  padding-left: 7px;
+  margin-bottom: 30px;
+  color: var(--blue);
+}
+.onboarding-steps h3 {
+  font-size: 20px;
+}
+.onboarding-steps p {
+  margin-top: 12px;
+  font-size: 14px;
+}
+.contact-grid h2 a {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 950px) {
+  .signup-grid {
+    gap: 32px;
+  }
+  .form-card {
+    padding: 24px;
+  }
+  .header-inner {
+    gap: 18px;
+  }
+}
+@media (max-width: 700px) {
+  .signup-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .form-card {
+    padding: 23px 19px;
+  }
+  .form-result {
+    padding: 20px 16px;
+  }
+  .form-card h2,
+  .signup-aside h2 {
+    font-size: 26px;
+  }
+  .final-actions {
+    max-width: none;
+  }
+  .hero-price {
+    font-size: 14px;
+  }
+  .hero-price strong {
+    font-size: 18px;
+  }
+  .price-divider {
+    margin-inline: 3px;
+  }
+  .form-card .button {
+    width: 100%;
+  }
+  .contact-grid h2 {
+    font-size: 25px;
+  }
+}

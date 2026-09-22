@@ -77,12 +77,15 @@ export function FinalCTA() {
       <div className="container final-cta-inner">
         <div>
           <p className="eyebrow">Start with your website</p>
-          <h2>Let’s see if the care plan fits.</h2>
-          <p>Bring your website URL and the work you need help with.</p>
+          <h2>Ready to hand over the routine care?</h2>
+          <p>$399/month per website. No setup fee. No required sales call.</p>
         </div>
-        <div>
-          <BookCallLink className="button button-light" />
-          <p className="small">{c.fitCallMinutes}-minute call. WordPress sites only.</p>
+        <div className="final-actions">
+          <a className="button button-light" href="/get-started">
+            Get Started →
+          </a>
+          <BookCallLink className="button button-outline-light" />
+          <p className="small">Questions first? The call is optional.</p>
         </div>
       </div>
     </section>
@@ -115,23 +118,30 @@ export function PriceCard() {
           <span> / month</span>
         </p>
         <p className="onboarding">
-          + {money(c.onboardingFee)} one-time onboarding
+          <strong>No setup fee.</strong> Normal onboarding included.
         </p>
-        <p>For one qualifying WordPress website. Prices in {c.currency}.</p>
+        <p>
+          For one eligible existing WordPress website. Prices in {c.currency}.
+        </p>
       </div>
       <ul className="check-list">
-        <li>Automatic updates with visual checks</li>
-        <li>Daily off-site backups · {c.backupHistoryDays}-day history</li>
-        <li>Daily security scans and malware cleanup</li>
+        <li>Managed updates with visual checks where supported</li>
+        <li>Daily offsite backups · {c.backupHistoryDays}-day history</li>
+        <li>Daily security scanning and flagged-issue coordination</li>
         <li>Uptime and SSL monitoring</li>
         <li>Up to {c.humanEditsPerMonth} small human edits per month</li>
-        <li>Real-person support and a monthly report</li>
+        <li>Maintenance support and a monthly report</li>
       </ul>
-      <BookCallLink />
+      <a className="button button-primary" href="/get-started">
+        Get Started →
+      </a>
       <p className="small">
-        We confirm fit before onboarding. Billing and cancellation terms are set
-        out in your signed service agreement.
+        Month-to-month. Cancel before a future renewal to stop the next charge.
+        Larger projects are separate. <a href="/terms">Service terms</a>.
       </p>
+      <BookCallLink className="text-link">
+        Have questions? Book a Call
+      </BookCallLink>
     </div>
   );
 }
