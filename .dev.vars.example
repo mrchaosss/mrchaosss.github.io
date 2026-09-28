@@ -1,0 +1,5 @@
+# Copy to .dev.vars for local development. Never use production secrets locally.
+STRIPE_WEBHOOK_SECRET=whsec_local_test_only
+SITE_ORIGIN=http://localhost:8787
+CHECKOUT_ENABLED=true
+STRIPE_LIVEMODE=false

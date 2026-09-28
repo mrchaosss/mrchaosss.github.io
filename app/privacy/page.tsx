@@ -1,4 +1,4 @@
-import { PageIntro } from '@/components/site-ui';
+import { PageIntro } from '@/components/design/ui';
 import { siteConfig as c } from '@/lib/site-config';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
@@ -28,12 +28,15 @@ export default function Privacy() {
             to requests, and maintain relevant business records.
           </p>
           <p>
-            The eligibility form runs in your browser and does not submit its
-            answers to a Novren server. The onboarding form prepares an email;
-            its contents are not received by Novren until you send that message.
-            The page does not store form answers in cookies or browser storage.
-            Do not include passwords, secret access links, keys, payment
-            details, or sensitive customer information in those forms or
+            The eligibility and onboarding forms submit information to Novren’s
+            website service on Cloudflare. Eligible signup details are saved so
+            a confirmed Stripe payment can be matched to the website. Onboarding
+            details are stored for setup and sent into Novren’s support
+            workflow. A secure, essential cookie lets this browser resume the
+            signup for up to seven days. Short-lived email links can restore
+            access; their verification tokens expire after 20 minutes and can be
+            used once. Do not include passwords, secret access links, keys,
+            payment details, or sensitive customer information in those forms or
             ordinary email.
           </p>
           <h2>Payments through Stripe.</h2>
@@ -69,11 +72,13 @@ export default function Privacy() {
           <p>
             GoWP and associated infrastructure providers process information
             needed for updates, backups, scans, monitoring, helpdesk requests,
-            and reports. Novren remains your service contact. Access is arranged
-            through the connector or another appropriate secure method, rather
-            than a public password form. Customers receive care communications
-            and reports; raw technical system notifications are routed to
-            Novren.
+            reports and the AI Editor. Prompts, relevant website content,
+            previews and approved changes may be processed for AI edit requests.
+            Do not include secrets or sensitive customer records in AI prompts.
+            Novren remains your service contact. Access is arranged through the
+            connector or another appropriate secure method, rather than a public
+            password form. Customers receive care communications and reports;
+            raw technical system notifications are routed to Novren.
           </p>
           <h2>Email and service communications.</h2>
           <p>
@@ -81,30 +86,26 @@ export default function Privacy() {
             Workspace and GoWP’s email/helpdesk infrastructure, including
             Postmark delivery and routing, process these communications. We use
             them for onboarding, support, approvals, billing requests, and
-            reports. Do not email passwords or sensitive customer records.
+            reports. Automated signup and onboarding messages use Cloudflare
+            Email Service. Do not email passwords or sensitive customer records.
           </p>
           <h2>Website hosting and campaign links.</h2>
           <p>
-            The public site is hosted on GitHub Pages. GitHub may process
-            technical request information, including IP addresses for security,
-            under its{' '}
-            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">
-              Privacy Statement
+            Cloudflare hosts the website and its signup/onboarding service. Its
+            storage, security, logging and email systems process information
+            needed for these functions, including technical request information
+            such as IP addresses. See{' '}
+            <a href="https://www.cloudflare.com/privacypolicy/">
+              Cloudflare’s Privacy Policy
             </a>
-            . See{' '}
-            <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">
-              GitHub Pages documentation
-            </a>
-            .
+            . GitHub stores the website’s source and supports deployment;
+            customer form submissions are not published to the repository.
           </p>
           <p>
-            When a page URL contains short campaign labels, the website may
-            carry only utm_source, utm_medium, utm_campaign, utm_term, and
-            utm_content between internal pages and to the optional booking link.
-            This uses URLs, without cookies or browser storage. It rejects
-            duplicate, long, or email-like values. Campaign labels must not
-            contain personal or sensitive data. Other query parameters and
-            onboarding form contents are not forwarded to booking.
+            Campaign links may indicate how you reached the website. Do not put
+            personal or sensitive information in campaign labels. This website
+            does not forward onboarding form contents or private resume links to
+            the booking service.
           </p>
           <h2>Sharing and tracking.</h2>
           <p>
@@ -130,6 +131,14 @@ export default function Privacy() {
             after cancellation. Provider copies may have their own retention
             schedules. Ask before cancellation if you need a handoff of
             available information.
+          </p>
+          <p>
+            Unpaid signup records are normally removed after seven days. Expired
+            website sessions and access tokens are removed during scheduled
+            cleanup. Successfully sent email bodies are cleared from the
+            website’s sending queue; provider delivery records can remain under
+            provider retention policies. Paid service and onboarding records are
+            retained for the service and business purposes above.
           </p>
           <p>
             We use the access controls and security features of our service

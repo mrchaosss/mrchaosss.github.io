@@ -1,0 +1,5 @@
+/onboarding/status /onboarding 301
+/payment-status /onboarding 301
+/portal-invitation /portal 301
+/checkout /get-started 301
+/ai-editor-demo /care 301

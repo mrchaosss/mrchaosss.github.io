@@ -1,9 +1,13 @@
-name: Deploy Novren to GitHub Pages
+name: Legacy GitHub Pages rollback (manual only)
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Existing static-site rollback branch or commit'
+        required: true
+        default: 'backup/pre-cloudflare-2026-09-28'
+        type: string
 
 permissions:
   contents: read
@@ -20,6 +24,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.ref }}
 
       - name: Set up pnpm and Node
         uses: pnpm/setup@v2

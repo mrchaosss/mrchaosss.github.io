@@ -1,4 +1,4 @@
-import { PageIntro } from '@/components/site-ui';
+import { PageIntro } from '@/components/design/ui';
 import { siteConfig as c } from '@/lib/site-config';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(

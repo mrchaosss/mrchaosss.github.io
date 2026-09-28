@@ -1,4 +1,4 @@
-// Owner-approved offer and account policy, September 22, 2026.
+// Owner-approved offer and account policy, September 28, 2026.
 export const siteConfig = {
   name: 'Novren',
   siteUrl: 'https://novren.co',
@@ -14,9 +14,10 @@ export const siteConfig = {
   bookingHref: 'https://cal.com/gabe-glenn-9zwzc2/strategy-call',
   checkoutHref: 'https://buy.stripe.com/14A14ncmL9QK7KQ2G17Vm02',
   contactEmail: 'hello@novren.co',
-  portal: { visible: false, href: 'https://app.novren.co' },
-  updatedDate: '2026-09-22',
-  updatedLabel: 'September 22, 2026',
+  aiEditsPerMonth: 50,
+  portal: { visible: true, href: 'https://app.novren.co' },
+  updatedDate: '2026-09-28',
+  updatedLabel: 'September 28, 2026',
   utmParameters: [
     'utm_source',
     'utm_medium',

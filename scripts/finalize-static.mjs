@@ -24,26 +24,14 @@ for (const dir of ['app', 'components'])
     if (/['"]use (client|server)['"]|\bon[A-Z]\w*=/.test(source))
       throw new Error('Static enhancement contract violated: ' + file);
   }
-const settings = {
-  bookingHref: c.bookingHref,
-  checkoutHref: c.checkoutHref,
-  contactEmail: c.contactEmail,
-  utmParameters: c.utmParameters,
-};
-const flowLogic = (await readFile('scripts/flow-logic.js', 'utf8')).replace(
-  /^export /gm,
-  '',
-);
-const script = (await readFile('scripts/site-behavior.js', 'utf8'))
-  .replace('/* __NOVREN_FLOW_LOGIC__ */', flowLogic)
-  .replace('__NOVREN_SETTINGS__', JSON.stringify(settings));
+const script = await readFile('scripts/production-behavior.js', 'utf8');
 const hash = createHash('sha256').update(script).digest('hex').slice(0, 12);
 const scriptPath = '/_static/care-' + hash + '.js';
 await mkdir(path.join(root, '_static'), { recursive: true });
 await writeFile(path.join(root, scriptPath), script);
 const htmlFiles = (await walk(root)).filter((f) => f.endsWith('.html'));
-if (htmlFiles.length !== 11)
-  throw new Error('Expected 10 pages plus the 404; found ' + htmlFiles.length);
+if (htmlFiles.length < 20)
+  throw new Error('Production pages are missing; found ' + htmlFiles.length);
 const cssFiles = new Set();
 for (const file of htmlFiles) {
   let html = await readFile(file, 'utf8');
@@ -113,6 +101,14 @@ const routes = [
   '/terms',
   '/accessibility',
   '/get-started',
+  '/care',
+  '/after-your-audit',
+  '/how-it-works',
+  '/faq',
+  '/sample-report',
+  '/support',
+  '/book-a-call',
+  '/billing',
 ];
 await writeFile(
   path.join(root, 'sitemap.xml'),

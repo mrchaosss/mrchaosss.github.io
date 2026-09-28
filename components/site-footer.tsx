@@ -1,51 +1,57 @@
-import { siteConfig as c } from '@/lib/site-config';
-import { BookCallLink } from './book-call-link';
+import { Link, Icon } from './design/ui';
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="container footer-top">
+      <div className="wrap footer-grid">
         <div className="footer-brand">
-          <a className="wordmark" href="/" aria-label="Novren home">
-            NOVREN<span>.</span>
-          </a>
+          <Link to="/">
+            <img src="/logo.svg" alt="Novren home" width="170" height="46" />
+          </Link>
           <p>
             Managed WordPress care.
             <br />
-            For small and local businesses.
+            One website. One clear plan.
           </p>
+          <p className="footer-price">$399/month · $0 setup</p>
         </div>
-        <nav aria-label="Website care">
-          <h2>Website care</h2>
-          <a href="/service">What’s included</a>
-          <a href="/process">How it works</a>
-          <a href="/#pricing">Pricing</a>
-          <a href="/#faq">FAQ</a>
-          <a href="/get-started">Get Started</a>
-        </nav>
-        <nav aria-label="Company">
-          <h2>Novren</h2>
-          <a href="/about">About</a>
-          <a href="/contact">Contact &amp; support</a>
-          <BookCallLink className="footer-call" />
-          <a href="/onboarding">Onboarding</a>
-        </nav>
-        <div className="footer-contact">
-          <h2>One place to ask for help.</h2>
-          <a href={'mailto:' + c.contactEmail}>{c.contactEmail}</a>
+        <div>
+          <h2>Explore</h2>
+          <Link to="/care">What’s included</Link>
+          <Link to="/after-your-audit">After your audit</Link>
+          <Link to="/how-it-works">How it works</Link>
+          <Link to="/faq">FAQs</Link>
+          <Link to="/about">About Novren</Link>
+        </div>
+        <div>
+          <h2>Your next step</h2>
+          <Link to="/get-started">Get Started</Link>
+          <Link to="/book-a-call">Book a Call · optional</Link>
+          <Link to="/onboarding">Finish onboarding</Link>
+          <Link to="https://app.novren.co" target="_blank" rel="noreferrer">
+            Client portal <Icon name="external" size={13} />
+          </Link>
+          <Link to="/billing">Billing & cancellation</Link>
+        </div>
+        <div>
+          <h2>Talk to Novren</h2>
+          <Link to="mailto:hello@novren.co">hello@novren.co</Link>
           <p>
-            $399/month per website.
+            Questions about your site,
             <br />
-            No setup fee. No required sales call.
+            your plan or getting started.
           </p>
+          <Link to="/support">
+            Contact & support <Icon name="arrow" size={15} />
+          </Link>
         </div>
       </div>
-      <div className="container footer-bottom">
-        <p>© 2026 Novren</p>
-        <nav aria-label="Legal">
-          <a href="/terms">Service terms</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/accessibility">Accessibility</a>
-        </nav>
+      <div className="wrap footer-bottom">
+        <span>© 2026 Novren</span>
+        <div>
+          <Link to="/terms">Terms</Link>
+          <Link to="/privacy">Privacy</Link>
+          <Link to="/accessibility">Accessibility</Link>
+        </div>
       </div>
     </footer>
   );

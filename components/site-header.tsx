@@ -1,10 +1,4 @@
-import { BookCallLink } from './book-call-link';
-const navigation = [
-  ['What’s included', '/service'],
-  ['How it works', '/process'],
-  ['Pricing', '/#pricing'],
-  ['FAQ', '/#faq'],
-];
+import { Button, Icon, Link } from './design/ui';
 export function SiteHeader() {
   return (
     <>
@@ -12,40 +6,56 @@ export function SiteHeader() {
         Skip to content
       </a>
       <header className="site-header">
-        <div className="header-inner">
-          <a className="wordmark" href="/" aria-label="Novren home">
-            NOVREN<span>.</span>
-          </a>
-          <nav className="desktop-nav" aria-label="Primary navigation">
-            {navigation.map(([label, href]) => (
-              <a key={href} href={href}>
-                {label}
-              </a>
-            ))}
-            <BookCallLink className="nav-call" />
+        <div className="wrap nav-inner">
+          <Link to="/" className="brand" aria-label="Novren home">
+            <img src="/logo.svg" alt="Novren" width="155" height="42" />
+          </Link>
+          <nav className="desktop-nav" aria-label="Main navigation">
+            <Link to="/care">What’s included</Link>
+            <Link to="/after-your-audit">After your audit</Link>
+            <Link to="/#pricing">Pricing</Link>
+            <Link to="/faq">FAQs</Link>
           </nav>
-          <a className="button button-primary header-book" href="/get-started">
-            Get Started <span aria-hidden="true">→</span>
-          </a>
-          <details className="mobile-menu" id="mobile-menu">
-            <summary aria-label="Navigation menu">
-              <span className="menu-lines" aria-hidden="true">
-                <span></span>
-                <span></span>
-              </span>
-            </summary>
-            <nav aria-label="Mobile navigation">
-              {navigation.map(([label, href]) => (
-                <a key={href} href={href}>
-                  {label}
-                </a>
-              ))}
-              <a href="/about">About</a>
-              <a href="/contact">Contact</a>
-              <BookCallLink className="text-link" />
-            </nav>
-          </details>
+          <div className="nav-actions">
+            <Link to="/book-a-call" className="nav-call">
+              Book a Call
+            </Link>
+            <Button to="/get-started" className="nav-start">
+              Get Started <Icon name="arrow" size={17} />
+            </Button>
+            <button
+              className="menu-toggle"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobile-nav"
+              id="menu-toggle"
+            >
+              <Icon name="menu" />
+            </button>
+          </div>
         </div>
+        <nav
+          id="mobile-nav"
+          className="mobile-nav"
+          aria-label="Mobile navigation"
+          hidden
+        >
+          {[
+            ['What’s included', '/care'],
+            ['After your audit', '/after-your-audit'],
+            ['Pricing', '/#pricing'],
+            ['How it works', '/how-it-works'],
+            ['FAQs', '/faq'],
+            ['About Novren', '/about'],
+            ['Contact & support', '/support'],
+            ['Book a Call', '/book-a-call'],
+          ].map(([name, url]) => (
+            <Link key={url} to={url}>
+              {name}
+              <Icon name="arrow" size={16} />
+            </Link>
+          ))}
+        </nav>
       </header>
     </>
   );

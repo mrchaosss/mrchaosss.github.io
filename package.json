@@ -11,12 +11,18 @@
     "start": "node scripts/preview.mjs",
     "lint": "oxlint",
     "format": "oxfmt",
-    "preview": "node scripts/preview.mjs"
+    "preview": "node scripts/preview.mjs",
+    "typecheck": "tsc --noEmit",
+    "cf:dev": "wrangler dev --config infra/wrangler.jsonc",
+    "cf:deploy": "wrangler deploy --config infra/wrangler.jsonc",
+    "cf:types": "wrangler types --config infra/wrangler.jsonc --strict-vars false worker-configuration.d.ts",
+    "test:journey": "node --test tests/production-security.test.mjs"
   },
   "dependencies": {
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "react-server-dom-webpack": "19.2.6",
+    "stripe": "22.6.0",
     "vinext": "1.0.0-beta.5"
   },
   "devDependencies": {
@@ -31,7 +37,8 @@
     "oxlint-tsgolint": "7.0.2001",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
-    "vite": "8.0.13"
+    "vite": "8.0.13",
+    "wrangler": "4.142.0"
   },
   "type": "module"
 }

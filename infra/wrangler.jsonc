@@ -1,0 +1,43 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "novren-website",
+  "account_id": "11c6b840b7bafad1ff06008100489128",
+  "main": "../server/index.ts",
+  "compatibility_date": "2026-09-28",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "../dist/client",
+    "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"],
+  },
+  "vars": {
+    "SITE_ORIGIN": "https://novren.co",
+    "CHECKOUT_ENABLED": "false",
+    "STRIPE_LIVEMODE": "true",
+    "STRIPE_PAYMENT_LINK_ID": "plink_1UIbZEGmxVYsIEOruIytro0O",
+    "STRIPE_PAYMENT_LINK_URL": "https://buy.stripe.com/14A14ncmL9QK7KQ2G17Vm02",
+    "SUPPORT_EMAIL": "hello@novren.co",
+    "MAIL_FROM": "onboarding@novren.co",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "novren-customer-journey",
+      "database_id": "290c3e6c-1334-4250-b035-bc36d8704697",
+      "migrations_dir": "../migrations",
+    },
+  ],
+  "send_email": [
+    { "name": "EMAIL", "allowed_sender_addresses": ["onboarding@novren.co"] },
+  ],
+  "triggers": { "crons": ["*/10 * * * *"] },
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "invocation_logs": false },
+    "traces": { "enabled": true, "head_sampling_rate": 0.01 },
+  },
+}

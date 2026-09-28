@@ -1,4 +1,4 @@
-import { PageIntro } from '@/components/site-ui';
+import { PageIntro } from '@/components/design/ui';
 import { siteConfig as c } from '@/lib/site-config';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
@@ -72,9 +72,9 @@ export default function Terms() {
             and theme updates; daily offsite files/database backups with up to
             90 days of available history; daily security scanning; uptime checks
             at five-minute intervals; SSL certificate monitoring; maintenance
-            support; a monthly care report reviewed by Novren; and up to five
-            small human edits each monthly billing period. The{' '}
-            <a href="/service">service page</a> explains the scope and
+            support; a monthly care report reviewed by Novren; 50 AI edits a
+            month; and up to five small human edits each monthly billing period.
+            The <a href="/service">service page</a> explains the scope and
             qualifications.
           </p>
           <p>
@@ -87,6 +87,18 @@ export default function Terms() {
             infection is not guaranteed.
           </p>
           <h2>5. Small edits and additional work.</h2>
+          <p>
+            The AI Editor becomes available through your client portal after
+            connection and setup. One approved, published change counts as one
+            AI edit, even when it affects multiple pages. Review the preview
+            carefully; publishing follows the configured approval permissions.
+            AI results may need correction and support varies with your site. AI
+            and human edits are separate allowances and cannot be exchanged or
+            combined into development hours. Extra AI use requires separate
+            agreement and is not automatically charged by this website. Unused
+            AI allowance follows the care platform’s reset rules; no rollover is
+            promised.
+          </p>
           <p>
             A small edit is a single, bounded website/content task typically
             taking about 30 minutes or less using final material you supply.

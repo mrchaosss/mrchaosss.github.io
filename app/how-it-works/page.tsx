@@ -1,9 +1,9 @@
 import { Process } from '@/components/design/marketing';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
-  'How Novren works | Novren',
-  'A straightforward path from signup to active WordPress care.',
-  '/process',
+  'How onboarding works | Novren',
+  'Check your site’s fit, subscribe, arrange connection and receive confirmation when care is active.',
+  '/how-it-works',
 );
 export const dynamic = 'force-static';
 export default function Page() {
