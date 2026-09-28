@@ -1,59 +1,93 @@
-# Cloudflare production build — 28 September 2026
+# Cloudflare production launch — 28 September 2026
 
-## Architecture
+## Architecture and live state
 
-React/Vinext continues to generate static HTML. Cloudflare Workers Static Assets serves it. Only `/api/*` enters the Worker. The public site does not ship a React runtime. The small progressive enhancement script manages navigation, fit checks, FAQ filtering and onboarding.
+React/Vinext generates 20 static HTML pages including the 404 page. Cloudflare Workers Static Assets serves them. Only `/api/*` enters the Worker. The public site does not ship a React runtime; one small enhancement script manages navigation, fit checks, FAQ filtering and onboarding.
 
-The website retains the existing hosted Stripe Payment Link at $399/month. Before redirect, the Worker validates fit and creates a random signup reference plus a separate, hashed, HttpOnly browser session. Stripe's signed webhook is the payment authority. A return-page query string never grants access. No Stripe API key or card details are needed by the site.
+The existing hosted Stripe Payment Link is $399/month with no setup fee. Before redirect, the Worker validates fit and creates a random signup reference plus a separate, hashed, HttpOnly browser session. Stripe's signed webhook is the payment authority. A return-page query string never grants access. No Stripe API key or card details are needed by the website.
 
-Paid onboarding is stored in the private D1 database and delivered through a durable email outbox. Resume tokens expire in 20 minutes and are consumed once. The website does not implement a second client portal. GoWP client creation, Business site provisioning, connector setup, invitation and baseline verification remain Novren's work.
+Paid onboarding is stored in private D1 and delivered through a durable email outbox. Resume tokens expire in 20 minutes and are consumed once. The website does not implement a second client portal. GoWP client creation, Business site provisioning, connector setup, invitation and baseline verification remain Novren's per-client work.
 
-## Status and launch gates
+## Production configuration
 
-- `CHECKOUT_ENABLED=false` is intentional until live webhook, mail delivery and account configuration are verified.
-- Cloudflare account: 11c6b840b7bafad1ff06008100489128.
-- D1: novren-customer-journey / 290c3e6c-1334-4250-b035-bc36d8704697.
-- Root domain currently continues to serve the previous site until a deliberate Cloudflare cutover.
-- Remote rollback branch: `backup/pre-cloudflare-2026-09-28`, original commit d625304bd83a277338152c4f869002ea59e1f1ec.
-- Working branch: `rebuild/cloudflare-design-b`.
-- Cloudflare GitHub integration was explicitly approved for only mrchaosss/mrchaosss.github.io.
-- AI Editor was still hidden from clients at account inspection. Enable and verify before advertising usable client AI access in a live signup path.
-- Cloudflare Workers Paid is active. The owner completed the $5/month purchase; the dashboard confirmation states “Purchase complete” and “The subscription is active.” This includes the published usage charges beyond included allowances. Do not purchase the plan again.
-- Do not change existing Google Workspace MX records or hello@novren.co → GoWP/Postmark routing.
-- GoWP Helpdesk Settings confirms agency-branded inbound routing and outbound operator replies, with DKIM and SPF/Return-Path verified. This screen does not expose an application email API for the website's onboarding/recovery messages; do not assume GoWP's Postmark infrastructure can be reused as a general mail relay.
-- Cloudflare's automatic build-token option requests broad account access (including unrelated KV/R2/AI resources). Do not accept it without action-time confirmation. Prefer a token limited to the actual website deployment and D1 resources if supported.
-- A custom user token named `Novren website deployment` is prepared, not created, at the summary screen. It requests only Workers Admin in Gabe@novren.co's Account. The separate approval question is still pending; approval of the $5 plan does not approve the token. After initial Worker creation, reduce deployment access where the account UI permits. Cloudflare's current documentation says bound D1 resources do not need separate D1 permissions merely to deploy the Worker.
-- Public DNS baseline before sending setup: Novren's five MX records point to Google Workspace. The root TXT lookup returned Google verification records; the local resolver returned no DMARC or cf-bounce MX answer. Preserve existing mail routing. Review any automatically proposed DMARC record before onboarding the sending domain; do not impose a rejecting policy on existing mail without checking sender authentication.
-- The Email Sending wizard proposed a new rejecting DMARC policy on the main domain. Prepared `notify.novren.co` instead so only that new subdomain receives sending authentication and DMARC. Planned sender: `onboarding@notify.novren.co`; Reply-To remains `hello@novren.co`. The wizard is at Verify DNS records / Activate, not yet submitted. Proposed records are three MX and one SPF TXT at `cf-bounce.notify.novren.co`, DKIM TXT at `cf-bounce._domainkey.notify.novren.co`, and DMARC TXT at `_dmarc.notify.novren.co`. Existing main-domain Google Workspace mail and GoWP/Postmark records are not part of this change.
+- Website: https://novren.co
+- Worker: `novren-website`; direct endpoint https://novren-website.gabe-11c.workers.dev
+- Cloudflare account: `11c6b840b7bafad1ff06008100489128`.
+- D1: `novren-customer-journey` / `290c3e6c-1334-4250-b035-bc36d8704697`.
+- `CHECKOUT_ENABLED=true`. Live checkout and actual transactional email delivery verified.
+- Worker version deployed: `6f5f6644-df3c-44a0-b67f-3819784f6a0d`.
+- Dashboard-managed route: `novren.co/*`. It targets only the main website, not GoWP's portal or email subdomains.
+- Zone redirect `Novren canonical HTTPS` preserves path/query while canonicalizing www and HTTP root requests to `https://novren.co`. It does not match app or email subdomains.
+- Workers Paid is active: owner purchased the $5/month plan plus published usage charges. Do not purchase again.
+- Repository: `mrchaosss/mrchaosss.github.io`; working branch `rebuild/cloudflare-design-b`; release pushed to main.
+- Rollback branch: `backup/pre-cloudflare-2026-09-28`, original commit `d625304bd83a277338152c4f869002ea59e1f1ec`.
+- The original four GitHub A records remain proxied in DNS. Removing the website route restores the earlier GitHub origin. Preserve those records while this rollback method is in use.
+- GitHub authorization is limited to this repository. Cloudflare's Git-build selector did not accept the limited user token, so **Git builds are not connected**. Deployment is direct with Wrangler; pushing Git alone does not deploy. The old Pages workflow is manual-only.
+- The `Novren website deployment` credential was approved, rotated with owner approval, and narrowed from Workers Admin to Workers Scripts / Edit in this account. Its temporary local secret is excluded from Git and removed after release. No broad automatic build credential, DNS token or Stripe API secret was created.
+
+## Stripe
+
+- Product: `prod_VEhIAtl9uNWhWu`, Novren WordPress Care.
+- Active price: `price_1UIbYZGmxVYsIEOr4acmcAgq`, 39900 USD cents/month.
+- Active payment link: `plink_1UIbZEGmxVYsIEOruIytro0O`.
+- Public checkout: https://buy.stripe.com/14A14ncmL9QK7KQ2G17Vm02
+- Success redirect: https://novren.co/onboarding?checkout=complete
+- Customer email, individual name, business name, website URL and eligibility confirmation are required. Terms acceptance is required. Phone is not required. No credentials are collected.
+- The website URL custom field is `websiteurl`; business and individual names use Stripe's native name collection.
+- Obsolete WordPress $299 + $199 and reputation-management checkout links remain inactive. Financial history is retained. Tax, payouts and accounting settings are unchanged.
+- Live webhook: `we_1UKjbtGmxVYsIEOrng4YKJAw`.
+- Endpoint: https://novren-website.gabe-11c.workers.dev/api/stripe/webhook
+- API version: `2026-08-26.dahlia`.
+- Events: checkout.session.completed, checkout.session.async_payment_succeeded, checkout.session.async_payment_failed, customer.subscription.updated, customer.subscription.deleted.
+- Signature secret is installed only as Cloudflare `STRIPE_WEBHOOK_SECRET`. Do not print, commit or copy it into browser code.
+
+## Email and GoWP
+
+Cloudflare Email Sending is active for `notify.novren.co`. Sender: `onboarding@notify.novren.co`; Reply-To: `hello@novren.co`. The new subdomain has its own Cloudflare bounce MX/SPF, DKIM and rejecting DMARC policy. Root Google Workspace MX and hello's existing routing were preserved. GoWP's Postmark account was not repurposed as an application email API.
+
+One authorized mail-only verification job (`launch-mail-check-20260928`) sent on its first attempt at 2026-09-28T19:00:42Z. The GoWP helpdesk received the matching message from Novren. No paid customer, real purchase or GoWP site was created for this test.
+
+The earlier DNS import had omitted two existing records and incorrectly proxied the Postmark return path. Fixed using the previous Squarespace configuration as evidence:
+
+- `pm-bounces.novren.co` CNAME `pm.mtasv.net`: changed to DNS-only; public resolution verified.
+- `20260922200721pm._domainkey.novren.co` TXT: restored the exact existing public DKIM value; public resolution verified.
+- `_cf-custom-hostname.app.novren.co` TXT: restored the existing portal ownership record; public resolution verified.
+
+Nameservers remain Cloudflare. No recipient routing, Gmail alias, root MX or GoWP sender identity was recreated. `app.novren.co` displays the branded Novren login page. AI Editor client visibility is now enabled and persisted. Marketing remains hidden; other locked care policies were unchanged. Every real site still needs the Business plan ($99/site/month per current GoWP pricing) and baseline verification to deliver the advertised 50 AI / five human edits.
 
 ## Deployment
 
-Build: `pnpm build`. Deploy: `pnpm exec wrangler deploy --config infra/wrangler.jsonc`.
+Build: `pnpm build`. Deploy: `pnpm exec wrangler deploy --config infra/wrangler.jsonc` with an authorized Cloudflare credential supplied outside the repository. Never print the credential or pass it as a command-line literal.
 
-The Wrangler file is in `infra/` because the site is intentionally exported statically with Vinext; a root Wrangler file causes Vinext to expect its runtime adapter. `server/index.ts` is a separate Worker API that serves the exported assets.
+The Wrangler file is in `infra/` because the site is intentionally exported statically with Vinext; a root Wrangler file causes Vinext to expect its runtime adapter. `server/index.ts` is a separate Worker API serving exported assets. The root route and canonical redirect are managed in the dashboard; inspect the deployment plan before changing routes in configuration. Keep the stable workers.dev webhook endpoint enabled.
 
-Secret binding: `STRIPE_WEBHOOK_SECRET`. Never commit the value. Use the live endpoint's signature secret only in the production Worker. The local `.dev.vars.example` contains a fictional local-only test secret and test mode.
-
-Database schema was applied through the Cloudflare console to the new empty production database. Future migrations must preserve existing rows. Do not reapply the initial CREATE TABLE script to production. Verify migration tracking before switching to CLI migration management.
+Database schema was applied through the Cloudflare console to the new empty production database. Future migrations must preserve rows. Do not reapply initial CREATE TABLE statements to production. Verify migration tracking before switching to CLI migration management.
 
 ## Local checks
 
-1. Copy `.dev.vars.example` to `infra/.dev.vars`.
+1. Copy the fictional local test settings from `.dev.vars.example` into `infra/.dev.vars`.
 2. Apply migrations locally: `pnpm exec wrangler d1 migrations apply novren-customer-journey --local --config infra/wrangler.jsonc`.
-3. `pnpm cf:dev --port 8787 --ip 127.0.0.1` (visit localhost, which matches the test origin).
-4. `pnpm test:journey` sends only local synthetic Stripe events, without a real card payment or real email.
+3. `pnpm cf:dev --port 8787 --ip 127.0.0.1` (visit localhost, matching the test origin).
+4. `pnpm test:journey` sends only local synthetic Stripe events, with no card charge or real email.
 5. `pnpm typecheck` and `pnpm build`.
 
-Verified locally: 20 static pages build; TypeScript and focused lint pass; Worker integration checks pass for fit/origin/payment-signature validation, wrong-environment and wrong-price handling, replayed events, cross-client isolation, protected intake, and single-use emailed recovery. Stripe redirect reached the real hosted checkout without submitting payment. Complex-site answers stayed before checkout. Mobile homepage at 390px has no horizontal overflow and mobile navigation opens correctly. Local synthetic email is written to Wrangler's ignored temporary directory, not delivered externally.
+Never point synthetic payment tests at production. Verification detail and remaining limits: [release QA](qa/cloudflare-2026-09-28.md).
 
 ## Operations
 
-Monitor failed email jobs in D1 (`outbox` records with `sent_at IS NULL AND attempts >= 8`) and Cloudflare logs. Retry only after fixing delivery. Email delivery is at least once; a crash after provider acceptance can result in a duplicate email, never an extra charge.
+Check D1 for failed mail: `outbox` rows with `sent_at IS NULL AND attempts >= 8`; inspect Cloudflare logs and correct delivery before retrying. Outbox retries run every ten minutes. Delivery is at least once: a crash after provider acceptance can produce a duplicate email, never an extra charge. Sent message bodies are purged. Unpaid abandoned signups and expired access tokens are cleaned up automatically.
 
-For each paid signup: match website and billing details, review intake, create the GoWP client, arrange an authorized WordPress administrator to connect WP Maintenance Connect, provision the Business site plan, verify the five-human/50-AI allowances and client permissions, verify backups/scans/monitoring/update policy, then send the GoWP invitation and activation confirmation.
+For each paid signup:
 
-Never mark care active solely because Stripe was paid. Customer cancellation requests to hello@novren.co need timely manual Stripe cancellation and GoWP end-date coordination. Review current Stripe state before acting on billing notifications.
+1. Match the Stripe subscription, website and contact details; review eligibility and submitted intake.
+2. Create/associate the GoWP client and site, and provision the Business plan.
+3. Coordinate the care connector with an authorized WordPress administrator; request other privileged access only when a concrete exception needs it.
+4. Verify a usable backup, scans, monitoring, Balanced update policy, critical functions, licenses, client AI permissions and edit allowances.
+5. Send the GoWP invitation and activation confirmation. Payment alone never means care is active.
+6. Review monthly reports, handle alerts and small requests, and coordinate larger work separately.
+
+Cancellation requests to hello@novren.co need timely manual Stripe cancellation and GoWP end-date coordination. A request received before renewal must prevent that renewal under the published terms, even if confirmation follows later. Review current Stripe state before acting on notifications. No automated cancellation of GoWP sites is implemented.
 
 ## Policy review
 
-The policies describe the implemented data flow. Attorney review is still appropriate for contracting identity, jurisdiction-specific consumer/refund rules, limitations and data obligations. No legal entity, office address, certifications, testimonials or performance guarantees were invented.
+Policies describe the implemented data flow. Attorney review remains appropriate for business identity/contact disclosures, local subscription/refund rules, limitations and customer-data obligations. No entity suffix, office address, certifications, testimonials or performance guarantees were invented. Accounting/tax configuration was intentionally left unchanged.

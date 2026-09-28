@@ -1,5 +1,7 @@
 # Rebuild QA — September 22, 2026
 
+Historical release record. The September 28 Cloudflare build replaces the email-preparation onboarding described here. Current checks and limits: [Cloudflare release QA](qa/cloudflare-2026-09-28.md).
+
 ## Local verification
 
 - Production build, lint, TypeScript, static route/link/metadata checks, and flow tests passed.

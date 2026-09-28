@@ -16,7 +16,7 @@
   },
   "vars": {
     "SITE_ORIGIN": "https://novren.co",
-    "CHECKOUT_ENABLED": "false",
+    "CHECKOUT_ENABLED": "true",
     "STRIPE_LIVEMODE": "true",
     "STRIPE_PAYMENT_LINK_ID": "plink_1UIbZEGmxVYsIEOruIytro0O",
     "STRIPE_PAYMENT_LINK_URL": "https://buy.stripe.com/14A14ncmL9QK7KQ2G17Vm02",
