@@ -1,0 +1,39 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "novren-website-test",
+  "account_id": "11c6b840b7bafad1ff06008100489128",
+  "main": "../server/sandbox.ts",
+  "compatibility_date": "2026-09-28",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "../dist/test-client",
+    "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "SITE_ORIGIN": "https://novren-website-test.gabe-11c.workers.dev",
+    "CHECKOUT_ENABLED": "true",
+    "STRIPE_LIVEMODE": "false",
+    "STRIPE_PAYMENT_LINK_ID": "plink_1UL5iQGrCZ41nDTEeTjhpuxp",
+    "STRIPE_PAYMENT_LINK_URL": "https://buy.stripe.com/test_6oU00j3Rg7N21fz5d033W00",
+    "SUPPORT_EMAIL": "hello@novren.co",
+    "MAIL_FROM": "onboarding@notify.novren.co"
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "novren-customer-journey-test",
+    "database_id": "7949ee57-2dae-4a4a-9628-174f3d1523c7",
+    "migrations_dir": "../migrations"
+  }],
+  "send_email": [{"name": "EMAIL", "allowed_sender_addresses": ["onboarding@notify.novren.co"]}],
+  "triggers": {"crons": ["*/10 * * * *"]},
+  "observability": {
+    "enabled": true,
+    "logs": {"enabled": true, "invocation_logs": false},
+    "traces": {"enabled": true, "head_sampling_rate": 0.01}
+  }
+}
