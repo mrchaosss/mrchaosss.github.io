@@ -4,7 +4,8 @@ September 28, 2026. The owner's later approval to advertise and enable 50 AI edi
 
 | Claim | Evidence | Qualification |
 |---|---|---|
-| $399/month, no setup fee, one website, month-to-month | Owner’s final brief and active Stripe price | USD; eligible existing site; cancel before future renewal |
+| $399/month or $3,999/year, no setup fee, one website | Owner’s October 2 authorization and active Stripe prices | USD; annual paid upfront for 12 months and renews yearly; monthly remains month to month; cancel before renewal |
+| Save $789 with annual billing | $399 × 12 − $3,999 = $789 | Compared with twelve full monthly payments; identical service and monthly edit allowances |
 | Managed core/plugin/theme updates | Workspace Balanced policy; https://gowp.com/features/updates/ | Security + Minor plugins/themes; core safety delay; nightly scan cadence; major changes cautious |
 | Restore points, visual checks, rollback | GoWP updates and baseline research | Where supported; selected pages, not complete functional testing |
 | Daily offsite backups; 90-day history | https://gowp.com/features/backups/ and https://gowp.com/pricing/ | History accumulates after connection; usable backup/environment needed; no every-transaction recovery guarantee |

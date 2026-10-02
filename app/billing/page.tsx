@@ -2,7 +2,7 @@ import { Billing } from '@/components/design/journey';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
   'Billing and cancellation | Novren',
-  'Billing and cancellation for Novren WordPress Care. $399/month, no setup fee.',
+  'Monthly and annual billing, renewal and cancellation for Novren WordPress Care. No setup fee.',
   '/billing',
   false,
 );

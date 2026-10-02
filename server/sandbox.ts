@@ -9,7 +9,8 @@ function sandboxEnv(env: Env): Env {
   if (
     env.SITE_ORIGIN !== origin ||
     String(env.STRIPE_LIVEMODE) !== 'false' ||
-    !env.STRIPE_PAYMENT_LINK_URL.startsWith('https://buy.stripe.com/test_')
+    !env.STRIPE_PAYMENT_LINK_URL.startsWith('https://buy.stripe.com/test_') ||
+    !env.STRIPE_ANNUAL_PAYMENT_LINK_URL.startsWith('https://buy.stripe.com/test_')
   ) throw new Error('Sandbox configuration must never use live payments.');
   const EMAIL: SendEmail = {
     async send(message: EmailMessage | EmailMessageBuilder) {

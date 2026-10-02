@@ -20,6 +20,8 @@
     "STRIPE_LIVEMODE": "true",
     "STRIPE_PAYMENT_LINK_ID": "plink_1UIbZEGmxVYsIEOruIytro0O",
     "STRIPE_PAYMENT_LINK_URL": "https://buy.stripe.com/14A14ncmL9QK7KQ2G17Vm02",
+    "STRIPE_ANNUAL_PAYMENT_LINK_ID": "plink_1UMDGlGmxVYsIEOrelyUpe8Z",
+    "STRIPE_ANNUAL_PAYMENT_LINK_URL": "https://buy.stripe.com/4gM14naeD4wq7KQ0xT7Vm03",
     "SUPPORT_EMAIL": "hello@novren.co",
     "MAIL_FROM": "onboarding@notify.novren.co",
   },

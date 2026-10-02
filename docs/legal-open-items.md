@@ -14,6 +14,8 @@ The workspace had zero connected sites at release. No sample paid site or subscr
 
 ## Attorney/accounting review
 
+October 2 annual addition: review $3,999 upfront annual auto-renewal disclosure, any jurisdiction-specific renewal reminders, cancellation process, and no-prorated-refund policy for voluntary early departure. Statutory rights, billing corrections and the existing onboarding non-acceptance refund remain protected. No broad legal enforceability claim is made.
+
 Published terms/privacy follow the owner’s execution authorization. Counsel should review business identity/contact disclosures, applicable subscription/cancellation rules, refund/termination language, liability provisions, customer-data processing in backups, subprocessors, retention/deletion, and jurisdiction-specific notices. No legal entity, postal address, liability cap, arbitration clause, or jurisdiction was invented.
 
 Tax configuration, accounting, registrations, and payouts were unchanged as instructed. Obtain appropriate advice for actual obligations; no tax treatment was invented.

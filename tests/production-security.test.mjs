@@ -12,6 +12,31 @@ const good = {
   oneSite: 'yes',
   complexity: ['none'],
 };
+test('annual signup verifies the annual link and full amount, then carries billing into onboarding', async () => {
+  const site = 'annual-' + randomUUID() + '.example.com';
+  const monthly = await post('/api/checkout', { ...good, website: site });
+  const monthlyRef = new URL((await monthly.json()).url).searchParams.get('client_reference_id');
+  const fit = await post('/api/checkout', { ...good, website: site, billing: 'year' }, monthly.headers.get('set-cookie').split(';')[0]);
+  const cookie = fit.headers.get('set-cookie').split(';')[0];
+  const next = await fit.json();
+  assert.match(next.url, /4gM14naeD4wq7KQ0xT7Vm03/);
+  const ref = new URL(next.url).searchParams.get('client_reference_id');
+  assert.notEqual(ref, monthlyRef);
+  const read = async () => (await fetch(base + '/api/status', { headers: { Cookie: cookie } })).json();
+  const annual = event(ref, { payment_link: 'plink_1UMDGlGmxVYsIEOrelyUpe8Z', amount_subtotal: 399900, amount_total: 399900,
+    custom_fields: [{ key: 'websiteurl', type: 'text', text: { value: site } }] });
+  assert.equal((await signed(event(ref, { ...annual.data.object, amount_total: 39900 }))).status, 200);
+  assert.equal((await read()).payment, 'review');
+  assert.equal((await signed(annual)).status, 200);
+  assert.equal((await signed(annual)).status, 200);
+  assert.equal((await read()).payment, 'paid');
+  assert.equal((await read()).billing, 'year');
+  assert.equal((await read()).billingLabel, '$3,999/year, paid upfront for 12 months');
+  assert.equal((await post('/api/onboarding', { critical: 'Contact form', access: 'self' }, cookie)).status, 200);
+  assert.equal((await read()).intake, true);
+  for (const billing of ['annual', 'week', '', 3999, null])
+    assert.equal((await post('/api/checkout', { ...good, billing })).status, 400);
+});
 test('qualification only allows one ordinary existing WordPress site', () => {
   assert.equal(qualify(good).kind, 'eligible');
   for (const platform of ['no', 'unsure'])

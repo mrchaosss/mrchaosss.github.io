@@ -382,7 +382,7 @@ export function Pricing() {
             <div>
               <Icon name="check" />
               <span>
-                <strong>No minimum term</strong>
+                <strong>Monthly flexibility</strong>
                 <small>Cancel before a future renewal.</small>
               </span>
             </div>
@@ -427,6 +427,12 @@ export function Pricing() {
             Get Started
           </Button>
           <p className="plan-foot">$399 at checkout, then monthly. $0 setup.</p>
+          <div className="annual-option">
+            <strong>Prefer to pay annually?</strong>
+            <p>$3,999 for 12 months. Same care, save $789.</p>
+            <Link to="/get-started?billing=year" className="text-link">Choose annual billing <Icon name="arrow" size={15} /></Link>
+            <p className="small">Paid upfront; renews annually. No prorated refund if you leave early. <Link to="/terms">Terms & exceptions</Link>.</p>
+          </div>
           <Link to="/terms" className="plan-terms">
             Service terms & cancellation
           </Link>
@@ -741,7 +747,7 @@ export function Process() {
             [
               'Start the subscription',
               'You',
-              '$399 at checkout, then monthly. No setup fee or minimum term. No separate vendor subscription is needed.',
+              'Choose $399/month or $3,999 upfront for 12 months, renewing annually. No setup fee. No separate vendor subscription is needed.',
             ],
             [
               'Share the useful details',
@@ -819,7 +825,7 @@ export function About() {
           </p>
           <h3>Know what you’re paying for.</h3>
           <p>
-            One $399 monthly plan. No setup fee or minimum term. Included work
+            One care plan: $399/month, with optional $3,999 annual billing. No setup fee. Included work
             and project boundaries are explained before checkout.
           </p>
           <h3>Keep control of your website.</h3>

@@ -3,7 +3,7 @@ import { siteConfig as c } from '@/lib/site-config';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata(
   'WordPress Care Service Terms | Novren',
-  'Terms for Novren WordPress Care: $399/month, no setup fee, one website, included care, edit limits, cancellation, and responsibilities.',
+  'Terms for Novren WordPress Care: $399/month or $3,999/year, no setup fee, one website, care scope, monthly edit limits and cancellation.',
   '/terms',
 );
 export const dynamic = 'force-static';
@@ -32,16 +32,19 @@ export default function Terms() {
           </p>
           <h2>2. Price, renewal, and payment authorization.</h2>
           <p>
-            The standard subscription is $399 USD per month per website. There
-            is no setup fee; normal onboarding is included. The first $399
-            payment is due at checkout. You authorize Stripe to charge your
-            selected payment method for the monthly subscription until
+            Choose $399 USD per month or $3,999 USD per year for one website.
+            Annual billing is paid upfront for 12 months, not in monthly installments.
+            There is no setup fee; normal onboarding is included. Your selected
+            plan’s full first payment is due at checkout. You authorize Stripe to charge your
+            selected payment method $399 each month or $3,999 each year, according to your choice, until
             cancellation takes effect. Any applicable tax must be disclosed at
             checkout. Keep your billing details and email current.
           </p>
           <p>
-            Your subscription is month-to-month with no minimum commitment. Each
-            renewal starts a new paid monthly period. Onboarding begins after
+            Monthly billing is month to month with no minimum commitment. Annual
+            billing renews automatically for another 12 months unless canceled before renewal.
+            Each renewal starts a new paid period. Both billing options provide
+            the same recurring care and monthly edit allowances. Onboarding begins after
             successful payment and receipt of the information and access needed.
             Care becomes active when Novren confirms the connection and
             baseline; payment alone does not establish a working site
@@ -58,7 +61,11 @@ export default function Terms() {
             that renewal even if our confirmation comes later.
           </p>
           <p>
-            Started billing periods are not prorated or routinely refunded.
+            You may request that care end before the paid period expires. Voluntary
+            early departure does not entitle you to a prorated refund of unused
+            time, including unused months of an annual subscription. There is no
+            additional early cancellation fee. Started billing periods are not
+            routinely refunded.
             Contact us promptly about a billing error. If Novren determines
             during initial onboarding that your website cannot be accepted for
             the standard plan before care is activated, we will cancel and
@@ -73,7 +80,8 @@ export default function Terms() {
             90 days of available history; daily security scanning; uptime checks
             at five-minute intervals; SSL certificate monitoring; maintenance
             support; a monthly care report reviewed by Novren; 50 AI edits a
-            month; and up to five small human edits each monthly billing period.
+            month; and up to five small human edits per month. Annual billing does
+            not increase or combine these monthly allowances.
             The <a href="/service">service page</a> explains the scope and
             qualifications.
           </p>

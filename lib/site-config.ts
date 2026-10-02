@@ -4,6 +4,7 @@ export const siteConfig = {
   siteUrl: 'https://novren.co',
   planName: 'Novren WordPress Care',
   monthlyPrice: 399,
+  annualPrice: 3999,
   onboardingFee: 0,
   currency: 'USD',
   siteLimit: 1,
@@ -16,8 +17,8 @@ export const siteConfig = {
   contactEmail: 'hello@novren.co',
   aiEditsPerMonth: 50,
   portal: { visible: true, href: 'https://app.novren.co' },
-  updatedDate: '2026-09-28',
-  updatedLabel: 'September 28, 2026',
+  updatedDate: '2026-10-02',
+  updatedLabel: 'October 2, 2026',
   utmParameters: [
     'utm_source',
     'utm_medium',

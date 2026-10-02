@@ -9,7 +9,7 @@ export function GetStarted() {
         title="First, a quick check of your website."
       >
         <p>
-          One existing WordPress website. $399/month. No setup fee or required
+          One existing WordPress website. $399/month, with optional annual billing. No setup fee or required
           call.
         </p>
       </PageIntro>
@@ -23,6 +23,18 @@ export function GetStarted() {
               action="/api/checkout"
               method="post"
             >
+              <fieldset className="billing-choice">
+                <legend>Choose your billing</legend>
+                <label className="check-option">
+                  <input type="radio" name="billing" value="month" defaultChecked required />
+                  <span>Monthly — $399/month<small>Month to month. No setup fee.</small></span>
+                </label>
+                <label className="check-option">
+                  <input type="radio" name="billing" value="year" required />
+                  <span>Annual — $3,999/year<small>12 months paid upfront. Save $789. Same monthly edit allowances.</small></span>
+                </label>
+                <p id="annual-billing-notice" className="small" hidden>Renews at $3,999 each year unless canceled before renewal. You can leave early, but unused months are not refunded for voluntary early departure. See the service terms for exceptions.</p>
+              </fieldset>
               <div className="field">
                 <label htmlFor="website">Your website</label>
                 <input
@@ -226,8 +238,8 @@ export function Onboarding() {
             hidden
           >
             <Notice tone="success">
-              <strong>Payment confirmed.</strong> Your subscription is
-              $399/month. Normal onboarding is included.
+              <strong>Payment confirmed.</strong> Your subscription is{' '}
+              <span id="onboarding-billing">verified</span>. Normal onboarding is included.
             </Notice>
             <p id="onboarding-site" className="small" />
             <div className="field">
@@ -451,9 +463,9 @@ export function Billing() {
     <>
       <PageIntro
         eyebrow="Billing & cancellation"
-        title="A straightforward monthly subscription."
+        title="Simple billing. Clear cancellation."
       >
-        <p>$399/month per website. No setup fee or minimum term.</p>
+        <p>$399/month or $3,999/year per website. No setup fee.</p>
       </PageIntro>
       <section className="section top-small">
         <div className="wrap narrow prose">
@@ -477,10 +489,11 @@ export function Billing() {
           <h2>Your current period.</h2>
           <p>
             Cancellation normally takes effect at the end of the paid period.
-            Started periods are not prorated or routinely refunded. If we cannot
+            Monthly billing pays for one month; annual billing pays upfront for 12 months and renews at $3,999 each year. You may cancel future renewal anytime or ask to end care early. Voluntary early departure does not receive a prorated refund for unused months. If we cannot
             accept a site during initial onboarding before activation, we cancel
             and refund the first payment. See the{' '}
             <a href="/terms">service terms</a> for the complete policy.
+            {' '}Refunds required by law and billing corrections remain protected.
           </p>
         </div>
       </section>

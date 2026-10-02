@@ -127,12 +127,12 @@ export const faqs = [
   {
     group: 'Billing',
     q: 'When does billing start, and when does care start?',
-    a: 'The first $399 payment is taken at checkout and the subscription renews monthly. Care starts after Novren has connected the site, checked the baseline and confirmed activation. Timing depends on access, compatibility and any issues discovered. If you have a deadline or a serious existing problem, ask us before paying.',
+    a: 'Your selected plan is paid at checkout: $399 for monthly billing, or $3,999 upfront for 12 months with annual billing. It renews at the same price each month or year unless canceled. Care starts after connection, baseline checks and activation confirmation. Timing depends on access and compatibility. Ask us before paying if you have an urgent deadline or serious existing problem.',
   },
   {
     group: 'Billing',
     q: 'Can I cancel?',
-    a: 'Yes. There is no minimum term. Email hello@novren.co from your billing email before the next renewal and identify your website. A timely request prevents that renewal, even if confirmation follows later. Started periods are not prorated or routinely refunded; see the service terms for exceptions and required rights.',
+    a: 'Yes. Email hello@novren.co from your billing email before the next monthly or annual renewal and identify your website. A timely request prevents that renewal, even if confirmation follows later. Care normally continues through your paid period; you can ask to leave early. Voluntary early departure does not receive a prorated refund, including unused annual months. See the service terms for exceptions and required rights.',
   },
   {
     group: 'Billing',
@@ -164,9 +164,14 @@ faqs.push(
   {
     group: 'The service',
     q: 'What happens when I use all 50 AI edits?',
-    a: 'Contact Novren to discuss the next step. Extra AI edits require separate agreement; they are not part of the $399 monthly allowance. AI credits cannot be exchanged for human work, and the website does not automatically charge for additional edits.',
+    a: 'Contact Novren to discuss the next step. Extra AI edits require separate agreement; they are not part of the included monthly allowance. AI credits cannot be exchanged for human work, and the website does not automatically charge for additional edits.',
   },
 );
+faqs.push({
+  group: 'Billing',
+  q: 'Can I pay annually?',
+  a: 'Yes. Annual billing is $3,999 paid upfront for 12 months, saving $789 compared with twelve $399 monthly payments. It renews at $3,999 each year unless canceled before renewal. The care and monthly allowances are identical: 50 AI edits and five small human edits per month. No setup fee. Unused months are not prorated or refunded for voluntary early departure; the service terms explain exceptions.',
+});
 export const complexityOptions = [
   [
     'store',

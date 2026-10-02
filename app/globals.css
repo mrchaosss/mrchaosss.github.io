@@ -4793,3 +4793,10 @@ fieldset + fieldset {
     position: static;
   }
 }
+/* Annual billing is a secondary choice beneath the default monthly plan. */
+.annual-option { margin: 1.2rem 0; padding-top: 1.1rem; border-top: 1px solid #35495f; }
+.annual-option p { margin: .5rem 0; color: #becfe0; }
+.annual-option a { color: #c4d4e7; }
+.annual-option a:hover { color: white; }
+.annual-option .small { font-size: .8rem; line-height: 1.6; }
+.summary-price > #billing-summary-price { font: inherit; color: inherit; }

@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import { billingInterval, billingOffer, type BillingInterval } from './billing';
 import {
   InputError,
   email,
@@ -42,6 +43,7 @@ function sessionCookie(token: string) {
   return `${COOKIE}=${token}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=${SESSION_SECONDS}`;
 }
 type Signup = {
+  billing_interval: BillingInterval;
   id: string;
   website: string;
   payment: string;
@@ -197,6 +199,10 @@ async function checkout(request: Request, env: Env) {
     return json({ error: 'Please contact hello@novren.co to continue.' }, 400);
   const fit = qualify(data);
   if (fit.kind !== 'eligible') return json(fit);
+  const interval = billingInterval(data.billing);
+  const offer = billingOffer(interval, env);
+  if (!offer.linkId || !offer.linkUrl)
+    return json({ error: 'This billing option is not available yet. Please contact hello@novren.co.' }, 503);
   if (String(env.CHECKOUT_ENABLED) !== 'true')
     return json(
       {
@@ -209,13 +215,13 @@ async function checkout(request: Request, env: Env) {
   if (existing?.payment === 'paid')
     return json({ url: env.SITE_ORIGIN + '/onboarding' });
   const id =
-    existing?.payment === 'pending' && existing.website === fit.website
+    existing?.payment === 'pending' && existing.website === fit.website && existing.billing_interval === interval
       ? existing.id
       : crypto.randomUUID();
   const token = random();
   await env.DB.batch([
     env.DB.prepare(
-      'INSERT OR IGNORE INTO signups(id,website,created_at,eligibility_json) VALUES(?,?,?,?)',
+      'INSERT OR IGNORE INTO signups(id,website,created_at,eligibility_json,billing_interval) VALUES(?,?,?,?,?)',
     ).bind(
       id,
       fit.website,
@@ -225,12 +231,13 @@ async function checkout(request: Request, env: Env) {
         oneSite: data.oneSite,
         complexity: data.complexity,
       }),
+      interval,
     ),
     env.DB.prepare(
       'INSERT INTO sessions(hash,signup_id,expires_at) VALUES(?,?,?)',
     ).bind(await digest(token), id, now() + SESSION_SECONDS),
   ]);
-  const url = new URL(env.STRIPE_PAYMENT_LINK_URL);
+  const url = new URL(offer.linkUrl);
   url.searchParams.set('client_reference_id', id);
   return json({ url: url.href }, 200, { 'Set-Cookie': sessionCookie(token) });
 }
@@ -251,6 +258,7 @@ async function saveOnboarding(
   if (account.intake_json) return json({ saved: true });
   const details = onboardingDetails(await input(request));
   if (!account.email) throw new Error('missing_customer_email');
+  const offer = billingOffer(account.billing_interval, env);
   const statements = [
     env.DB.prepare(
       'UPDATE signups SET intake_json=?,intake_at=? WHERE id=? AND intake_json IS NULL',
@@ -273,7 +281,7 @@ async function saveOnboarding(
       'intake-customer:' + account.id,
       account.email,
       'We received your website details',
-      `Your onboarding details for ${account.website} are saved.\n\nNovren will review them and coordinate the website connection with you. Care is not active until we confirm the connection and baseline checks. Your client portal invitation and service instructions will follow.\n\nNo passwords are needed by email. Reply to hello@novren.co if anything changes.\n\nYour plan: $399/month for one website, no setup fee.`,
+      `Your onboarding details for ${account.website} are saved.\n\nNovren will review them and coordinate the website connection with you. Care is not active until we confirm the connection and baseline checks. Your client portal invitation and service instructions will follow.\n\nNo passwords are needed by email. Reply to hello@novren.co if anything changes.\n\nYour plan: ${offer.label} for one website, no setup fee.`,
     ),
   ];
   await env.DB.batch(statements);
@@ -375,14 +383,17 @@ async function webhook(request: Request, env: Env, ctx: ExecutionContext) {
     event.type === 'checkout.session.async_payment_succeeded'
   ) {
     const s = event.data.object;
+    const offer = s.payment_link === env.STRIPE_ANNUAL_PAYMENT_LINK_ID
+      ? billingOffer('year', env)
+      : s.payment_link === env.STRIPE_PAYMENT_LINK_ID ? billingOffer('month', env) : null;
     if (
-      s.payment_link === env.STRIPE_PAYMENT_LINK_ID &&
+      offer &&
       s.mode === 'subscription' &&
       s.payment_status === 'paid' &&
       s.status === 'complete' &&
       s.currency === 'usd' &&
-      s.amount_subtotal === 39900 &&
-      s.amount_total === 39900 &&
+      s.amount_subtotal === offer.amount &&
+      s.amount_total === offer.amount &&
       s.customer_details?.email
     ) {
       const address = email(s.customer_details.email),
@@ -412,18 +423,20 @@ async function webhook(request: Request, env: Env, ctx: ExecutionContext) {
         !existing ||
         site === 'Needs review' ||
         Boolean(existing && existing.website !== site) ||
+        Boolean(existing && existing.billing_interval !== offer.interval) ||
         Boolean(duplicate);
       statements.push(
         env.DB.prepare(
-          'INSERT OR IGNORE INTO signups(id,website,created_at,eligibility_json) VALUES(?,?,?,?)',
+          'INSERT OR IGNORE INTO signups(id,website,created_at,eligibility_json,billing_interval) VALUES(?,?,?,?,?)',
         ).bind(
           id,
           site,
           now(),
           JSON.stringify({ source: 'direct-payment-link', review: true }),
+          offer.interval,
         ),
         env.DB.prepare(
-          "UPDATE signups SET payment='paid',stripe_session=?,stripe_customer=?,stripe_subscription=?,email=?,name=?,business=?,paid_at=COALESCE(paid_at,?),website=? WHERE id=? AND (stripe_session IS NULL OR stripe_session=?)",
+          "UPDATE signups SET payment='paid',stripe_session=?,stripe_customer=?,stripe_subscription=?,email=?,name=?,business=?,paid_at=COALESCE(paid_at,?),website=?,billing_interval=? WHERE id=? AND (stripe_session IS NULL OR stripe_session=?)",
         ).bind(
           s.id,
           typeof s.customer === 'string' ? s.customer : s.customer?.id || null,
@@ -435,6 +448,7 @@ async function webhook(request: Request, env: Env, ctx: ExecutionContext) {
           business,
           now(),
           site,
+          offer.interval,
           id,
           s.id,
         ),
@@ -445,7 +459,7 @@ async function webhook(request: Request, env: Env, ctx: ExecutionContext) {
           'paid-customer:' + s.id,
           address,
           'Welcome to Novren — your next step',
-          `Thank you for subscribing to Novren WordPress Care.\n\nYour payment: $399. The subscription renews monthly at $399, with no setup fee.\nWebsite: ${site}\n\nContinue onboarding here:\n${env.SITE_ORIGIN}/onboarding\n\nIf the page asks you to resume, enter this checkout email and we’ll send a secure link. Novren will coordinate the connection; care begins after baseline confirmation. Do not send passwords.\n\nQuestions or cancellation before renewal: hello@novren.co\nService terms: ${env.SITE_ORIGIN}/terms`,
+          `Thank you for subscribing to Novren WordPress Care.\n\nYour payment: ${offer.price}. Your plan: ${offer.label}. The subscription renews ${offer.renewal}, with no setup fee.\n${offer.interval === 'year' ? 'You can cancel future renewal anytime. Voluntary early departure does not receive a prorated refund for unused months, except where required by law. The service terms explain other refund exceptions.\n' : ''}Website: ${site}\n\nContinue onboarding here:\n${env.SITE_ORIGIN}/onboarding\n\nIf the page asks you to resume, enter this checkout email and we’ll send a secure link. Novren will coordinate the connection; care begins after baseline confirmation. Do not send passwords.\n\nQuestions or cancellation before renewal: hello@novren.co\nService terms: ${env.SITE_ORIGIN}/terms`,
         ),
         queued(
           env,
@@ -454,22 +468,22 @@ async function webhook(request: Request, env: Env, ctx: ExecutionContext) {
           review
             ? 'Paid signup needs fit/billing review'
             : 'New paid Novren signup',
-          `Website: ${site}\nBusiness: ${business}\nContact: ${name} <${address}>\nSignup reference: ${id}\nStripe checkout: ${s.id}\n${duplicate ? 'Potential duplicate purchase. Review both subscriptions and contact the customer before further work.' : review ? 'Website differs from the fit check or needs verification. Confirm eligibility before activation.' : 'Await onboarding details, then arrange the care connection.'}\n\nPayment has been verified by a signed Stripe event. No GoWP account or paid site plan has been created automatically.`,
+          `Website: ${site}\nBusiness: ${business}\nContact: ${name} <${address}>\nBilling: ${offer.label}\nSignup reference: ${id}\nStripe checkout: ${s.id}\n${duplicate ? 'Potential duplicate purchase. Review both subscriptions and contact the customer before further work.' : review ? 'Website or billing differs from the fit check or needs verification. Confirm eligibility before activation.' : 'Await onboarding details, then arrange the care connection.'}\n\nPayment has been verified by a signed Stripe event. No GoWP account or paid site plan has been created automatically.`,
         ),
       );
-    } else if (s.payment_link === env.STRIPE_PAYMENT_LINK_ID && s.payment_status === 'paid') {
+    } else if (offer && s.payment_status === 'paid') {
       // A genuine payment outside this offer needs a person, never silent fulfillment.
       if (s.client_reference_id) statements.push(env.DB.prepare(
         "UPDATE signups SET payment='review' WHERE id=? AND payment!='paid'",
       ).bind(s.client_reference_id));
       statements.push(queued(env, 'payment-review:' + s.id, env.SUPPORT_EMAIL,
         'Novren payment needs manual review',
-        `Stripe checkout ${s.id} was paid, but did not match the expected $399 USD subscription or required customer details. Review it in Stripe and contact the customer. Do not ask them to pay again or activate care until resolved.`,
+        `Stripe checkout ${s.id} was paid, but did not match the expected ${offer.label} USD subscription or required customer details. Review it in Stripe and contact the customer. Do not ask them to pay again or activate care until resolved.`,
       ));
     }
   } else if (event.type === 'checkout.session.async_payment_failed') {
     const s = event.data.object;
-    if (s.payment_link === env.STRIPE_PAYMENT_LINK_ID) {
+    if (s.payment_link === env.STRIPE_PAYMENT_LINK_ID || s.payment_link === env.STRIPE_ANNUAL_PAYMENT_LINK_ID) {
       if (s.client_reference_id) statements.push(env.DB.prepare(
         "UPDATE signups SET payment='failed' WHERE id=? AND payment='pending'",
       ).bind(s.client_reference_id));
@@ -571,6 +585,8 @@ export default {
                 authenticated: true,
                 payment: s.payment,
                 website: s.website,
+                billing: s.billing_interval,
+                billingLabel: billingOffer(s.billing_interval, env).label,
                 intake: Boolean(s.intake_json),
               }
             : { authenticated: false },

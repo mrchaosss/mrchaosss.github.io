@@ -218,7 +218,7 @@ export function PriceSummary({ compact = false }) {
     <aside className={`price-summary ${compact ? 'compact' : ''}`}>
       <Eyebrow>Novren WordPress Care</Eyebrow>
       <div className="summary-price">
-        $399<span>/month</span>
+        <span id="billing-summary-price">$399</span><span id="billing-summary-period">/month</span>
       </div>
       <p>One eligible WordPress website.</p>
       <div className="summary-rule" />
@@ -250,10 +250,10 @@ export function PriceSummary({ compact = false }) {
         </div>
         <div>
           <dt>Due at checkout</dt>
-          <dd>$399 USD</dd>
+          <dd id="billing-summary-due">$399 USD</dd>
         </div>
       </dl>
-      <p className="small">
+      <p id="billing-summary-terms" className="small">
         Monthly renewal. No minimum term. Cancel before your next renewal.
       </p>
       <Link to="/terms" className="text-link small">

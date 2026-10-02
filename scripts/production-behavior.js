@@ -57,7 +57,23 @@
     b.setAttribute('aria-busy', String(busy));
   };
   const fit = $('fit-form');
+  const updateBilling = () => {
+    const annual = fit?.querySelector('[name=billing]:checked')?.value === 'year';
+    $('annual-billing-notice').hidden = !annual;
+    $('billing-summary-price').textContent = annual ? '$3,999' : '$399';
+    $('billing-summary-period').textContent = annual ? '/year' : '/month';
+    $('billing-summary-due').textContent = annual ? '$3,999 USD' : '$399 USD';
+    $('billing-summary-terms').textContent = annual
+      ? '12 months paid upfront. Renews annually at $3,999. Cancel future renewal anytime. No prorated refund for voluntary early departure; see terms for exceptions.'
+      : 'Monthly renewal. No minimum term. Cancel before your next renewal.';
+  };
+  if (fit) {
+    if (new URLSearchParams(location.search).get('billing') === 'year')
+      fit.querySelector('[name=billing][value=year]').checked = true;
+    updateBilling();
+  }
   fit?.addEventListener('change', (e) => {
+    if (e.target.name === 'billing') { updateBilling(); return; }
     if (e.target.name !== 'complexity') return;
     const checked = e.target.checked;
     if (!checked) return;
@@ -154,6 +170,7 @@
         return;
       }
       onboarding.hidden = false;
+      $('onboarding-billing').textContent = s.billingLabel;
       $('onboarding-site').textContent = 'Website: ' + s.website;
     } catch (err) {
       $('onboarding-loading').hidden = false;

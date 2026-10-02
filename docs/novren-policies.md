@@ -1,12 +1,12 @@
 # Current Novren policy basis
 
-Updated September 28, 2026 for the owner-authorized Cloudflare launch and AI-edit inclusion.
+Updated October 2, 2026 for owner-authorized annual billing.
 
 ## Commercial terms
 
-Novren WordPress Care: $399 USD/month for one eligible existing WordPress website. No setup fee or minimum term. Normal onboarding included. Checkout acceptance of /terms supplies the standard service agreement and payment authorization. Email hello@novren.co before renewal to prevent that renewal; a timely request applies even if confirmation follows later.
+Novren WordPress Care: $399 USD/month (default) or $3,999 USD/year paid upfront for 12 months for one eligible existing WordPress website. Annual saves $789 versus twelve monthly payments (16.48%). Same care and monthly allowances. No setup fee. Monthly is month to month; annual renews each year. Normal onboarding included. Checkout acceptance of /terms supplies the agreement and recurring payment authorization. Email hello@novren.co before renewal to prevent it; a timely request applies even if confirmation follows later.
 
-Started periods are not prorated or routinely refunded. Billing errors and legally required rights remain protected. If Novren cannot accept the site during initial onboarding before activation, cancel and refund the initial payment. Larger projects require separate scope/pricing.
+Customers may request early departure; voluntary early departure does not receive a prorated refund of unused time, including annual months. No extra early cancellation fee. Billing errors and legally required rights remain protected. If Novren cannot accept the site during initial onboarding before activation, cancel and refund the initial payment. Larger projects require separate scope/pricing.
 
 ## Service
 
