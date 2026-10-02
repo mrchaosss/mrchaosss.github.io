@@ -14,6 +14,8 @@ Balanced updates; daily backups with 90-day rolling history; daily security scan
 
 ## Signup and onboarding
 
+October 2 owner update: Novren no longer offers the pre-sale website audit path. Public navigation, the homepage banner and related marketing/FAQ copy no longer promote audits. The retired /after-your-audit URL redirects to /care and is excluded from the sitemap.
+
 Server-validated eligibility → Stripe → /onboarding?checkout=complete. A signed Stripe webhook verifies the offer, amount, currency and payment before unlocking onboarding. Non-sensitive onboarding details are stored privately in Cloudflare D1 and emailed to Novren; the customer receives an acknowledgement. A short-lived, single-use email link can resume onboarding. Novren arranges connector/secure access, validates the baseline, and confirms activation. Opening the page or changing its query string does not prove payment.
 
 Never collect passwords in public forms, Stripe, booking notes, or ordinary email. Request additional host/DNS/SSH access only for a concrete exception.

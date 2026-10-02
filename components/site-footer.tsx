@@ -17,7 +17,6 @@ export function SiteFooter() {
         <div>
           <h2>Explore</h2>
           <Link to="/care">What’s included</Link>
-          <Link to="/after-your-audit">After your audit</Link>
           <Link to="/how-it-works">How it works</Link>
           <Link to="/faq">FAQs</Link>
           <Link to="/about">About Novren</Link>

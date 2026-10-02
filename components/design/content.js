@@ -71,11 +71,6 @@ export const faqs = [
   },
   {
     group: 'Getting started',
-    q: 'I received a website audit. Will this fix everything in it?',
-    a: 'Not necessarily. The plan covers ongoing care and small edits. A finding that requires a redesign, custom development, migration or substantial repair needs separate assessment and pricing. Send us your audit reference if you want help separating the two before you subscribe.',
-  },
-  {
-    group: 'Getting started',
     q: 'What happens after I pay?',
     a: 'Provide a few details about your website and how we can arrange access. Novren prepares your client workspace, coordinates the WordPress connector, checks the care baseline and confirms activation. You then receive access to your branded client portal. A payment alone does not mean the site is connected.',
   },

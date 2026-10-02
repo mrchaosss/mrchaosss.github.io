@@ -12,7 +12,6 @@ export function SiteHeader() {
           </Link>
           <nav className="desktop-nav" aria-label="Main navigation">
             <Link to="/care">What’s included</Link>
-            <Link to="/after-your-audit">After your audit</Link>
             <Link to="/#pricing">Pricing</Link>
             <Link to="/faq">FAQs</Link>
           </nav>
@@ -42,7 +41,6 @@ export function SiteHeader() {
         >
           {[
             ['What’s included', '/care'],
-            ['After your audit', '/after-your-audit'],
             ['Pricing', '/#pricing'],
             ['How it works', '/how-it-works'],
             ['FAQs', '/faq'],

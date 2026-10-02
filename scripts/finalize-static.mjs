@@ -102,7 +102,6 @@ const routes = [
   '/accessibility',
   '/get-started',
   '/care',
-  '/after-your-audit',
   '/how-it-works',
   '/faq',
   '/sample-report',

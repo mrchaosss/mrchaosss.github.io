@@ -3,3 +3,6 @@
 /portal-invitation /portal 301
 /checkout /get-started 301
 /ai-editor-demo /care 301
+/after-your-audit /care 301
+/after-your-audit/ /care 301
+/after-your-audit.html /care 301

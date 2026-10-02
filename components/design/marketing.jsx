@@ -224,17 +224,6 @@ export function Home() {
           </div>
         </div>
       </section>
-      <div className="audit-strip">
-        <div className="wrap">
-          <div>
-            <Icon name="report" />
-            <span>Received a website audit from Novren?</span>
-          </div>
-          <Link to="/after-your-audit" className="text-link">
-            Your next step <Icon name="arrow" size={18} />
-          </Link>
-        </div>
-      </div>
       <section className="section" id="included">
         <div className="wrap">
           <div className="section-heading">
@@ -348,7 +337,7 @@ export function Home() {
               All questions <Icon name="arrow" />
             </Link>
           </div>
-          <FAQList items={[faqs[0], faqs[1], faqs[8], faqs[13]]} />
+          <FAQList items={[faqs[0], faqs[1], faqs[7], faqs[12]]} />
         </div>
       </section>
       <CTA />
@@ -574,152 +563,12 @@ export function Care() {
             ))}
           </div>
           <Notice>
-            Audit findings may need project work. We confirm scope and any extra
+            Larger changes may need project work. We confirm scope and any extra
             price before accepting it.
           </Notice>
         </div>
       </section>
       <CTA />
-    </>
-  );
-}
-
-export function AfterAudit() {
-  return (
-    <>
-      <section className="audit-hero">
-        <div className="wrap">
-          <Eyebrow>After your website audit</Eyebrow>
-          <h1>
-            You’ve seen the findings.
-            <br />
-            <em>Here’s the next step.</em>
-          </h1>
-          <p>
-            A website audit gives you a snapshot. Novren’s care plan handles the
-            recurring upkeep and small changes your WordPress site needs
-            afterward.
-          </p>
-          <div className="button-row">
-            <Button to="/get-started" arrow>
-              Check my site’s fit
-            </Button>
-            <Button to="/support?topic=audit" secondary>
-              Ask about a finding
-            </Button>
-          </div>
-          <p className="small">
-            $399/month per website · No setup fee · No required call
-          </p>
-        </div>
-      </section>
-      <section className="section">
-        <div className="wrap">
-          <div className="section-heading">
-            <div>
-              <Eyebrow>Put the findings in context</Eyebrow>
-              <h2>
-                What care can cover.
-                <br />
-                What needs a closer look.
-              </h2>
-            </div>
-            <p>
-              Your audit’s observations need to be matched to the right next
-              step. We won’t treat every finding as a reason to sell you this
-              plan.
-            </p>
-          </div>
-          <div className="audit-mapping">
-            {[
-              [
-                'Routine upkeep',
-                'Updates, backups, security scans, uptime and SSL monitoring.',
-                'Part of recurring care',
-                'check',
-              ],
-              [
-                'Small content changes',
-                'Business hours, team details, replacement images or final content you supply.',
-                'Within the five-edit allowance',
-                'edit',
-              ],
-              [
-                'Larger technical or design work',
-                'A redesign, serious repair, custom functionality, migration or a performance project.',
-                'Review & separate scope',
-                'info',
-              ],
-            ].map(([a, b, c, d], i) => (
-              <article key={a}>
-                <span className="mapping-number">0{i + 1}</span>
-                <h3>{a}</h3>
-                <p>{b}</p>
-                <div className="mapping-tag">
-                  <Icon name={d} size={17} />
-                  {c}
-                </div>
-              </article>
-            ))}
-          </div>
-          <Notice>
-            A public-facing audit cannot establish everything about a site’s
-            backups, security or internal setup. We verify the connected site
-            during onboarding. There is no promised SEO, speed or revenue
-            outcome.
-          </Notice>
-        </div>
-      </section>
-      <section className="section tinted">
-        <div className="wrap split-copy">
-          <div>
-            <Eyebrow>No repeat sales pitch needed</Eyebrow>
-            <h2>
-              The details you need
-              <br />
-              to make a decision.
-            </h2>
-          </div>
-          <div className="decision-links">
-            {[
-              [
-                'Exactly what is included',
-                'The care tasks, 50 AI edits and five human edits.',
-                '/care',
-              ],
-              [
-                'The price and commitment',
-                '$399/month, no setup, month to month.',
-                '/#pricing',
-              ],
-              [
-                'How access and onboarding work',
-                'What you provide, what Novren handles.',
-                '/how-it-works',
-              ],
-              [
-                'How Novren handles your care',
-                'Scope, accountability and your support contact.',
-                '/about',
-              ],
-            ].map(([a, b, c]) => (
-              <Link key={a} to={c}>
-                <div>
-                  <strong>{a}</strong>
-                  <span>{b}</span>
-                </div>
-                <Icon name="arrow" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="wrap narrow">
-          <FAQList items={[faqs[1], faqs[4], faqs[12], faqs[14]]} />
-        </div>
-      </section>
-      <CTA title="Turn the right findings into a care plan." />
     </>
   );
 }
